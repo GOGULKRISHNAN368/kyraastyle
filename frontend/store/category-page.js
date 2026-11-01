@@ -74,6 +74,21 @@
   const toast = document.getElementById('catalog-toast');
   let toastTimer;
 
+  function readBag() {
+    try {
+      const stored = JSON.parse(window.localStorage.getItem('kyraa-category-bag') || '[]');
+      return Array.isArray(stored) ? stored : [];
+    } catch (_) { return []; }
+  }
+
+  function updateBagCount() {
+    const badge = document.getElementById('bag-count');
+    if (!badge) return;
+    const quantity = readBag().reduce((total, item) => total + Number(item.quantity || 1), 0);
+    badge.textContent = String(quantity);
+    badge.hidden = quantity === 0;
+  }
+
   function currentFilters() {
     return Array.from(document.querySelectorAll('.filter-panel input:checked')).reduce((result, input) => {
       (result[input.name] ||= []).push(input.value);
@@ -179,10 +194,25 @@
   document.getElementById('close-quick-view').addEventListener('click', () => document.getElementById('quick-view-dialog').close());
   document.getElementById('quick-view-add').addEventListener('click', () => {
     const name = document.querySelector('.quick-view-title').textContent;
-    let bag = [];
-    try { bag = JSON.parse(window.localStorage.getItem('kyraa-category-bag') || '[]'); } catch (_) { bag = []; }
-    bag.push({ category: category ? category.title : 'Curated', product: name });
+    const product = products.find((entry) => entry.name === name);
+    const bag = readBag();
+    const existing = bag.find((item) => item.product === name && item.size === 'M' && item.color === 'Selected colour');
+    if (existing) {
+      existing.quantity = Number(existing.quantity || 1) + 1;
+    } else if (product) {
+      bag.push({
+        category: category ? category.title : 'Curated',
+        product: product.name,
+        designer: product.designer,
+        price: product.price,
+        image: `../image/${product.image}`,
+        size: 'M',
+        color: 'Selected colour',
+        quantity: 1
+      });
+    }
     window.localStorage.setItem('kyraa-category-bag', JSON.stringify(bag));
+    updateBagCount();
     document.getElementById('quick-view-dialog').close();
     toast.textContent = `${name} added to your bag.`;
     toast.classList.add('is-visible');
@@ -198,5 +228,5 @@
     categoryLinks.appendChild(link);
   });
   renderProducts();
-
+  updateBagCount();
 })();
