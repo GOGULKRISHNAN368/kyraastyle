@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { connectDatabase } from '../config/database.js';
 import AdminUser from '../models/AdminUser.js';
 

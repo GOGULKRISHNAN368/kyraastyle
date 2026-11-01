@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import AdminUser from '../models/AdminUser.js';
 import { clearAuthCookie, setAuthCookie, setDevelopmentAuthCookie } from '../utils/auth.js';
 import { env } from '../config/env.js';
