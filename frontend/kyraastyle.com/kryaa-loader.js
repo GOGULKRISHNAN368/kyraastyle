@@ -142,8 +142,8 @@
   };
 })();
 
-/* Replaces the legacy carousel with a single, intentional Kryaa Style first view. */
-(() => {
+/* The legacy carousel is the approved homepage hero; keep this later concept disabled. */
+if (false) (() => {
   'use strict';
 
   const heroMarkup = `

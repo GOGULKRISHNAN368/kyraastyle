@@ -1,5 +1,4 @@
 /* Banner and mobile layout refinements for the Kryaa storefront. */
-@import url("kryaa-reimagined-hero.css");
 /* Replacement footer inspired by the Shoppers Stop information architecture. */
 .kr-shopper-footer { margin-top: 48px; background: #171717; color: #f8f6f2; font-family: Arial, Helvetica, sans-serif; }
 .kr-shopper-footer * { box-sizing: border-box; }
@@ -68,6 +67,44 @@
 .wrapperContainer:has(img[src*="banner-desktop"]) .kryaa-inclusive-slide picture::before,
 .wrapperContainer:has(img[src*="banner-desktop"]) .kryaa-inclusive-slide picture::after {
   content: none !important;
+}
+
+/* Give the restored campaign the same full-bleed, full-screen presence as
+   the original landing page while keeping its embedded artwork uncut. */
+@media (min-width: 768px) {
+  #__next > div > header .wrapperContainer {
+    width: 100% !important;
+    max-width: none !important;
+    padding-inline: clamp(28px, 5vw, 96px);
+  }
+
+  main > .relative > .wrapperContainer:has(img[src*="banner-desktop"]) {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  main > .relative > .wrapperContainer:has(img[src*="banner-desktop"]) > .overflow-hidden {
+    border-radius: 0 !important;
+  }
+
+  main > .relative > .wrapperContainer:has(img[src*="banner-desktop"]) a > div[style*="aspect-ratio"] {
+    height: calc(100svh - 142px) !important;
+    min-height: 600px;
+    aspect-ratio: auto !important;
+  }
+
+  main > .relative > .wrapperContainer:has(img[src*="banner-desktop"]) picture {
+    display: grid;
+    place-items: center;
+    background: #f2eee8;
+  }
+
+  main > .relative > .wrapperContainer:has(img[src*="banner-desktop"]) picture img {
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
 }
 
 /* Curated trending looks lookbook carousel. */

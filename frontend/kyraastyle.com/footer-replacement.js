@@ -56,6 +56,9 @@
     </footer>`;
 
   function installFooter() {
+    // The home page supplies its original storefront footer from men-only.js.
+    // Do not replace it with the later generic footer.
+    if (document.querySelector('.kr-shopper-footer')) return;
     const legacyFooter = document.querySelector('footer:not(.kr-converto-footer)');
     if (legacyFooter && !document.querySelector('.kr-converto-footer')) {
       legacyFooter.outerHTML = footer;
