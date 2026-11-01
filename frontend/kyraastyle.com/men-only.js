@@ -2215,8 +2215,105 @@ const kryaaLuxeSlides = [
     original.replaceWith(section);
   };
 
+  const setupBestSellersSection = () => {
+    const existing = document.getElementById('kr-best-sellers');
+    const existingEditorsPicks = document.getElementById('kr-editors-picks');
+    if (existing) {
+      if (existingEditorsPicks && existing.nextElementSibling !== existingEditorsPicks) {
+        existingEditorsPicks.insertAdjacentElement('beforebegin', existing);
+      }
+      return;
+    }
+
+    const editorsPicks = document.getElementById('kr-editors-picks');
+    if (!editorsPicks) return;
+
+    const section = document.createElement('section');
+    section.id = 'kr-best-sellers';
+    section.className = 'kr-best-sellers';
+    section.setAttribute('aria-labelledby', 'kr-best-sellers-heading');
+    section.innerHTML = `
+      <div class="kr-best-sellers__heading">
+        <div>
+          <p>THE KYRAA EDIT</p>
+          <h2 class="kr-section-title" id="kr-best-sellers-heading">Kyraa's Best Sellers</h2>
+        </div>
+        <a href="../store/category.html?edit=new-arrivals">VIEW ALL <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="kr-best-sellers__grid">
+        <a class="kr-best-sellers__card" href="../store/category.html?category=chudi">
+          <span class="kr-best-sellers__image"><img src="../images/real-products/Black_Kurti.webp" alt="Black embroidered kurti set" width="900" height="1350" loading="lazy" decoding="async"></span>
+          <span class="kr-best-sellers__meta"><small>KYRAA SIGNATURE</small><strong>Midnight Embroidered Set</strong><em>Shop now</em></span>
+        </a>
+        <a class="kr-best-sellers__card" href="../store/category.html?category=salwar-suits">
+          <span class="kr-best-sellers__image"><img src="../images/real-products/White_Kurti_1.webp" alt="Ivory floral kurti set" width="900" height="1350" loading="lazy" decoding="async"></span>
+          <span class="kr-best-sellers__meta"><small>SOFT CELEBRATION</small><strong>Ivory Garden Kurti Set</strong><em>Shop now</em></span>
+        </a>
+        <a class="kr-best-sellers__card" href="../store/category.html?category=kurti-sets">
+          <span class="kr-best-sellers__image"><img src="../images/real-products/Green_Kurti_1.webp" alt="Green printed kurti set" width="900" height="1350" loading="lazy" decoding="async"></span>
+          <span class="kr-best-sellers__meta"><small>FRESH EDIT</small><strong>Emerald Everyday Kurti</strong><em>Shop now</em></span>
+        </a>
+        <a class="kr-best-sellers__card" href="../store/category.html?category=short-tops">
+          <span class="kr-best-sellers__image"><img src="../images/real-products/Short_Tops_2.webp" alt="Paisley sleeveless top" width="900" height="1350" loading="lazy" decoding="async"></span>
+          <span class="kr-best-sellers__meta"><small>DAYTIME FAVOURITE</small><strong>Paisley Sleeveless Top</strong><em>Shop now</em></span>
+        </a>
+      </div>
+    `;
+
+    editorsPicks.insertAdjacentElement('beforebegin', section);
+
+    if (document.getElementById('kr-best-sellers-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'kr-best-sellers-styles';
+    style.textContent = `
+      .kr-best-sellers { padding: clamp(54px, 7vw, 96px) clamp(20px, 5.5vw, 96px); background: #fbfaf8; }
+      .kr-best-sellers__heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; max-width: 1440px; margin: 0 auto 28px; }
+      .kr-best-sellers__heading p { margin: 0 0 8px; color: #8d6240; font: 600 10px/1.2 Arial, sans-serif; letter-spacing: .18em; }
+      .kr-best-sellers__heading h2 { margin: 0; color: #22201e; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(31px, 3.2vw, 48px); font-weight: 400; letter-spacing: -.035em; }
+      .kr-best-sellers__heading > a { color: #2a2927; font: 600 10px/1 Arial, sans-serif; letter-spacing: .12em; text-decoration: none; white-space: nowrap; }
+      .kr-best-sellers__heading > a:hover { color: #8d6240; }
+      .kr-best-sellers__heading > a span { padding-left: 6px; font-size: 16px; }
+      .kr-best-sellers__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.8vw, 26px); max-width: 1440px; margin: 0 auto; }
+      .kr-best-sellers__card { display: block; min-width: 0; color: #252320; text-decoration: none; }
+      .kr-best-sellers__image { display: block; overflow: hidden; background: #ede8e1; }
+      .kr-best-sellers__image img { display: block; width: 100%; aspect-ratio: .74; object-fit: cover; object-position: center 24%; transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+      .kr-best-sellers__card:hover .kr-best-sellers__image img { transform: scale(1.04); }
+      .kr-best-sellers__meta { display: block; padding: 15px 2px 0; }
+      .kr-best-sellers__meta small { display: block; margin-bottom: 7px; color: #8d6240; font: 600 9px/1 Arial, sans-serif; letter-spacing: .13em; }
+      .kr-best-sellers__meta strong { display: block; overflow: hidden; font: 400 clamp(15px, 1.25vw, 18px)/1.25 Georgia, 'Times New Roman', serif; text-overflow: ellipsis; white-space: nowrap; }
+      .kr-best-sellers__meta em { display: inline-block; margin-top: 9px; border-bottom: 1px solid #988c80; color: #5d554d; font: 11px/1.2 Arial, sans-serif; font-style: normal; padding-bottom: 3px; }
+      /* Match the visual language of the Curated By Kryaa tiles. */
+      .kr-best-sellers { padding: 58px clamp(20px, 5.5vw, 96px) 74px; background: #fff; }
+      .kr-best-sellers__heading { display: block; max-width: 1440px; margin: 0 auto 32px; text-align: center; }
+      .kr-best-sellers__heading p, .kr-best-sellers__heading > a { display: none; }
+      .kr-best-sellers__heading h2.kr-section-title { display: flex !important; width: 100%; min-height: 1.25em; align-items: center; justify-content: center; margin: 0 0 40px !important; color: #3c4242; font: 400 clamp(28px, 2.4vw, 36px)/1.25 Georgia, 'Times New Roman', serif; text-align: center; }
+      .kr-best-sellers__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .kr-best-sellers__card { position: relative; overflow: hidden; aspect-ratio: 3 / 4.1; border-radius: 18px; isolation: isolate; color: #fff; }
+      .kr-best-sellers__card:nth-child(4) { display: none; }
+      .kr-best-sellers__image { position: absolute; inset: 0; display: block; background: #ede8e1; }
+      .kr-best-sellers__image img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-position: center top; }
+      .kr-best-sellers__card::before { position: absolute; z-index: 1; right: 0; bottom: 0; left: 0; height: 44%; background: linear-gradient(to top, rgba(20, 12, 8, .62), rgba(20, 12, 8, 0)); content: ''; pointer-events: none; }
+      .kr-best-sellers__card::after { position: absolute; z-index: 1; inset: 8px; border: 1px solid rgba(255, 255, 255, .35); border-radius: 12px; content: ''; pointer-events: none; }
+      .kr-best-sellers__meta { position: absolute; z-index: 2; right: 12px; bottom: 18px; left: 12px; display: flex; align-items: center; flex-direction: column; padding: 0; color: #fff; text-align: center; }
+      .kr-best-sellers__meta small { display: none; }
+      .kr-best-sellers__meta strong { overflow: visible; color: #fff; font: 500 17px/1.2 Arial, sans-serif; text-overflow: clip; white-space: normal; }
+      .kr-best-sellers__meta em { margin-top: 8px; border: 0; color: rgba(255, 255, 255, .9); font: 11px/1.2 Arial, sans-serif; letter-spacing: .2em; padding: 0; text-transform: uppercase; }
+      @media screen and (max-width: 767px) {
+        .kr-best-sellers { padding: 48px 16px 52px; }
+        .kr-best-sellers__heading { align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+        .kr-best-sellers__heading h2 { font-size: 31px; }
+        .kr-best-sellers__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+        .kr-best-sellers__meta { padding-top: 10px; }
+        .kr-best-sellers__meta strong { white-space: normal; font-size: 15px; }
+        .kr-best-sellers__meta em { margin-top: 7px; font-size: 10px; }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
   const cleanMenPage = () => {
     setupEditorsPicksSection();
+    setupBestSellersSection();
     setupHeroCarousel();
     injectNewArrivalsMobileStyles();
     cleanHeader();
