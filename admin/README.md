@@ -5,9 +5,9 @@ The admin API runs on port `4000`; the Vite development server runs on port `517
 ## Setup and run
 
 1. Copy `api/.env.example` to `api/.env` and replace each placeholder with your own values. The API requires `MONGODB_URI` and `JWT_SECRET` for authentication.
-2. In `backend/admin/api`, run `npm.cmd install`, then `npm.cmd run seed:owner` once to create the first owner (only when no admin exists).
+2. In `admin/api`, run `npm.cmd install`, then `npm.cmd run seed:owner` once to create the first owner (only when no admin exists).
 3. Start the API with `npm.cmd run dev` (or `npm.cmd start`).
-4. In `backend/admin/ui`, run `npm.cmd install`, then `npm.cmd run dev` and open `http://localhost:5174`. Sign in with the seeded owner account.
+4. In `admin/ui`, run `npm.cmd install`, then `npm.cmd run dev` and open `http://localhost:5174`. Sign in with the seeded owner account.
 5. Open `/ui-kit` after signing in to preview the shared components. It is intentionally omitted from the sidebar.
 
 Set `CORS_ORIGIN` to the exact admin UI origin. The API does not allow wildcard origins. The UI's optional API base setting is `VITE_ADMIN_API_URL`.
