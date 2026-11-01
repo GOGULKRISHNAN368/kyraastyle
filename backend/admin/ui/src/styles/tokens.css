@@ -1,0 +1,78 @@
+:root {
+  color-scheme: light;
+  --color-canvas: #f3f6fa;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7f9fc;
+  --color-text: #101a31;
+  --color-text-muted: #718096;
+  --color-border: #dce5f0;
+  --color-primary: #cf2027;
+  --color-primary-hover: #b91c22;
+  --color-primary-contrast: #ffffff;
+  --color-accent: #cf2027;
+  --color-danger: #b6423b;
+  --color-success: #397b5b;
+  --color-warning: #98702f;
+  --shadow-sm: 0 1px 3px #20241f0d;
+  --shadow-lg: 0 20px 60px #18201824;
+  --radius-sm: .375rem;
+  --radius-md: .625rem;
+  --radius-lg: .875rem;
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --font-size-xs: .75rem;
+  --font-size-sm: .875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.875rem;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --content-max: 88rem;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-canvas);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    color-scheme: dark;
+    --color-canvas: #171a18;
+    --color-surface: #202421;
+    --color-surface-muted: #292e2b;
+    --color-text: #f0f1ef;
+    --color-text-muted: #b2b8b4;
+    --color-border: #3b413d;
+    --color-primary: #92b5a2;
+    --color-primary-hover: #a8c7b7;
+    --color-primary-contrast: #142019;
+    --color-accent: #d4b38b;
+    --color-danger: #ff8c83;
+    --color-success: #88cba5;
+    --color-warning: #e5bf78;
+    --shadow-sm: 0 1px 3px #0004;
+    --shadow-lg: 0 20px 60px #0008;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-canvas: #171a18;
+  --color-surface: #202421;
+  --color-surface-muted: #292e2b;
+  --color-text: #f0f1ef;
+  --color-text-muted: #b2b8b4;
+  --color-border: #3b413d;
+  --color-primary: #92b5a2;
+  --color-primary-hover: #a8c7b7;
+  --color-primary-contrast: #142019;
+  --color-accent: #d4b38b;
+  --color-danger: #ff8c83;
+  --color-success: #88cba5;
+  --color-warning: #e5bf78;
+  --shadow-sm: 0 1px 3px #0004;
+  --shadow-lg: 0 20px 60px #0008;
+}

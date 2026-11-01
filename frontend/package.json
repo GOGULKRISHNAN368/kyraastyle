@@ -1,0 +1,10 @@
+{
+  "name": "kyraastyle-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kyraa Style browser pages and static assets",
+  "scripts": {
+    "dev": "node ../backend/server.js",
+    "start": "node ../backend/server.js"
+  }
+}

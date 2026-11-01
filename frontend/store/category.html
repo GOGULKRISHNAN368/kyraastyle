@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <title>Shop the Collection | Kyraa Style</title>
+  <link rel="stylesheet" href="category-page.css?v=7">
+  <link rel="stylesheet" href="../storefront-sync.css">
+  <script src="category-page.js?v=6" defer></script>
+  <script src="../storefront-sync.js" defer></script>
+</head>
+<body>
+  <div class="announcement-bar"><span aria-hidden="true">✧</span> COMPLIMENTARY SHIPPING ON ORDERS ABOVE ₹2,999 <span aria-hidden="true">✧</span></div>
+  <header class="catalog-header">
+    <a class="catalog-brand" href="../kyraastyle.com/index.html" aria-label="Kyraa Style home"><img src="../image/kyraastyle-logo.svg" alt="Kyraa Style"></a>
+    <div class="header-actions" aria-label="Shopping tools">
+      <button type="button" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg></button>
+      <button type="button" aria-label="Account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.3"></circle><path d="M5 21v-2.2a7 7 0 0 1 14 0V21z"></path></svg></button>
+      <button type="button" aria-label="Wishlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 5.3-8.8 11-8.8 11s-8.8-5.7-8.8-11a4.7 4.7 0 0 1 8.8-2.1 4.7 4.7 0 0 1 8.8 2.1Z"></path></svg></button>
+      <button type="button" aria-label="Shopping bag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg></button>
+    </div>
+  </header>
+
+  <main class="catalog-page" id="catalog-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../kyraastyle.com/index.html">Home</a><span aria-hidden="true">/</span>
+      <a href="../kyraastyle.com/index.html#shop-by-category">Shop by category</a><span aria-hidden="true">/</span>
+      <span id="breadcrumb-category">Collection</span>
+    </nav>
+
+    <section class="collection-hero" aria-labelledby="collection-title">
+      <div class="collection-hero-copy">
+        <span class="hero-ornament" aria-hidden="true">✧</span>
+        <h1 id="collection-title">Curated Collections</h1>
+        <p id="collection-description">Discover thoughtfully selected Indian occasionwear and contemporary classics.</p>
+      </div>
+      <img class="collection-hero-image" id="collection-hero-image" src="../image/category-chudi.png" alt="Curated Indian occasionwear">
+    </section>
+
+    <div class="collection-toolbar">
+      <p class="result-count"><strong id="result-count">10</strong> STYLES</p>
+      <div class="toolbar-controls">
+        <button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filter-panel"><span aria-hidden="true">☷</span> Filters</button>
+        <label class="sort-control">Sort by
+          <select id="sort-select" aria-label="Sort products">
+            <option value="recommended">Recommended</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+            <option value="name">Name</option>
+          </select>
+        </label>
+        <div class="view-toggle" role="group" aria-label="Product layout">
+          <button class="is-active" type="button" aria-label="Grid view"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 2h6v6H2zM12 2h6v6h-6zM2 12h6v6H2zM12 12h6v6h-6z"></path></svg></button>
+          <button type="button" aria-label="List view"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 4h2m3 0h11M2 10h2m3 0h11M2 16h2m3 0h11"></path></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="catalog-layout">
+      <aside class="filter-panel" id="filter-panel" aria-label="Product filters">
+        <div class="filter-heading"><h2>Filters</h2><button type="button" id="clear-filters">Clear all</button></div>
+        <details open>
+          <summary>Category</summary>
+          <a class="filter-link" href="category.html?category=chudi">Chudi</a>
+          <a class="filter-link" href="category.html?category=short-tops">Short Tops</a>
+          <a class="filter-link" href="category.html?category=full-frocks">Full Frocks</a>
+          <a class="filter-link" href="category.html?category=kurti-sets">Kurti Sets</a>
+          <a class="filter-link" href="category.html?category=sarees">Sarees</a>
+          <a class="filter-link" href="category.html?category=salwar-suits">Salwar Suits</a>
+          <a class="filter-link" href="category.html?category=anarkali-suits">Anarkali Suits</a>
+        </details>
+        <details open>
+          <summary>Occasion</summary>
+          <label><input type="checkbox" name="occasion" value="festive"> Festive</label>
+          <label><input type="checkbox" name="occasion" value="celebration"> Celebration</label>
+          <label><input type="checkbox" name="occasion" value="evening"> Evening</label>
+        </details>
+        <details open>
+          <summary>Colour</summary>
+          <label><input type="checkbox" name="color" value="red"> Red &amp; pink</label>
+          <label><input type="checkbox" name="color" value="green"> Green &amp; teal</label>
+          <label><input type="checkbox" name="color" value="blue"> Blue</label>
+          <label><input type="checkbox" name="color" value="light"> Light neutrals</label>
+          <label><input type="checkbox" name="color" value="other"> Other colours</label>
+        </details>
+      </aside>
+
+      <section class="results-area" aria-label="Collection products">
+        <section class="product-grid" id="product-grid" aria-label="Collection products"></section>
+      </section>
+    </div>
+
+    <section class="more-categories" aria-labelledby="more-categories-title">
+      <div><p class="eyebrow">KEEP EXPLORING</p><h2 id="more-categories-title">Shop by category</h2></div>
+      <div class="category-links" id="category-links"></div>
+    </section>
+  </main>
+  <dialog class="quick-view-dialog" id="quick-view-dialog" aria-labelledby="quick-view-title">
+    <button class="dialog-close" id="close-quick-view" type="button" aria-label="Close quick view">×</button>
+    <img class="quick-view-image" src="" alt="">
+    <div class="quick-view-details"><p class="eyebrow">KYRAA EDIT</p><h2 class="quick-view-title" id="quick-view-title"></h2><p class="quick-view-price"></p><p class="dialog-note">A considered look for your occasionwear wardrobe.</p><button class="bag-button" id="quick-view-add" type="button">ADD TO BAG</button></div>
+  </dialog>
+  <div class="toast" id="catalog-toast" role="status" aria-live="polite"></div>
+</body>
+</html>

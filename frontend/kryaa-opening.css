@@ -1,0 +1,299 @@
+/* ==========================================================================
+   KRYAA STYLES - PLEASANT LUXURY SILK BACKGROUND TEMPLATE
+   Features the official website logo & refined luxury tagline
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --kr-pearl-white: #ffffff;
+  --kr-pearl-glow: #fdfaf6;
+  --kr-champagne-light: #f7f1e7;
+  --kr-champagne-mid: #efe4d5;
+  --kr-champagne-warm: #e5d6c2;
+  --kr-champagne-shade: #d9c5ac;
+  --kr-charcoal: #181515;
+  --kr-tagline: #52473c;
+  --kr-sparkle: #a69888;
+  --kr-gold-sparkle: #cda447;
+  --kr-font-serif: 'Cinzel', 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --kr-font-sans: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--kr-champagne-mid);
+  color: var(--kr-charcoal);
+  font-family: var(--kr-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   PLEASANT FULLSCREEN STAGE
+   ========================================================================== */
+
+.kryaa-fullscreen-stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: 
+    radial-gradient(ellipse at 50% 38%, var(--kr-pearl-white) 0%, var(--kr-pearl-glow) 28%, var(--kr-champagne-light) 56%, var(--kr-champagne-mid) 82%, var(--kr-champagne-warm) 100%);
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 9999999;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s ease;
+}
+
+/* Layer 1: Flowing Silk Folds / Satin Drapery Waves */
+.kryaa-silk-waves {
+  position: absolute;
+  inset: -30%;
+  width: 160%;
+  height: 160%;
+  background: 
+    repeating-linear-gradient(
+      132deg,
+      rgba(255, 255, 255, 0.55) 0px,
+      rgba(253, 250, 246, 0.3) 140px,
+      rgba(235, 222, 205, 0.42) 280px,
+      rgba(222, 206, 185, 0.28) 420px,
+      rgba(255, 255, 255, 0.6) 560px
+    ),
+    radial-gradient(ellipse at 65% 25%, rgba(255, 255, 255, 0.75) 0%, rgba(228, 214, 195, 0.35) 65%);
+  filter: blur(34px);
+  pointer-events: none;
+  animation: silkWaveGlide 16s ease-in-out infinite alternate;
+}
+
+@keyframes silkWaveGlide {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.88;
+  }
+  50% {
+    transform: translate(-22px, 16px) rotate(1.2deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(18px, -18px) rotate(-1deg);
+    opacity: 0.92;
+  }
+}
+
+/* Layer 2: Moving Radiant Sheen */
+.kryaa-fullscreen-stage::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: 
+    radial-gradient(ellipse at 40% 32%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 50%),
+    linear-gradient(135deg, rgba(245, 238, 228, 0.3) 0%, rgba(255, 255, 255, 0.4) 48%, rgba(228, 215, 198, 0.25) 100%);
+  pointer-events: none;
+  animation: ambientSheenDrift 11s ease-in-out infinite alternate;
+}
+
+@keyframes ambientSheenDrift {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.82;
+  }
+  100% {
+    transform: translateY(-28px) scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Layer 3: Warm Ambient Vignette Border */
+.kryaa-fullscreen-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 48%, rgba(205, 188, 166, 0.26) 100%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   CENTERPIECE BRAND SHOWCASE (OFFICIAL LOGO & REFINED TAGLINE)
+   ========================================================================== */
+
+.kryaa-brand-showcase {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 36px 24px;
+  max-width: 680px;
+  width: 90%;
+  animation: brandContainerFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes brandContainerFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Official Website Brand Logo */
+.kryaa-official-logo {
+  display: block;
+  max-width: clamp(230px, 34vw, 380px);
+  width: 100%;
+  height: auto;
+  max-height: 115px;
+  object-fit: contain;
+  margin-bottom: clamp(16px, 2.6vh, 24px);
+  filter: drop-shadow(0 3px 10px rgba(35, 25, 18, 0.14));
+  animation: logoAppear 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes logoAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Refined Poetic Brand Tagline */
+.kryaa-tagline {
+  font-family: var(--kr-font-sans);
+  font-size: clamp(10.5px, 1.6vw, 13.5px);
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-indent: 0.38em;
+  text-transform: uppercase;
+  color: var(--kr-tagline);
+  margin: 0 0 clamp(14px, 2vh, 20px);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+  animation: taglineAppear 1.3s cubic-bezier(0.16, 1, 0.3, 1) both 0.18s;
+}
+
+@keyframes taglineAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Celestial Sparkle / Diamond Ornament */
+.kryaa-sparkle-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--kr-sparkle);
+  animation: sparkleAppear 1.4s ease-out both 0.35s;
+}
+
+@keyframes sparkleAppear {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.kryaa-sparkle-line {
+  width: clamp(26px, 4vw, 38px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b0a395, transparent);
+}
+
+.kryaa-sparkle-star {
+  font-size: clamp(12px, 1.8vw, 15px);
+  color: var(--kr-sparkle);
+  animation: starBreathe 3s ease-in-out infinite;
+}
+
+@keyframes starBreathe {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+    color: var(--kr-sparkle);
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    color: var(--kr-gold-sparkle);
+    filter: drop-shadow(0 0 8px rgba(205, 164, 71, 0.65));
+  }
+}
+
+/* Subtle Tap Cue at Bottom */
+.kryaa-tap-hint {
+  position: absolute;
+  bottom: clamp(22px, 3.8vh, 38px);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(90, 80, 70, 0.5);
+  font-weight: 500;
+  animation: tapHintPulse 2.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 20;
+}
+
+@keyframes tapHintPulse {
+  0%, 100% { opacity: 0.32; }
+  50% { opacity: 0.75; }
+}
+
+/* ==========================================================================
+   EXIT TRANSITION
+   ========================================================================== */
+
+.kryaa-fullscreen-stage.exiting {
+  opacity: 0;
+  transform: scale(1.04);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .kryaa-official-logo {
+    max-width: 220px;
+    margin-bottom: 14px;
+  }
+
+  .kryaa-tagline {
+    font-size: 9.5px;
+    letter-spacing: 0.32em;
+    text-indent: 0.32em;
+  }
+}

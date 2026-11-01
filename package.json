@@ -1,12 +1,13 @@
 {
-  "name": "kryaastyle",
+  "name": "kyraastyle",
   "version": "1.0.0",
-  "description": "Kryaa Style website",
-  "main": "server.js",
+  "private": true,
+  "description": "Kyraa Style static fashion storefront",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js",
-    "serve": "npx serve ."
+    "dev": "node backend/server.js",
+    "start": "node backend/server.js",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "serve": "npx serve frontend"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" role="img" aria-labelledby="title desc">
+  <title id="title">KyraaStyle</title>
+  <desc id="desc">KyraaStyle luxury fashion wordmark</desc>
+  <g fill="#171414" text-anchor="middle">
+    <text x="320" y="91" font-family="Georgia, 'Times New Roman', serif" font-size="76" letter-spacing="9">KYRAA</text>
+    <path d="M184 111h272" stroke="#171414" stroke-width="1.5" opacity=".72"/>
+    <text x="320" y="145" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="15">STYLE</text>
+  </g>
+</svg>
