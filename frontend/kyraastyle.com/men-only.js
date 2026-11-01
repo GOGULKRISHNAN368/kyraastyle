@@ -255,6 +255,44 @@ const kryaaLuxeSlides = [
     });
   };
 
+  const setupStorefrontNavigation = () => {
+    if (document.querySelector('.kr-storefront-nav')) return;
+
+    const app = document.getElementById('__next');
+    const main = app?.querySelector('main');
+    if (!app || !main) return;
+
+    app.querySelectorAll(':scope > div > header').forEach((header) => {
+      header.classList.add('kr-legacy-header');
+    });
+
+    const nav = document.createElement('header');
+    nav.className = 'kr-storefront-nav';
+    nav.setAttribute('aria-label', 'Primary navigation');
+    nav.innerHTML = `
+      <a class="kr-storefront-nav__brand" href="index.html" aria-label="Kryaa Style home">
+        <img src="../image/logo.png" alt="Kryaa Style">
+      </a>
+      <nav class="kr-storefront-nav__links" aria-label="Shop navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="../store/category.html">Shop</a>
+        <a href="#kr-own-style">Collections</a>
+        <a href="#kr-shopper-footer">About</a>
+      </nav>
+      <div class="kr-storefront-nav__actions">
+        <a href="../store/category.html" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="m16 16 4.7 4.7"></path></svg>
+        </a>
+        <a href="#account" aria-label="Profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.4"></circle><path d="M4.6 21c.5-4.1 2.9-6.2 7.4-6.2s6.9 2.1 7.4 6.2"></path></svg>
+        </a>
+        <a href="../store/cart.html" aria-label="Cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.7 7.8h14.6l-1.1 12H5.8z"></path><path d="M8.7 8V6.6a3.3 3.3 0 0 1 6.6 0V8"></path></svg>
+        </a>
+      </div>`;
+    main.insertAdjacentElement('beforebegin', nav);
+  };
+
   const setupHeroCarousel = () => {
     const hero = Array.from(document.querySelectorAll('.slick-slider'))
       .find((slider) => slider.querySelector('img[src*="banner-desktop"]'));
@@ -2318,6 +2356,7 @@ const kryaaLuxeSlides = [
     injectNewArrivalsMobileStyles();
     cleanHeader();
     cleanImageSearch();
+    setupStorefrontNavigation();
     renameNewArrivalsSection();
     replaceFirstNewArrivalImage();
     setupNewArrivalsMobileCarousel();

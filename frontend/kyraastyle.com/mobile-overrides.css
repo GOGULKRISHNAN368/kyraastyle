@@ -69,6 +69,38 @@
   content: none !important;
 }
 
+/* Single, uncluttered site navigation. */
+.kr-legacy-header { display: none !important; }
+.kr-storefront-nav,
+.kr-storefront-nav * { box-sizing: border-box; }
+.kr-storefront-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
+  align-items: center;
+  min-height: 84px;
+  width: 100%;
+  padding-inline: clamp(24px, 4.8vw, 92px);
+  background: rgb(255 255 255 / 96%);
+  border-bottom: 1px solid rgb(45 32 25 / 12%);
+  box-shadow: 0 2px 14px rgb(53 35 24 / 6%);
+  backdrop-filter: blur(12px);
+}
+.kr-storefront-nav a { color: #2d241f; text-decoration: none; }
+.kr-storefront-nav__brand { display: inline-flex; width: 126px; align-items: center; }
+.kr-storefront-nav__brand img { display: block; width: 100%; height: auto; }
+.kr-storefront-nav__links { display: flex; align-items: center; justify-content: center; gap: clamp(24px, 3.3vw, 56px); }
+.kr-storefront-nav__links a { position: relative; padding: 8px 0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.kr-storefront-nav__links a::after { position: absolute; right: 0; bottom: 1px; left: 0; height: 1px; background: #8c123c; content: ''; transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
+.kr-storefront-nav__links a:hover::after,
+.kr-storefront-nav__links a[aria-current="page"]::after { transform: scaleX(1); }
+.kr-storefront-nav__actions { display: flex; align-items: center; justify-content: flex-end; gap: 18px; }
+.kr-storefront-nav__actions a { display: grid; width: 25px; height: 25px; place-items: center; }
+.kr-storefront-nav__actions svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+.kr-storefront-nav__actions a:hover { color: #8c123c; }
+
 /* Give the restored campaign the same full-bleed, full-screen presence as
    the original landing page while keeping its embedded artwork uncut. */
 @media (min-width: 768px) {
@@ -90,7 +122,7 @@
   }
 
   main > .relative > .wrapperContainer:has(img[src*="banner-desktop"]) a > div[style*="aspect-ratio"] {
-    height: calc(100svh - 142px) !important;
+    height: calc(100svh - 84px) !important;
     min-height: 600px;
     aspect-ratio: auto !important;
   }
@@ -105,6 +137,21 @@
     object-fit: contain !important;
     object-position: center center !important;
   }
+}
+
+@media (max-width: 767px) {
+  .kr-storefront-nav {
+    grid-template-columns: minmax(72px, 1fr) auto minmax(72px, 1fr);
+    min-height: 68px;
+    padding-inline: 12px;
+  }
+
+  .kr-storefront-nav__brand { width: 78px; }
+  .kr-storefront-nav__links { gap: 9px; }
+  .kr-storefront-nav__links a { font-size: 9px; letter-spacing: .04em; }
+  .kr-storefront-nav__actions { gap: 9px; }
+  .kr-storefront-nav__actions a { width: 20px; height: 20px; }
+  .kr-storefront-nav__actions svg { width: 19px; height: 19px; }
 }
 
 /* Curated trending looks lookbook carousel. */
