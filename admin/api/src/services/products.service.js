@@ -9,7 +9,7 @@ export class ProductError extends Error {
 }
 
 const textFields = ['name', 'category', 'section', 'cloudinaryId', 'alt', 'description', 'link'];
-const dressDetailFields = ['oldPrice', 'sizes', 'images', 'isNewArrival', 'isBestSeller', 'isCuratedLook'];
+const dressDetailFields = ['oldPrice', 'sizes', 'images', 'isNewArrival', 'isBestSeller', 'isCuratedLook', 'isEditorsPick', 'isOccasionPick', 'isLuxeCollection'];
 const productFields = new Set([...textFields, 'position', 'width', 'height', 'price', 'isActive', ...dressDetailFields]);
 const allowedSort = new Set(['name', 'category', 'section', 'position', 'createdAt', 'price', 'updatedAt']);
 
@@ -40,7 +40,7 @@ export async function validateProductInput(input, existing = {}) {
   value.cloudinaryId = value.cloudinaryId?.trim();
   if (!value.name) throw new ProductError('Product name is required.');
   if (!value.category) throw new ProductError('Category is required.');
-  if (!value.cloudinaryId) throw new ProductError('Cloudinary Public ID is required.');
+  if (!value.cloudinaryId) throw new ProductError('A main product image is required.');
 
   const categories = await getProductCategories();
   if (!categories.includes(value.category)) throw new ProductError('Choose a category from the allowed list.');

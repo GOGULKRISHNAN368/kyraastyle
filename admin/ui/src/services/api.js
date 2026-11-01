@@ -32,6 +32,7 @@ async function uploadImage(file, route) {
 
 export const uploadDressImage = (file) => uploadImage(file, '/media/uploads');
 export const uploadCategoryImage = (file) => uploadImage(file, '/media/category-uploads');
+export const uploadBannerImage = (file) => uploadImage(file, '/media/banner-uploads');
 
 export async function uploadReelAsset(file) {
   const response = await fetch(`${apiBase}/media/reel-uploads`, {

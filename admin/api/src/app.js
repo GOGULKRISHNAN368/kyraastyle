@@ -14,6 +14,8 @@ import instagramPostsRoutes from './routes/instagramPosts.routes.js';
 import leadsRoutes from './routes/leads.routes.js';
 import ordersRoutes from './routes/orders.routes.js';
 import announcementsRoutes from './routes/announcements.routes.js';
+import customersRoutes from './routes/customers.routes.js';
+import bannersRoutes from './routes/banners.routes.js';
 import { requireAuth } from './middleware/requireAuth.js';
 import errorHandler from './middleware/errorHandler.js';
 
@@ -34,6 +36,8 @@ app.use('/admin-api/instagram-posts', instagramPostsRoutes);
 app.use('/admin-api/leads', leadsRoutes);
 app.use('/admin-api/orders', ordersRoutes);
 app.use('/admin-api/announcements', announcementsRoutes);
+app.use('/admin-api/customers', customersRoutes);
+app.use('/admin-api/banners', bannersRoutes);
 app.use('/admin-api/settings', settingsRoutes);
 app.use(errorHandler);
 

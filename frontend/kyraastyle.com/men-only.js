@@ -2461,9 +2461,13 @@ const kryaaLuxeSlides = [
   storefrontStyles.rel = 'stylesheet';
   storefrontStyles.href = '../storefront-sync.css';
   document.head.appendChild(storefrontStyles);
+  const customerAuth = document.createElement('script');
+  customerAuth.src = '../customer-auth.js';
+  customerAuth.async = false;
+  document.body.appendChild(customerAuth);
   const storefrontSync = document.createElement('script');
   storefrontSync.src = '../storefront-sync.js';
-  storefrontSync.defer = true;
+  storefrontSync.async = false;
   document.body.appendChild(storefrontSync);
   const observer = new MutationObserver(() => {
     cleanMenPage();

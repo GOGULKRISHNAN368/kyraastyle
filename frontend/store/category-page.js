@@ -192,7 +192,9 @@
     renderProducts();
   });
   document.getElementById('close-quick-view').addEventListener('click', () => document.getElementById('quick-view-dialog').close());
-  document.getElementById('quick-view-add').addEventListener('click', () => {
+  document.getElementById('quick-view-add').addEventListener('click', async () => {
+    const customer = await window.KyraaCustomerAuth?.requireLogin();
+    if (!customer) return;
     const name = document.querySelector('.quick-view-title').textContent;
     const product = products.find((entry) => entry.name === name);
     const bag = readBag();

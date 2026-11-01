@@ -5,8 +5,8 @@ import Icon from '../common/Icon.jsx';
 import SearchBar from '../common/SearchBar.jsx';
 
 const links = [
-  ['Dashboard', '/dashboard', 'grid'], ['Categories', '/categories', 'folder'], ['Dresses', '/products', 'box'], ['Coupons', '/coupons', 'tag'], ['Reels', '/reels', 'video'], ['Instagram', '/instagram', 'image'], ['Media Library', '/media', 'image'],
-  ['Reviews', '/reviews', 'star'], ['Leads', '/leads', 'users'], ['Orders', '/orders', 'box'], ['Completed Orders', '/completed-orders', 'check'], ['Cancelled Orders', '/cancelled-orders', 'close'], ['Enquiries', '/enquiries', 'mail'],
+  ['Dashboard', '/dashboard', 'grid'], ['Banners', '/banners', 'image'], ['Categories', '/categories', 'folder'], ['Dresses', '/products', 'box'], ['Coupons', '/coupons', 'tag'], ['Reels', '/reels', 'video'], ['Instagram', '/instagram', 'image'], ['Media Library', '/media', 'image'],
+  ['Reviews', '/reviews', 'star'], ['Customers', '/customers', 'users'], ['Leads', '/leads', 'users'], ['Orders', '/orders', 'box'], ['Completed Orders', '/completed-orders', 'check'], ['Cancelled Orders', '/cancelled-orders', 'close'], ['Enquiries', '/enquiries', 'mail'],
 ];
 
 export default function AdminLayout() {
@@ -52,9 +52,9 @@ export default function AdminLayout() {
   return <div className={`admin-shell ${collapsed ? 'sidebar-collapsed' : ''}`}>
     {drawerOpen && <button className="drawer-backdrop" aria-label="Close navigation" onClick={closeDrawer}/>}
     <aside ref={sidebarRef} className={`admin-sidebar ${drawerOpen ? 'is-open' : ''}`} aria-label="Main navigation" role={drawerOpen ? 'dialog' : undefined} aria-modal={drawerOpen || undefined} onTouchStart={(event) => { touchStart.current = event.touches[0]?.clientX; }} onTouchEnd={(event) => { if (touchStart.current != null && touchStart.current - event.changedTouches[0].clientX > 70) closeDrawer(); touchStart.current = null; }}>
-      <div className="sidebar-brand"><img src="/kyraastyle-logo.svg" alt="Kryaa Style"/><button className="sidebar-close icon-button" aria-label="Close navigation" onClick={closeDrawer}><Icon name="close"/></button></div>
+      <div className="sidebar-brand"><div className="sidebar-brand-copy"><img src="/kyraastyle-logo.svg" alt="Kryaa Style"/><span>OWNER PORTAL</span></div><button className="sidebar-close icon-button" aria-label="Close navigation" onClick={closeDrawer}><Icon name="close"/></button></div>
       <nav className="sidebar-nav">{links.map(([label, path, icon]) => <NavLink key={path} to={path} title={label} aria-label={label} className={({ isActive }) => `sidebar-link ${isActive ? 'is-active' : ''}`} onClick={closeDrawer}><Icon name={icon}/><span>{label}</span></NavLink>)}</nav>
-      <div className="sidebar-bottom"><button className="collapse-button" onClick={() => setCollapsed((value) => !value)} aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}><Icon name="collapse"/><span>Collapse menu</span></button></div>
+      <div className="sidebar-bottom"><div className="sidebar-user"><span className="sidebar-user-avatar">{user?.name?.slice(0, 1).toUpperCase() || 'K'}</span><span><strong>{user?.name || 'Admin'}</strong><small>Store owner</small></span></div><button className="collapse-button" onClick={() => setCollapsed((value) => !value)} aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}><Icon name="collapse"/><span>Collapse menu</span></button></div>
     </aside>
 
     <div className="admin-main">

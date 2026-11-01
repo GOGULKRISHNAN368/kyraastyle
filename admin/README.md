@@ -35,7 +35,15 @@ All product and category endpoints require the admin cookie session:
 
 The Product model maps directly to the existing `products` collection with `autoIndex: false`; it does not request index changes. The default allowed categories are Kurta Sets, Short Tops, Salwar Suits, Unstitched, and Other.
 
-## Customer leads
+## Customer accounts and leads
+
+The customer storefront now requires a Kyraa account before a shopper can open the bag or add an item. It uses the storefront backend on port `3000`, which stores account records in the shared Atlas `customers` collection. The admin **Customers** page reads those records through the protected `GET /admin-api/customers` endpoint and shows name, email, optional phone, account creation, and latest sign-in information. Passwords are salted and hashed in the storefront backend; neither the admin API nor the UI can read them.
+
+Set `CUSTOMER_AUTH_SECRET` in `backend/.env` to a long, random value before production. The storefront backend falls back to its Atlas URI only for local compatibility, so setting the dedicated secret is required for production deployments.
+
+`frontend/store/login.html` is the customer registration/sign-in page. `customer-auth.js` redirects unauthenticated shoppers there when they select the bag or an **Add to bag** action. On success, the shopper returns to the original cart or product page.
+
+The existing **Leads** page remains separate for contacts that are manually created through the leads API.
 
 The admin API creates the `admin_leads` collection when it connects to MongoDB. Records contain `email`, `phone`, `isVerified`, `verifiedAt`, and timestamps; OTP values are never stored. All lead routes require the admin cookie session:
 
@@ -43,7 +51,7 @@ The admin API creates the `admin_leads` collection when it connects to MongoDB. 
 - `POST /admin-api/leads` accepts `{ "email": "...", "phone": "..." }` and starts the record unverified.
 - `PATCH /admin-api/leads/:id/verified` accepts `{ "isVerified": true }` to mark a contact verified.
 
-The current website backend has no customer login or OTP route. The admin collection and page are ready, but localhost:8000 will not populate it until that login flow is connected to the POST endpoint. The website/backend files remain outside the permitted change area.
+The customer account flow is email-and-password based. It does not claim to send an OTP; an SMS/email verification provider can be added later if you decide to require one.
 
 ## Customer orders
 
@@ -53,13 +61,13 @@ The admin API creates the `admin_orders` collection on connection. Orders can be
 
 ## Announcements
 
-The API creates `admin_announcements` on database connection. Protected endpoints list announcements with `GET /admin-api/announcements`, add one with `POST /admin-api/announcements` and `{ "text": "..." }`, and remove one with `DELETE /admin-api/announcements/:id`. The admin page displays active records newest first. The customer website has no announcement endpoint in its current backend, so storefront display still needs integration outside `backend/admin/`.
+The API creates `admin_announcements` on database connection. Protected endpoints list announcements with `GET /admin-api/announcements`, add one with `POST /admin-api/announcements` and `{ "text": "..." }`, and remove one with `DELETE /admin-api/announcements/:id`. The storefront API exposes active announcements to the customer website.
 
 ## Customer storefront sync
 
 `backend/server.js` now exposes a public read-only `GET /api/storefront/content` endpoint for active products and dress details, configured categories, active coupons, reels, Instagram post metadata, and announcements. `GET /api/storefront/instagram-posts/:id/image` serves the corresponding admin-uploaded image. The static storefront loads `frontend/storefront-sync.js` and uses this data for its category catalog, home collection tiles, announcement strip, offers, reels, and Instagram imagery. The existing public `/api/products` response and behavior are unchanged.
 
-The API allows the exact `CORS_ORIGIN` from `backend/.env` (falling back to `http://localhost:8000`). Set it to the storefront origin if the customer page is served from a different origin. Leads and orders are private operational records, and the customer site currently has no login/checkout integration to associate them with a shopper.
+The API allows the exact `CORS_ORIGIN` from `backend/.env` (falling back to `http://localhost:8000`). Set it to the storefront origin if the customer page is served from a different origin. Set `window.KYRAA_API_URL` to the public storefront-backend URL when the frontend and backend use different origins. Customer login needs the frontend and the storefront backend to be deployed on the same site/origin (recommended) so its secure session cookie is available to the cart.
 
 The reference repository remains unreachable from this environment, so the React/Vite UI stack and login page visual design are not confirmed to match Gridox.
 

@@ -14,6 +14,8 @@ import InstagramPage from '../pages/InstagramPage.jsx';
 import LeadsPage from '../pages/LeadsPage.jsx';
 import OrdersPage from '../pages/OrdersPage.jsx';
 import AnnouncementsPage from '../pages/AnnouncementsPage.jsx';
+import CustomersPage from '../pages/CustomersPage.jsx';
+import BannersPage from '../pages/BannersPage.jsx';
 
 function LoginRoute() {
   const { user, loading } = useAuth();
@@ -28,12 +30,14 @@ export default function AppRoutes() {
     <Route element={<ProtectedRoute />}>
       <Route element={<AdminLayout />}>
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/banners" element={<BannersPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/coupons" element={<CouponsPage />} />
         <Route path="/reels" element={<ReelsPage />} />
         <Route path="/instagram" element={<InstagramPage />} />
         <Route path="/leads" element={<LeadsPage />} />
+        <Route path="/customers" element={<CustomersPage />} />
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/completed-orders" element={<OrdersPage mode="completed" />} />
         <Route path="/cancelled-orders" element={<OrdersPage mode="cancelled" />} />

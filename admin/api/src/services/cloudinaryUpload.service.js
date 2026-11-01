@@ -62,3 +62,6 @@ export const uploadCategoryImage = (buffer, contentType, fileName = 'category-im
 
 export const uploadReelImage = (buffer, contentType, fileName = 'kryaa-reel') =>
   uploadImage(buffer, contentType, fileName, 'kryaastyle/reels');
+
+export const uploadBannerImage = (buffer, contentType, fileName = 'homepage-banner') =>
+  uploadImage(buffer, contentType, fileName, 'kryaastyle/banners');

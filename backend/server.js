@@ -6,6 +6,7 @@ const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const path = require('node:path');
 const fs = require('node:fs');
+const { installCustomerAuthRoutes } = require('./customerAuth');
 
 const app = express();
 const PORT = Number.parseInt(process.env.PORT || '3000', 10);
@@ -70,6 +71,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
+installCustomerAuthRoutes(app, mongoose);
 
 function productWithImage(product) {
   const item = product.toObject ? product.toObject() : product;
@@ -120,13 +122,14 @@ app.get('/api/storefront/content', async (_req, res) => {
   try {
     const db = mongoose.connection.db;
     const now = new Date();
-    const [products, settings, announcements, coupons, reels, instagramPosts] = await Promise.all([
+    const [products, settings, announcements, coupons, reels, instagramPosts, banners] = await Promise.all([
       Product.find({ isActive: { $ne: false } }).sort({ section: 1, position: 1, name: 1 }).lean(),
       db.collection('settings').findOne({ _id: 'productCategories' }),
       db.collection('admin_announcements').find({}).sort({ createdAt: -1 }).toArray(),
       db.collection('admin_coupons').find({ isActive: true, expiryDate: { $gte: now }, $or: [{ usageLimit: null }, { $expr: { $lt: ['$usedCount', '$usageLimit'] } }] }).sort({ createdAt: -1 }).toArray(),
       db.collection('admin_reels').find({ isActive: { $ne: false } }).sort({ createdAt: -1 }).toArray(),
       db.collection('admin_instagram_posts').find({}).sort({ position: 1, createdAt: -1 }).toArray(),
+      db.collection('admin_banners').find({ isActive: { $ne: false } }).sort({ position: 1, createdAt: -1 }).toArray(),
     ]);
     const ids = products.map((product) => product._id);
     const [details, categoryDetails] = await Promise.all([
@@ -143,6 +146,7 @@ app.get('/api/storefront/content', async (_req, res) => {
         oldPrice: dress.oldPrice ?? null, sizes: dress.sizes || [],
         images: (dress.images || []).map((image) => ({ imageUrl: storefrontImageUrl(image.cloudinaryId, image.width), width: image.width, height: image.height })),
         isNewArrival: Boolean(dress.isNewArrival), isBestSeller: Boolean(dress.isBestSeller), isCuratedLook: Boolean(dress.isCuratedLook),
+        isEditorsPick: Boolean(dress.isEditorsPick), isOccasionPick: Boolean(dress.isOccasionPick), isLuxeCollection: Boolean(dress.isLuxeCollection),
       };
     });
     const countByCategory = new Map();
@@ -172,8 +176,13 @@ app.get('/api/storefront/content', async (_req, res) => {
       id: String(post._id), alt: post.originalName || 'Kryaa Style collection',
       imageUrl: `/api/storefront/instagram-posts/${post._id}/image`,
     }));
+    const bannerPayload = banners.map((banner) => ({
+      id: String(banner._id), title: banner.title || 'Kryaa Style', link: banner.link || '',
+      desktopImageUrl: storefrontImageUrl(banner.desktopCloudinaryId, banner.desktopWidth || 1920),
+      mobileImageUrl: storefrontImageUrl(banner.mobileCloudinaryId, banner.mobileWidth || 1080),
+    }));
     res.set('Cache-Control', 'no-store');
-    res.json({ data: { products: productPayload, categories, announcements: announcements.map(({ _id, text, createdAt }) => ({ id: String(_id), text, createdAt })), coupons: couponPayload, reels: reelPayload, instagramPosts: instagramPayload } });
+    res.json({ data: { products: productPayload, categories, announcements: announcements.map(({ _id, text, createdAt }) => ({ id: String(_id), text, createdAt })), coupons: couponPayload, reels: reelPayload, instagramPosts: instagramPayload, banners: bannerPayload } });
   } catch (error) {
     console.error('Storefront content lookup failed:', error.message);
     res.status(500).json({ error: 'Unable to load storefront content.' });

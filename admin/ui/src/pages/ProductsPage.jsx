@@ -112,7 +112,7 @@ export default function ProductsPage() {
   }
 
   const columns = [
-    { key: 'product', label: 'Product', sortable: false, render: (row) => <div className="product-row-identity"><ImageThumb src={row.imageUrl} alt={row.alt || row.name} size="sm"/><span><strong>{row.name}</strong><small>{row.cloudinaryId}</small></span></div> },
+    { key: 'product', label: 'Product', sortable: false, render: (row) => <div className="product-row-identity"><ImageThumb src={row.imageUrl} alt={row.alt || row.name} size="sm"/><span><strong>{row.name}</strong><small>{row.section || 'Collection dress'}</small></span></div> },
     { key: 'category', label: 'Category', sortable: false },
     { key: 'section', label: 'Section', sortable: false, render: (row) => row.section || '—' },
     { key: 'price', label: 'Price', sortable: false, render: (row) => row.price == null ? '—' : row.price },
@@ -122,7 +122,7 @@ export default function ProductsPage() {
 
   return <div className="products-page">
     <Card className="products-toolbar">
-      <SearchBar value={search} onChange={setSearch} placeholder="Search name, description, or Cloudinary ID"/>
+      <SearchBar value={search} onChange={setSearch} placeholder="Search dress name or product details"/>
       <div className="products-filters">
         <Select label="Category" value={category} onChange={(event) => { setCategory(event.target.value); setPage(1); }}><option value="">All categories</option>{categories.map((item) => <option key={item}>{item}</option>)}</Select>
         <div className="field"><label htmlFor="section-filter">Section</label><input className="control" id="section-filter" list="product-sections" value={section} onChange={(event) => { setSection(event.target.value); setPage(1); }} placeholder="All sections"/><datalist id="product-sections">{sections.map((item) => <option key={item} value={item}/>)}</datalist></div>
@@ -142,7 +142,7 @@ export default function ProductsPage() {
           <div className="product-card-price">{product.price == null ? 'Price not set' : `Rs. ${Number(product.price).toLocaleString('en-IN')}`} {product.oldPrice != null && <del>Rs. {Number(product.oldPrice).toLocaleString('en-IN')}</del>}</div>
           <div className="product-card-meta"><span>{product.category}</span><Badge tone={product.isActive ? 'success' : 'neutral'}>{product.isActive ? 'Active' : 'Inactive'}</Badge></div>
           <div className="product-stock-summary">{product.sizes?.some((item) => item.available) ? product.sizes.filter((item) => item.available).map((item) => `${item.size}: ${item.quantity}`).join(' · ') : 'Size stock not set'}</div>
-          {(product.isNewArrival || product.isBestSeller || product.isCuratedLook) && <div className="product-flag-list">{product.isNewArrival && <span>New arrival</span>}{product.isBestSeller && <span>Best seller</span>}{product.isCuratedLook && <span>Curated look</span>}</div>}
+          {(product.isNewArrival || product.isBestSeller || product.isCuratedLook || product.isEditorsPick || product.isOccasionPick || product.isLuxeCollection) && <div className="product-flag-list">{product.isNewArrival && <span>New arrival</span>}{product.isEditorsPick && <span>Editor's pick</span>}{product.isBestSeller && <span>Best seller</span>}{product.isCuratedLook && <span>Curated look</span>}{product.isOccasionPick && <span>Occasion</span>}{product.isLuxeCollection && <span>Luxe</span>}</div>}
           {product.description && <p className="product-card-description">{product.description}</p>}
           <div className="product-card-actions">{canReorder && <><Button variant="ghost" size="sm" disabled={index === 0} aria-label="Move dress up" onClick={() => moveProduct(product, -1)}>Up</Button><Button variant="ghost" size="sm" disabled={index === products.length - 1} aria-label="Move dress down" onClick={() => moveProduct(product, 1)}>Down</Button></>}<Button variant="secondary" size="sm" onClick={() => setStockProduct(product)}>Stock</Button><Button variant="secondary" size="sm" onClick={() => openEdit(product)}>Edit</Button><Button variant="ghost" size="sm" onClick={() => toggleActive(product)}>{product.isActive ? 'Deactivate' : 'Activate'}</Button><Button variant="danger" size="sm" onClick={() => setDeletingProduct(product)}>Remove</Button></div>
         </div>

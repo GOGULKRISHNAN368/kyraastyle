@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#291d23">
+  <title>Sign in | Kyraa Style</title>
+  <link rel="stylesheet" href="login.css">
+  <script src="../customer-auth.js" defer></script>
+  <script src="login.js" defer></script>
+</head>
+<body>
+  <main class="auth-shell">
+    <a class="auth-brand" href="../kyraastyle.com/index.html"><img src="logo.png" alt="Kyraa Style"></a>
+    <section class="auth-card" aria-labelledby="auth-title">
+      <p class="auth-eyebrow">YOUR KYRAA ACCOUNT</p>
+      <h1 id="auth-title">Sign in to continue</h1>
+      <p class="auth-intro">Create an account once to save your details and continue to your bag.</p>
+      <div class="auth-tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-mode="login">Sign in</button><button type="button" role="tab" aria-selected="false" data-mode="register">Create account</button></div>
+      <p class="auth-message" id="auth-message" role="alert" hidden></p>
+      <form id="auth-form" novalidate>
+        <label class="register-only" hidden>Full name<input id="customer-name" name="name" autocomplete="name" maxlength="120"></label>
+        <label>Email address<input id="customer-email" name="email" type="email" autocomplete="email" required maxlength="254"></label>
+        <label class="register-only" hidden>Mobile number <span>(optional)</span><input id="customer-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="24"></label>
+        <label>Password<input id="customer-password" name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="200"><span class="password-hint">At least 8 characters</span></label>
+        <button id="auth-submit" type="submit">Sign in and continue</button>
+      </form>
+      <p class="auth-note">Your password is encrypted and is never visible in the admin panel.</p>
+    </section>
+  </main>
+</body>
+</html>

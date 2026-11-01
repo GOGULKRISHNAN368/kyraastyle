@@ -9,6 +9,7 @@ import { InstagramPostError } from '../services/instagramPosts.service.js';
 import { LeadError } from '../services/leads.service.js';
 import { OrderError } from '../services/orders.service.js';
 import { AnnouncementError } from '../services/announcements.service.js';
+import { BannerError } from '../services/banners.service.js';
 
 export default function errorHandler(error, _request, response, _next) {
   if (response.headersSent) return;
@@ -26,6 +27,7 @@ export default function errorHandler(error, _request, response, _next) {
   if (error instanceof LeadError) return response.status(error.status).json({ message: error.message });
   if (error instanceof OrderError) return response.status(error.status).json({ message: error.message });
   if (error instanceof AnnouncementError) return response.status(error.status).json({ message: error.message });
+  if (error instanceof BannerError) return response.status(error.status).json({ message: error.message });
   if (error?.code === 'ENOSPC') return response.status(507).json({ message: 'The admin server is out of disk space. Free up storage, then retry the image upload.' });
   if (error?.code === 'EACCES' || error?.code === 'EPERM') return response.status(500).json({ message: 'The admin server cannot save images in its upload folder. Check folder permissions.' });
   if (error?.type === 'entity.too.large') return response.status(413).json({ message: 'This upload is larger than the allowed size.' });

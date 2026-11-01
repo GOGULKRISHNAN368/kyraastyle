@@ -1,5 +1,5 @@
 import asyncHandler from '../utils/asyncHandler.js';
-import { CloudinaryUploadError, uploadCategoryImage, uploadDressImage, uploadReelImage } from '../services/cloudinaryUpload.service.js';
+import { CloudinaryUploadError, uploadBannerImage, uploadCategoryImage, uploadDressImage, uploadReelImage } from '../services/cloudinaryUpload.service.js';
 import { uploadReelVideo } from '../services/cloudinaryVideoUpload.service.js';
 
 async function upload(request, response, uploader) {
@@ -12,6 +12,7 @@ async function upload(request, response, uploader) {
 
 export const uploadDressImageController = asyncHandler(async (request, response) => upload(request, response, uploadDressImage));
 export const uploadCategoryImageController = asyncHandler(async (request, response) => upload(request, response, uploadCategoryImage));
+export const uploadBannerImageController = asyncHandler(async (request, response) => upload(request, response, uploadBannerImage));
 
 export const uploadReelAssetController = asyncHandler(async (request, response) => {
   const contentType = request.get('X-Asset-Type') || '';
