@@ -68,12 +68,26 @@
     if (button.dataset.action === 'remove') bag.splice(index, 1);
     saveBag(bag); render();
   });
+  document.getElementById('recommendations').addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-product]');
+    if (!button) return;
+    const productName = button.dataset.product;
+    const product = fallbackProducts[productName];
+    if (!product) return;
+    const bag = getBag();
+    const existing = bag.find((item) => item.product === productName && item.size === 'M' && item.color === 'Selected colour');
+    if (existing) existing.quantity += 1;
+    else bag.push({ ...product, product: productName, size: 'M', color: 'Selected colour', quantity: 1 });
+    saveBag(bag);
+    render();
+    showToast(`${productName} added to your bag.`);
+  });
   elements.couponForm.addEventListener('submit', (event) => {
     event.preventDefault(); const bag = getBag(); const subtotal = bag.reduce((total, item) => total + item.price * item.quantity, 0);
     const code = elements.coupon.value.trim().toUpperCase(); elements.couponStatus.classList.remove('is-success', 'is-error');
     if (code === 'KYRAA10' && subtotal >= 4999) { couponApplied = true; elements.couponStatus.textContent = 'KYRAA10 applied — you saved 10% on your order.'; elements.couponStatus.classList.add('is-success'); render(); return; }
     elements.couponStatus.textContent = code === 'KYRAA10' ? 'KYRAA10 applies to orders above ₹4,999.' : 'That coupon is not available. Try KYRAA10.'; elements.couponStatus.classList.add('is-error');
   });
-  elements.checkout.addEventListener('click', () => showToast('Your delivery details are the next step. Checkout is ready to connect.'));
+  elements.checkout.addEventListener('click', () => { window.location.href = 'checkout.html'; });
   render();
 })();

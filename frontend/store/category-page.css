@@ -211,3 +211,13 @@ body{background:#fcfaf6;color:#171614;font-family:Georgia,'Times New Roman',seri
   .collection-hero h1{font-size:25px}
   .collection-hero p{font-size:11px}
 }
+
+/* Final desktop filter scale override: applies after the editorial theme rules. */
+@media(min-width:761px){
+  .catalog-layout{grid-template-columns:210px minmax(0,1fr)}
+  .filter-heading h2{font-size:14px}
+  .filter-panel summary{font-size:12px}
+  .filter-panel label,.filter-link{font-size:12px}
+  .filter-link{margin-top:10px;margin-bottom:10px}
+  .filter-panel input{width:15px;height:15px}
+}
