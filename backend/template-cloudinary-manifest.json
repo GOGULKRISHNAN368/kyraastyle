@@ -1,0 +1,346 @@
+{
+  "../image/banner-desktop-clean.jpg": {
+    "publicId": "kryaastyle/template/c7147b3e92efac12-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546152/kryaastyle/template/c7147b3e92efac12-jpg.jpg"
+  },
+  "../image/banner-mobile-photo.jpg": {
+    "publicId": "kryaastyle/template/2d6e44dd351dd432-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546153/kryaastyle/template/2d6e44dd351dd432-jpg.jpg"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/1782888585604images-1.jpg": {
+    "publicId": "kryaastyle/template/091e3960ae498b6b-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546154/kryaastyle/template/091e3960ae498b6b-jpg.jpg"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/1782888629799images-2.jpg": {
+    "publicId": "kryaastyle/template/cb9cf6d051e123c7-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546155/kryaastyle/template/cb9cf6d051e123c7-jpg.jpg"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/1782888660328images-3.jpg": {
+    "publicId": "kryaastyle/template/0343ca203aaa9738-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546156/kryaastyle/template/0343ca203aaa9738-jpg.jpg"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/1782888705332images-4.jpg": {
+    "publicId": "kryaastyle/template/5f4f32c7b47c2fb4-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546157/kryaastyle/template/5f4f32c7b47c2fb4-jpg.jpg"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/1782888739486images-5.jpg": {
+    "publicId": "kryaastyle/template/947872c2195cb375-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546158/kryaastyle/template/947872c2195cb375-jpg.jpg"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/1782888773002images-6.jpg": {
+    "publicId": "kryaastyle/template/864c21c7e5184426-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546159/kryaastyle/template/864c21c7e5184426-jpg.jpg"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/1782888874072images-7.jpg": {
+    "publicId": "kryaastyle/template/bad23c59cf54e0df-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546159/kryaastyle/template/bad23c59cf54e0df-jpg.jpg"
+  },
+  "../image/logo.png": {
+    "publicId": "kryaastyle/template/674fb82d593b7315-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546160/kryaastyle/template/674fb82d593b7315-png.png"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/1782888902958images-8.jpg": {
+    "publicId": "kryaastyle/template/99d223780fc98c13-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546161/kryaastyle/template/99d223780fc98c13-jpg.jpg"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/1782888929707images-9.jpg": {
+    "publicId": "kryaastyle/template/45a07925ebd9d236-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546162/kryaastyle/template/45a07925ebd9d236-jpg.jpg"
+  },
+  "../images/curated_img/anarkali.jpg": {
+    "publicId": "kryaastyle/template/2d524262818d01b4-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546183/kryaastyle/template/2d524262818d01b4-jpg.jpg"
+  },
+  "../images/curated_img/sareeimg.jpg": {
+    "publicId": "kryaastyle/template/a6ffcdced4e8797c-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546184/kryaastyle/template/a6ffcdced4e8797c-jpg.jpg"
+  },
+  "../images/real-products/Curated_Modern_Kurta_Short_Tops_2.webp": {
+    "publicId": "kryaastyle/template/0a326d52a967adff-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546187/kryaastyle/template/0a326d52a967adff-webp.webp"
+  },
+  "../images/real-products/Curated_Salwar_Black_Kurti_3.webp": {
+    "publicId": "kryaastyle/template/6de270b4ec31cf7b-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546191/kryaastyle/template/6de270b4ec31cf7b-webp.webp"
+  },
+  "../images/real-products/Curated_Workwear_White_Kurti_1.webp": {
+    "publicId": "kryaastyle/template/63018ff3f5d8b0a9-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546196/kryaastyle/template/63018ff3f5d8b0a9-webp.webp"
+  },
+  "../images/curated_img/frock.jpg": {
+    "publicId": "kryaastyle/template/f27f028df148844f-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546196/kryaastyle/template/f27f028df148844f-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740548288907altamount.jpg": {
+    "publicId": "kryaastyle/template/ea9d14924ba4fd36-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546212/kryaastyle/template/ea9d14924ba4fd36-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740548628499southex.jpg": {
+    "publicId": "kryaastyle/template/338bd73e9412b28e-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546214/kryaastyle/template/338bd73e9412b28e-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740549257092kolkata.jpg": {
+    "publicId": "kryaastyle/template/67a575b9dd1c9d48-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546215/kryaastyle/template/67a575b9dd1c9d48-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740549351427ahd.jpg": {
+    "publicId": "kryaastyle/template/8ce59889b53d2672-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546216/kryaastyle/template/8ce59889b53d2672-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740548490358bandra.jpg": {
+    "publicId": "kryaastyle/template/a7271ff83375993a-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546217/kryaastyle/template/a7271ff83375993a-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740548780625mehrauli.jpg": {
+    "publicId": "kryaastyle/template/9629f21912b47f8d-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546218/kryaastyle/template/9629f21912b47f8d-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740549162972hyd.jpg": {
+    "publicId": "kryaastyle/template/446306c246df3dc7-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546219/kryaastyle/template/446306c246df3dc7-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740549435665surat.jpg": {
+    "publicId": "kryaastyle/template/8b49a1abce179586-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546220/kryaastyle/template/8b49a1abce179586-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740548984889def-col.jpg": {
+    "publicId": "kryaastyle/template/9fe61afc795b24d0-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546221/kryaastyle/template/9fe61afc795b24d0-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740548556154juhu.jpg": {
+    "publicId": "kryaastyle/template/950ad4d07660610a-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546222/kryaastyle/template/950ad4d07660610a-jpg.jpg"
+  },
+  "../assets/uploads/landing_page_section_content_image/1740549061364regencyone.jpg": {
+    "publicId": "kryaastyle/template/c7de32466c4def8b-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546224/kryaastyle/template/c7de32466c4def8b-jpg.jpg"
+  },
+  "../assets/emailer/FooterRating1.jpg": {
+    "publicId": "kryaastyle/template/b798bdc06517acfb-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546225/kryaastyle/template/b798bdc06517acfb-jpg.jpg"
+  },
+  "../images/real-products/IceBlue_Kurti_1.webp": {
+    "publicId": "kryaastyle/template/095590220b7e0493-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546226/kryaastyle/template/095590220b7e0493-webp.webp"
+  },
+  "../images/real-products/Green_Kurti_1.webp": {
+    "publicId": "kryaastyle/template/d714bef591f67981-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546228/kryaastyle/template/d714bef591f67981-webp.webp"
+  },
+  "../images/real-products/Salwar_Suits_1.webp": {
+    "publicId": "kryaastyle/template/951e9ab8b767d017-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546229/kryaastyle/template/951e9ab8b767d017-webp.webp"
+  },
+  "../images/real-products/White_Kurti_1_DNG.webp": {
+    "publicId": "kryaastyle/template/0dd03da69898030d-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546233/kryaastyle/template/0dd03da69898030d-webp.webp"
+  },
+  "../image/newarrival6.jpg": {
+    "publicId": "kryaastyle/template/d5fae943b6469e5f-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546234/kryaastyle/template/d5fae943b6469e5f-jpg.jpg"
+  },
+  "../image/newarrival7.jpg": {
+    "publicId": "kryaastyle/template/60c61d28ad0a93ff-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546234/kryaastyle/template/60c61d28ad0a93ff-jpg.jpg"
+  },
+  "../image/newarrival8.jpg": {
+    "publicId": "kryaastyle/template/e78cf56cb22cf750-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546235/kryaastyle/template/e78cf56cb22cf750-jpg.jpg"
+  },
+  "../image/newarrival9.jpg": {
+    "publicId": "kryaastyle/template/341bf8c725a58da6-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546236/kryaastyle/template/341bf8c725a58da6-jpg.jpg"
+  },
+  "../image/newarrival10.jpg": {
+    "publicId": "kryaastyle/template/b9c77c774a545747-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546237/kryaastyle/template/b9c77c774a545747-jpg.jpg"
+  },
+  "../images/real-products/Unstiched_Kurti_Material_Black.webp": {
+    "publicId": "kryaastyle/template/122f34d99567e2c6-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546238/kryaastyle/template/122f34d99567e2c6-webp.webp"
+  },
+  "../images/real-products/Unstiched_Kurti_Material_IceBlue.webp": {
+    "publicId": "kryaastyle/template/322429340e19209b-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546239/kryaastyle/template/322429340e19209b-webp.webp"
+  },
+  "../images/real-products/Unstiched_Kurti_Material_Green.webp": {
+    "publicId": "kryaastyle/template/cca7ad155d84ce98-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546240/kryaastyle/template/cca7ad155d84ce98-webp.webp"
+  },
+  "../images/real-products/Unstiched_Kurti_Material_Pink.webp": {
+    "publicId": "kryaastyle/template/a37559c92bcff66c-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546241/kryaastyle/template/a37559c92bcff66c-webp.webp"
+  },
+  "../images/real-products/Unstiched_Kurti_Material_White.webp": {
+    "publicId": "kryaastyle/template/b3b22c51c13f5f1e-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546242/kryaastyle/template/b3b22c51c13f5f1e-webp.webp"
+  },
+  "../image/newarrival6-cloth.jpg": {
+    "publicId": "kryaastyle/template/89d53561818773bd-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546243/kryaastyle/template/89d53561818773bd-jpg.jpg"
+  },
+  "../image/newarrival7-cloth.jpg": {
+    "publicId": "kryaastyle/template/74558baa731f8ed9-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546244/kryaastyle/template/74558baa731f8ed9-jpg.jpg"
+  },
+  "../image/newarrival8-cloth.jpg": {
+    "publicId": "kryaastyle/template/8964f6da566817dc-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546245/kryaastyle/template/8964f6da566817dc-jpg.jpg"
+  },
+  "../image/newarrival9-cloth.jpg": {
+    "publicId": "kryaastyle/template/2a01afb9b3cde748-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546246/kryaastyle/template/2a01afb9b3cde748-jpg.jpg"
+  },
+  "../image/newarrival10-cloth.jpg": {
+    "publicId": "kryaastyle/template/eb7244ed86e0e58e-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546247/kryaastyle/template/eb7244ed86e0e58e-jpg.jpg"
+  },
+  "../images/Wedding.png": {
+    "publicId": "kryaastyle/template/93671f2e06cdf45e-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546250/kryaastyle/template/93671f2e06cdf45e-png.png"
+  },
+  "../images/sangeet.png": {
+    "publicId": "kryaastyle/template/f1c35f8bfb0fe382-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546252/kryaastyle/template/f1c35f8bfb0fe382-png.png"
+  },
+  "../images/Reception.png": {
+    "publicId": "kryaastyle/template/8decffbdfb67df9f-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546254/kryaastyle/template/8decffbdfb67df9f-png.png"
+  },
+  "../images/festival.png": {
+    "publicId": "kryaastyle/template/97839346ce145ca9-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546256/kryaastyle/template/97839346ce145ca9-png.png"
+  },
+  "../images/real-products/Casuals_Short_Tops_3.webp": {
+    "publicId": "kryaastyle/template/8dc4145a121680aa-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546258/kryaastyle/template/8dc4145a121680aa-webp.webp"
+  },
+  "../images/real-products/Office_Wear_White_Kurti_3.webp": {
+    "publicId": "kryaastyle/template/04c5aadcd05f39d7-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546260/kryaastyle/template/04c5aadcd05f39d7-webp.webp"
+  },
+  "../images/real-products/Curated_Ivory_Floral_Set.webp": {
+    "publicId": "kryaastyle/template/b108db9dd7e6a355-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546262/kryaastyle/template/b108db9dd7e6a355-webp.webp"
+  },
+  "../images/real-products/Curated_Midnight_Paisley_Black_Kurti_5.webp": {
+    "publicId": "kryaastyle/template/8f2261c0b93fe7a2-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546265/kryaastyle/template/8f2261c0b93fe7a2-webp.webp"
+  },
+  "../image/newarrival4.jpg": {
+    "publicId": "kryaastyle/template/096075c9b337b5c6-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546266/kryaastyle/template/096075c9b337b5c6-jpg.jpg"
+  },
+  "../image/newarrival5.jpg": {
+    "publicId": "kryaastyle/template/f27c6d604da31f97-jpg",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546267/kryaastyle/template/f27c6d604da31f97-jpg.jpg"
+  },
+  "../images/real-products/Short_Tops_2.webp": {
+    "publicId": "kryaastyle/template/7c6a923fe06942af-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546269/kryaastyle/template/7c6a923fe06942af-webp.webp"
+  },
+  "../image/category-full-frocks.png": {
+    "publicId": "kryaastyle/template/27e415a5de51dc96-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546271/kryaastyle/template/27e415a5de51dc96-png.png"
+  },
+  "../images/real-products/White_Kurti_1.webp": {
+    "publicId": "kryaastyle/template/f545fab9208931c1-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546272/kryaastyle/template/f545fab9208931c1-webp.webp"
+  },
+  "../image/category-sarees.png": {
+    "publicId": "kryaastyle/template/a9e5ce03f78f3c9a-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546274/kryaastyle/template/a9e5ce03f78f3c9a-png.png"
+  },
+  "../image/category-anarkali-suits.png": {
+    "publicId": "kryaastyle/template/d01d56e99bd331b4-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546276/kryaastyle/template/d01d56e99bd331b4-png.png"
+  },
+  "../images/real-products/Kryaa_Luxe_White_Kurti_1.webp": {
+    "publicId": "kryaastyle/template/41d676293ea2d2b6-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546279/kryaastyle/template/41d676293ea2d2b6-webp.webp"
+  },
+  "../images/unstiched_img/img1.png": {
+    "publicId": "kryaastyle/template/de51a63477f45b5b-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546280/kryaastyle/template/de51a63477f45b5b-png.png"
+  },
+  "../images/unstiched_img/img2.png": {
+    "publicId": "kryaastyle/template/c10d15fb069a294e-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546281/kryaastyle/template/c10d15fb069a294e-png.png"
+  },
+  "../image/women-insider-access-banner-mobile.png": {
+    "publicId": "kryaastyle/template/2b4b2bc29a9cc707-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546282/kryaastyle/template/2b4b2bc29a9cc707-png.png"
+  },
+  "../image/women-insider-access-banner.png": {
+    "publicId": "kryaastyle/template/9f2777aa197a7df5-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546284/kryaastyle/template/9f2777aa197a7df5-png.png"
+  },
+  "../images/real-products/Black_Kurti.webp": {
+    "publicId": "kryaastyle/template/7acbad6ea4443dbd-webp",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793546286/kryaastyle/template/7acbad6ea4443dbd-webp.webp"
+  },
+  "../images/Review%20image.png": {
+    "publicId": "kryaastyle/template/3b3960fd40d515c0-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793548649/kryaastyle/template/3b3960fd40d515c0-png.png"
+  },
+  "../images/Designed%20for%20Every%20Story.png": {
+    "publicId": "kryaastyle/template/82156dc28e695b3c-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793548651/kryaastyle/template/82156dc28e695b3c-png.png"
+  },
+  "../images/unstiched_img/img%203.png": {
+    "publicId": "kryaastyle/template/12f58882f486621c-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793548652/kryaastyle/template/12f58882f486621c-png.png"
+  },
+  "../images/Inclusive%20Comfort%20Fashion%20Collection%20(1).png": {
+    "publicId": "kryaastyle/template/3d7bbbb09be9393f-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793548715/kryaastyle/template/3d7bbbb09be9393f-png.png"
+  },
+  "../images/Insta_Img/Ethnic1.avif": {
+    "publicId": "kryaastyle/template/bbcebf9bc162cc7e-avif",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793548771/kryaastyle/template/bbcebf9bc162cc7e-avif.avif"
+  },
+  "../images/Insta_Img/Kurta1.avif": {
+    "publicId": "kryaastyle/template/33c9ba60dc33b8a7-avif",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793548772/kryaastyle/template/33c9ba60dc33b8a7-avif.avif"
+  },
+  "../images/Insta_Img/salwar1.avif": {
+    "publicId": "kryaastyle/template/05a5378673ed3e72-avif",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793548773/kryaastyle/template/05a5378673ed3e72-avif.avif"
+  },
+  "../images/Insta_Img/Saree_Img1.avif": {
+    "publicId": "kryaastyle/template/cb8eeb4a3b050bd5-avif",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793548773/kryaastyle/template/cb8eeb4a3b050bd5-avif.avif"
+  },
+  "../images/Insta_Img/top1.avif": {
+    "publicId": "kryaastyle/template/2503372aed511871-avif",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793548774/kryaastyle/template/2503372aed511871-avif.avif"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/cat_chudi.png": {
+    "publicId": "kryaastyle/template/f3e52322891aa9e5-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793550246/kryaastyle/template/f3e52322891aa9e5-png.png"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/cat_short_tops.png": {
+    "publicId": "kryaastyle/template/ec3e40acaac01b83-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793550248/kryaastyle/template/ec3e40acaac01b83-png.png"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/cat_full_frocks.png": {
+    "publicId": "kryaastyle/template/8d84e129f180c823-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793550250/kryaastyle/template/8d84e129f180c823-png.png"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/cat_kurti_sets.png": {
+    "publicId": "kryaastyle/template/3cc0ae010e357a84-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793550252/kryaastyle/template/3cc0ae010e357a84-png.png"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/cat_sarees.png": {
+    "publicId": "kryaastyle/template/113032ed24d5ed42-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793550254/kryaastyle/template/113032ed24d5ed42-png.png"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/cat_salwar_suits.png": {
+    "publicId": "kryaastyle/template/00337e6348cb5c5a-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793550255/kryaastyle/template/00337e6348cb5c5a-png.png"
+  },
+  "../assets/tr_w-375/uploads/landing_page_section_content_image/cat_anarkali_suits.png": {
+    "publicId": "kryaastyle/template/508f5ad4b03699d1-png",
+    "url": "https://res.cloudinary.com/r3jgeild/image/upload/v1793550257/kryaastyle/template/508f5ad4b03699d1-png.png"
+  }
+}

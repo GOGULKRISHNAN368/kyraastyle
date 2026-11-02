@@ -23,7 +23,7 @@
       <!-- Centerpiece Brand Showcase -->
       <div class="kr-loader-center">
         <!-- Official Website Logo -->
-        <img src="../image/logo.png" alt="Kryaa Style" class="kr-loader-official-logo" decoding="async">
+        <img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546160/kryaastyle/template/674fb82d593b7315-png.png" alt="Kryaa Style" class="kr-loader-official-logo" decoding="async">
 
         <!-- Refined Brand Tagline -->
         <p class="kr-loader-tagline">CURATED FOR EVERY CELEBRATION</p>
@@ -149,7 +149,7 @@ if (false) (() => {
   const heroMarkup = `
     <section class="kr-reimagined-home" aria-label="Kryaa Style introduction">
       <header class="kr-editorial-nav">
-        <a class="kr-editorial-logo" href="index.html" aria-label="Kryaa Style home"><img src="../image/logo.png" alt="Kryaa Style"></a>
+        <a class="kr-editorial-logo" href="index.html" aria-label="Kryaa Style home"><img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546160/kryaastyle/template/674fb82d593b7315-png.png" alt="Kryaa Style"></a>
         <nav aria-label="Main navigation"><ul class="kr-editorial-menu">
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="../store/category.html?edit=new-arrivals">Shop</a></li>

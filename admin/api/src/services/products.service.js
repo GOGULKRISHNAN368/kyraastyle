@@ -37,9 +37,9 @@ export async function validateProductInput(input, existing = {}) {
     }
   }
   value.name = value.name?.trim();
+  value.category = value.category?.trim() || 'Store';
   value.cloudinaryId = value.cloudinaryId?.trim();
   if (!value.name) throw new ProductError('Product name is required.');
-  if (!value.category) throw new ProductError('Category is required.');
   if (!value.cloudinaryId) throw new ProductError('A main product image is required.');
 
   const categories = await getProductCategories();

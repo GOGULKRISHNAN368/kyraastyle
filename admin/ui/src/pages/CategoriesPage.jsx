@@ -61,7 +61,7 @@ export default function CategoriesPage() {
   }
 
   return <div className="categories-page">
-    <p className="categories-subtitle">Manage your storefront categories and collections.</p>
+    <p className="categories-subtitle">Optional shop filters for customers. Every active dress is shown in the Store by default, even when it is not added to a collection.</p>
     <Card className="category-editor-card"><CategoryForm key={editing?.id || `new-category-${formReset}`} category={editing} onSave={saveCategory} onCancel={() => setEditing(null)}/></Card>
     <section className="category-list" aria-label="Store categories">
       {loading ? <div className="category-grid">{Array.from({ length: 5 }, (_, index) => <Card key={index}><Skeleton lines={5}/></Card>)}</div>

@@ -111,45 +111,80 @@
     return card;
   }
 
-  function productSection(products, eyebrow, heading) {
-    const section = el('section', 'storefront-live-products');
-    const headingId = `storefront-live-products-${categorySlug(heading)}`;
-    section.setAttribute('aria-labelledby', headingId);
-    section.appendChild(el('p', 'storefront-section-eyebrow', eyebrow));
-    const title = el('h2', '', heading); title.id = headingId; section.appendChild(title);
-    const grid = el('div', 'storefront-product-grid');
-    products.slice(0, 12).forEach((product) => grid.appendChild(productCard(product)));
-    section.appendChild(grid);
-    return section;
+  const normaliseHeading = (value) => String(value || '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+  function findHomeTemplateSection(labels) {
+    const wanted = labels.map(normaliseHeading);
+    const heading = [...document.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main h6, main [role="heading"]')]
+      .find((item) => wanted.includes(normaliseHeading(item.textContent)));
+    if (!heading) return null;
+    return heading.closest('section') || heading.closest('.wrapperContainer') || heading.parentElement?.parentElement || null;
+  }
+
+  function renderIntoHomeTemplate(section, products, label) {
+    if (!section || !products.length) return;
+    let outlet = section.querySelector('[data-storefront-product-outlet]');
+    if (!outlet) {
+      outlet = el('div', 'storefront-template-product-carousel');
+      outlet.dataset.storefrontProductOutlet = 'true';
+      const originalRow = section.querySelector('.slick-slider, .curated-trending-looks, .kr-best-sellers__grid, .kr-editors-picks__grid, .grid');
+      if (originalRow) originalRow.replaceWith(outlet);
+      else section.appendChild(outlet);
+    }
+    outlet.replaceChildren();
+    const controls = el('div', 'storefront-template-carousel-controls');
+    const previous = el('button', 'storefront-template-arrow', '‹');
+    const next = el('button', 'storefront-template-arrow', '›');
+    previous.type = 'button'; next.type = 'button';
+    previous.setAttribute('aria-label', `Show previous ${label} products`);
+    next.setAttribute('aria-label', `Show more ${label} products`);
+    controls.append(previous, next);
+    const viewport = el('div', 'storefront-template-product-viewport');
+    viewport.tabIndex = 0;
+    viewport.setAttribute('role', 'region');
+    viewport.setAttribute('aria-label', `${label} products`);
+    const rail = el('div', 'storefront-template-product-rail');
+    products.forEach((product) => rail.appendChild(productCard(product)));
+    viewport.appendChild(rail); outlet.append(viewport, controls);
+    const updateControls = () => {
+      const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth - 2);
+      previous.disabled = viewport.scrollLeft <= 2;
+      next.disabled = viewport.scrollLeft >= maxScroll;
+    };
+    const scroll = (direction) => viewport.scrollBy({ left: direction * Math.max(220, viewport.clientWidth * .84), behavior: 'smooth' });
+    previous.addEventListener('click', () => scroll(-1));
+    next.addEventListener('click', () => scroll(1));
+    viewport.addEventListener('scroll', updateControls, { passive: true });
+    window.requestAnimationFrame(updateControls);
   }
 
   function renderHomeProducts(products) {
-    if (!products?.length || document.querySelector('.storefront-live-products')) return;
-    const main = sectionHost();
-    const anchor = main.querySelector('.women-category-section, .curated-trending-looks');
-    const sections = [
-      [products.filter((product) => product.isNewArrival), 'JUST IN', 'New Arrivals'],
-      [products.filter((product) => product.isEditorsPick), 'THE EDIT', "Editor's Picks"],
-      [products.filter((product) => product.isCuratedLook), 'KRYAA STYLE EDIT', 'Curated by Kryaa'],
-      [products.filter((product) => product.isBestSeller), 'MOST LOVED', 'Best Sellers'],
-      [products.filter((product) => product.isOccasionPick), 'CELEBRATION READY', 'Shop by Occasion'],
-      [products.filter((product) => product.isLuxeCollection), 'THE PREMIUM EDIT', 'Kryaa Luxe'],
-    ].filter(([items]) => items.length);
-    const namedSections = new Map();
+    if (!products?.length) return;
+    const newArrivals = products.filter((product) => product.isNewArrival);
+    // The original New Arrivals row doubles as the default home row. This keeps
+    // the existing page template untouched while ensuring a newly published
+    // product is visible even before any optional placement box is selected.
+    const placements = [
+      { label: 'New Arrivals', section: () => findHomeTemplateSection(['New Arrivals']), products: newArrivals.length ? newArrivals : products },
+      { label: "Editor's Picks", section: () => document.getElementById('kr-editors-picks') || findHomeTemplateSection(["Editor's Picks"]), products: products.filter((product) => product.isEditorsPick) },
+      { label: 'Curated by Kryaa', section: () => document.querySelector('.curated-trending-looks')?.closest('section') || findHomeTemplateSection(['Curated Trending Looks', 'Curated by Kryaa']), products: products.filter((product) => product.isCuratedLook) },
+      { label: 'Best Sellers', section: () => document.getElementById('kr-best-sellers') || findHomeTemplateSection(['Best Sellers', "Kyraa's Best Sellers"]), products: products.filter((product) => product.isBestSeller) },
+      { label: 'Shop by Occasion', section: () => findHomeTemplateSection(['Shop by Occasion']), products: products.filter((product) => product.isOccasionPick) },
+      { label: 'Kryaa Luxe', section: () => document.getElementById('kryaa-luxe-banner') || findHomeTemplateSection(['Kryaa Luxe']), products: products.filter((product) => product.isLuxeCollection) },
+    ];
+    placements.forEach((placement) => renderIntoHomeTemplate(placement.section(), placement.products, placement.label));
+
+    // An owner can name a custom section in the dress form. If that title is
+    // present in the supplied homepage template, it receives the same card
+    // carousel and arrow controls as the standard placements.
+    const customSections = new Map();
     products.forEach((product) => {
       const name = String(product.section || '').trim();
       if (!name) return;
-      if (!namedSections.has(name)) namedSections.set(name, []);
-      namedSections.get(name).push(product);
+      if (!customSections.has(name)) customSections.set(name, []);
+      customSections.get(name).push(product);
     });
-    namedSections.forEach((items, name) => sections.push([items, 'SHOP THE EDIT', name]));
-    if (!sections.length) sections.push([products, 'LATEST FROM KRYAA STYLE', 'Shop the Collection']);
-    let previous = anchor;
-    sections.forEach(([items, eyebrow, heading]) => {
-      const section = productSection(items, eyebrow, heading);
-      if (previous) previous.insertAdjacentElement('afterend', section); else main.appendChild(section);
-      previous = section;
-    });
+    customSections.forEach((items, name) => renderIntoHomeTemplate(findHomeTemplateSection([name]), items, name));
   }
 
   function renderCoupons(coupons) {
@@ -274,10 +309,9 @@
     }
   }
 
-  fetch(`${apiBase}/api/storefront/content`, { headers: { Accept: 'application/json' } })
-    .then((response) => { if (!response.ok) throw new Error(`Storefront API returned ${response.status}`); return response.json(); })
-    .then(({ data }) => {
-      if (!data) return;
+  function applyStorefrontContent(data) {
+    if (!data) return;
+    const renderStorefront = () => {
       renderAnnouncement(data);
       renderBanners(data.banners);
       renderCatalog(data);
@@ -285,6 +319,34 @@
       renderHomeProducts(data.products);
       renderCoupons(data.coupons);
       renderMedia(data);
-    })
+    };
+    renderStorefront();
+    // The captured homepage finishes its own hydration after this script is
+    // loaded. Repeat briefly so we fill the original template rows after they exist.
+    [300, 1000, 2500, 5000, 8000].forEach((delay) => window.setTimeout(renderStorefront, delay));
+  }
+
+  function loadStorefrontContent() {
+    return fetch(`${apiBase}/api/storefront/content`, { headers: { Accept: 'application/json' } })
+    .then((response) => { if (!response.ok) throw new Error(`Storefront API returned ${response.status}`); return response.json(); })
+    .then(({ data }) => applyStorefrontContent(data))
     .catch((error) => console.info('Using the storefront fallback content until the admin API is available.', error.message));
+  }
+
+  function connectLiveStorefrontUpdates() {
+    if (window.io || document.querySelector('script[data-kryaa-socket-client]')) return;
+    const client = document.createElement('script');
+    client.dataset.kryaaSocketClient = 'true';
+    client.src = `${apiBase}/socket.io/socket.io.js`;
+    client.async = true;
+    client.onload = () => {
+      if (typeof window.io !== 'function') return;
+      const socket = window.io(apiBase, { transports: ['websocket', 'polling'] });
+      socket.on('storefront:changed', () => { void loadStorefrontContent(); });
+    };
+    document.head.appendChild(client);
+  }
+
+  void loadStorefrontContent();
+  connectLiveStorefrontUpdates();
 })();

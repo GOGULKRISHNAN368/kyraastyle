@@ -76,7 +76,7 @@ export default function ProductsPage() {
   }
   async function confirmDelete() {
     if (!deletingProduct) return;
-    try { await deleteProduct(deletingProduct._id); setDeletingProduct(null); setReloadKey((value) => value + 1); notify('Product moved to inactive.'); }
+    try { await deleteProduct(deletingProduct._id); setDeletingProduct(null); setReloadKey((value) => value + 1); notify('Dress deleted from the store.'); }
     catch (reason) { notify(reason.message || 'Could not delete product.', 'error'); }
   }
   async function saveOrder(ordered) {
@@ -144,7 +144,7 @@ export default function ProductsPage() {
           <div className="product-stock-summary">{product.sizes?.some((item) => item.available) ? product.sizes.filter((item) => item.available).map((item) => `${item.size}: ${item.quantity}`).join(' · ') : 'Size stock not set'}</div>
           {(product.isNewArrival || product.isBestSeller || product.isCuratedLook || product.isEditorsPick || product.isOccasionPick || product.isLuxeCollection) && <div className="product-flag-list">{product.isNewArrival && <span>New arrival</span>}{product.isEditorsPick && <span>Editor's pick</span>}{product.isBestSeller && <span>Best seller</span>}{product.isCuratedLook && <span>Curated look</span>}{product.isOccasionPick && <span>Occasion</span>}{product.isLuxeCollection && <span>Luxe</span>}</div>}
           {product.description && <p className="product-card-description">{product.description}</p>}
-          <div className="product-card-actions">{canReorder && <><Button variant="ghost" size="sm" disabled={index === 0} aria-label="Move dress up" onClick={() => moveProduct(product, -1)}>Up</Button><Button variant="ghost" size="sm" disabled={index === products.length - 1} aria-label="Move dress down" onClick={() => moveProduct(product, 1)}>Down</Button></>}<Button variant="secondary" size="sm" onClick={() => setStockProduct(product)}>Stock</Button><Button variant="secondary" size="sm" onClick={() => openEdit(product)}>Edit</Button><Button variant="ghost" size="sm" onClick={() => toggleActive(product)}>{product.isActive ? 'Deactivate' : 'Activate'}</Button><Button variant="danger" size="sm" onClick={() => setDeletingProduct(product)}>Remove</Button></div>
+          <div className="product-card-actions">{canReorder && <><Button variant="ghost" size="sm" disabled={index === 0} aria-label="Move dress up" onClick={() => moveProduct(product, -1)}>Up</Button><Button variant="ghost" size="sm" disabled={index === products.length - 1} aria-label="Move dress down" onClick={() => moveProduct(product, 1)}>Down</Button></>}<Button variant="secondary" size="sm" onClick={() => setStockProduct(product)}>Stock</Button><Button variant="secondary" size="sm" onClick={() => openEdit(product)}>Edit</Button><Button variant="ghost" size="sm" onClick={() => toggleActive(product)}>{product.isActive ? 'Deactivate' : 'Activate'}</Button><Button variant="danger" size="sm" onClick={() => setDeletingProduct(product)}>Delete</Button></div>
         </div>
       </article>)}</div>}
       {!loading && !error && products.length > 0 && <Pagination page={page} pages={pages} onChange={setPage}/>}
@@ -153,7 +153,7 @@ export default function ProductsPage() {
 
     <ProductForm key={editingProduct?._id || 'new'} open={editorOpen} product={editingProduct} categories={categories} onClose={() => setEditorOpen(false)} onSaved={saveComplete}/>
     <StockEditor product={stockProduct} onClose={() => setStockProduct(null)} onSaved={() => { setStockProduct(null); setReloadKey((value) => value + 1); notify('Dress stock saved.'); }}/>
-    <ConfirmDialog open={Boolean(deletingProduct)} title="Delete product?" confirmLabel="Delete product" onClose={() => setDeletingProduct(null)} onConfirm={confirmDelete}>This product will be deactivated and hidden from the website. Its image will remain in Cloudinary.</ConfirmDialog>
+    <ConfirmDialog open={Boolean(deletingProduct)} title="Delete dress?" confirmLabel="Delete dress" onClose={() => setDeletingProduct(null)} onConfirm={confirmDelete}>This removes the dress from the store and every homepage collection. Its Cloudinary image is kept safely in your media account.</ConfirmDialog>
     <div className="toast-region" aria-live="polite"><Toast message={toast.message} tone={toast.tone} onClose={() => setToast({ message: '', tone: 'success' })}/></div>
   </div>;
 }

@@ -11,7 +11,7 @@ import { uploadDressImage } from '../../services/api.js';
 const dressSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'];
 const blankSizes = () => dressSizes.map((size) => ({ size, available: false, quantity: 0 }));
 const emptyProduct = {
-  name: '', category: '', section: '', position: '', cloudinaryId: '', width: 800,
+  name: '', category: 'Store', section: '', position: '', cloudinaryId: '', width: 800,
   height: '', alt: '', price: 1299, oldPrice: 1499, sizes: blankSizes(),
   isNewArrival: false, isBestSeller: false, isCuratedLook: false,
   isEditorsPick: false, isOccasionPick: false, isLuxeCollection: false,
@@ -113,7 +113,6 @@ export default function ProductForm({ open, product, categories, onClose, onSave
     event.preventDefault();
     const errors = {};
     if (!form.name.trim()) errors.name = 'Product name is required.';
-    if (!form.category) errors.category = 'Choose a category.';
     if (!form.cloudinaryId.trim() && imageFiles.length === 0) errors.cloudinaryId = 'Add a main product image.';
     if (form.position !== '' && (!Number.isInteger(Number(form.position)) || Number(form.position) < 0)) errors.position = 'Enter zero or a positive whole number.';
     if (form.price !== '' && (!Number.isFinite(Number(form.price)) || Number(form.price) < 0)) errors.price = 'Price must be zero or greater.';
@@ -201,7 +200,7 @@ export default function ProductForm({ open, product, categories, onClose, onSave
       <div className="product-editor-fields">
         <Input label="Dress name" name="name" value={form.name} error={fieldErrors.name} onChange={(event) => setField('name', event.target.value)} required/>
         <div className="product-form-grid"><Input label="Price (Rs.)" name="price" type="number" min="0" step="0.01" value={form.price} error={fieldErrors.price} onChange={(event) => setField('price', event.target.value)}/><Input label="Old price (Rs.)" name="oldPrice" type="number" min="0" step="0.01" value={form.oldPrice} error={fieldErrors.oldPrice} onChange={(event) => setField('oldPrice', event.target.value)}/></div>
-        <div className="field"><span className="field-label">Categories</span><div className="category-chips" role="group" aria-label="Dress category">{categories.map((category) => <button className={`category-chip ${form.category === category ? 'is-selected' : ''}`} type="button" key={category} aria-pressed={form.category === category} onClick={() => setField('category', category)}>{category}</button>)}</div>{fieldErrors.category && <span className="field-error" role="alert">{fieldErrors.category}</span>}</div>
+        <div className="field"><span className="field-label">Store collection</span><small className="field-hint">Optional. “Store” is selected by default, so this dress is published to the main shop. Pick another collection only when you want shoppers to filter by it.</small><div className="category-chips" role="group" aria-label="Store collection">{categories.map((category) => <button className={`category-chip ${form.category === category ? 'is-selected' : ''}`} type="button" key={category} aria-pressed={form.category === category} onClick={() => setField('category', category)}>{category}</button>)}</div></div>
         <section className="homepage-placement" aria-labelledby="storefront-placement-title">
           <div className="homepage-placement-heading"><div><h3 id="storefront-placement-title">Homepage placement</h3><p>Choose every section where this dress should appear. You can select more than one.</p></div><span>OPTIONAL</span></div>
           <div className="dress-flags" aria-label="Storefront placement">

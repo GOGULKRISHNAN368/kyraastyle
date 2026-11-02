@@ -1,6 +1,8 @@
 require('dotenv').config({ path: require('node:path').resolve(__dirname, '.env'), override: true });
 
 const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
@@ -9,10 +11,23 @@ const fs = require('node:fs');
 const { installCustomerAuthRoutes } = require('./customerAuth');
 
 const app = express();
+const httpServer = http.createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: ['http://localhost:5501', 'http://127.0.0.1:5501', 'http://localhost:3000', 'http://127.0.0.1:3000'],
+    methods: ['GET', 'POST'],
+  }
+});
 const PORT = Number.parseInt(process.env.PORT || '3000', 10);
 const DB_NAME = process.env.MONGODB_DB || 'test';
 const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || 'l8xwk9bz';
 const FRONTEND_ROOT = path.resolve(__dirname, '..', 'frontend');
+
+app.set('io', io);
+io.on('connection', (socket) => {
+  console.log(`Storefront connected for live updates: ${socket.id}`);
+  socket.on('disconnect', () => console.log(`Storefront disconnected: ${socket.id}`));
+});
 
 if (!process.env.MONGODB_URI) {
   console.error('MONGODB_URI is missing from backend/.env. Add it before starting the backend.');
@@ -59,13 +74,36 @@ async function connectDB() {
   console.log(`MongoDB connected: ${DB_NAME}`);
 }
 
+// Atlas change streams let the public storefront react to changes made by the
+// separate, protected admin API. Only a generic refresh signal is broadcast;
+// product data remains available through the normal read-only API endpoint.
+function watchStorefrontChanges() {
+  const database = mongoose.connection.db;
+  const collections = ['products', 'admin_dress_details', 'admin_banners', 'admin_category_details', 'settings'];
+  for (const collectionName of collections) {
+    try {
+      const stream = database.collection(collectionName).watch([], { fullDocument: 'updateLookup' });
+      stream.on('change', () => io.emit('storefront:changed', { collection: collectionName }));
+      stream.on('error', (error) => console.error(`Storefront live-update watch failed for ${collectionName}: ${error.message}`));
+    } catch (error) {
+      console.error(`Storefront live updates unavailable for ${collectionName}: ${error.message}`);
+    }
+  }
+}
+
 app.use((req, res, next) => {
-  const origin = process.env.CORS_ORIGIN || 'http://localhost:8000';
-  if (req.headers.origin === origin) {
+  const configuredOrigins = String(process.env.CORS_ORIGIN || '')
+    .split(',').map((origin) => origin.trim()).filter(Boolean);
+  const localOrigins = new Set([
+    'http://localhost:5501', 'http://127.0.0.1:5501',
+    'http://localhost:3000', 'http://127.0.0.1:3000',
+  ]);
+  const origin = req.headers.origin;
+  if (origin && (localOrigins.has(origin) || configuredOrigins.includes(origin))) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Vary', 'Origin');
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
   }
   if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
@@ -227,8 +265,9 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
 app.use(express.static(FRONTEND_ROOT));
 
 connectDB()
-  .then(() => app.listen(Number.isInteger(PORT) && PORT > 0 && PORT <= 65535 ? PORT : 3000, () => {
-    console.log(`Kyraa Style API running on port ${PORT}`);
+  .then(() => httpServer.listen(Number.isInteger(PORT) && PORT > 0 && PORT <= 65535 ? PORT : 3000, () => {
+    console.log(`Kyraa Style API and Socket.IO running on port ${PORT}`);
+    watchStorefrontChanges();
   }))
   .catch((error) => {
     console.error(`MongoDB connection failed: ${error.message}`);

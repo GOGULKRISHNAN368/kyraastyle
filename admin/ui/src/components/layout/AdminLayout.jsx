@@ -5,7 +5,7 @@ import Icon from '../common/Icon.jsx';
 import SearchBar from '../common/SearchBar.jsx';
 
 const links = [
-  ['Dashboard', '/dashboard', 'grid'], ['Banners', '/banners', 'image'], ['Categories', '/categories', 'folder'], ['Dresses', '/products', 'box'], ['Coupons', '/coupons', 'tag'], ['Reels', '/reels', 'video'], ['Instagram', '/instagram', 'image'], ['Media Library', '/media', 'image'],
+  ['Dashboard', '/dashboard', 'grid'], ['Banners', '/banners', 'image'], ['Collections', '/categories', 'folder'], ['Dresses', '/products', 'box'], ['Coupons', '/coupons', 'tag'], ['Reels', '/reels', 'video'], ['Instagram', '/instagram', 'image'], ['Media Library', '/media', 'image'],
   ['Reviews', '/reviews', 'star'], ['Customers', '/customers', 'users'], ['Leads', '/leads', 'users'], ['Orders', '/orders', 'box'], ['Completed Orders', '/completed-orders', 'check'], ['Cancelled Orders', '/cancelled-orders', 'close'], ['Enquiries', '/enquiries', 'mail'],
 ];
 
