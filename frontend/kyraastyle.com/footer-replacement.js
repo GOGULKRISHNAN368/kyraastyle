@@ -56,9 +56,6 @@
     </footer>`;
 
   function installFooter() {
-    // The home page supplies its original storefront footer from men-only.js.
-    // Do not replace it with the later generic footer.
-    if (document.querySelector('.kr-shopper-footer')) return;
     const legacyFooter = document.querySelector('footer:not(.kr-converto-footer)');
     if (legacyFooter && !document.querySelector('.kr-converto-footer')) {
       legacyFooter.outerHTML = footer;
@@ -84,14 +81,3 @@
     applyPageUpdates();
   }
 }());
-
-// The static storefront's bag icon should open the local cart page.
-(() => {
-  'use strict';
-  document.addEventListener('click', (event) => {
-    const cartControl = event.target.closest('#dskATCPortal, a[href="checkout.html"]');
-    if (!cartControl) return;
-    event.preventDefault();
-    window.location.href = '../store/cart.html';
-  });
-})();
