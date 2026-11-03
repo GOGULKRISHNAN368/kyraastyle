@@ -81,3 +81,14 @@
     applyPageUpdates();
   }
 }());
+
+// The static storefront's bag icon should open the local cart page.
+(() => {
+  'use strict';
+  document.addEventListener('click', (event) => {
+    const cartControl = event.target.closest('#dskATCPortal, a[href="checkout.html"]');
+    if (!cartControl) return;
+    event.preventDefault();
+    window.location.href = '../store/cart.html';
+  });
+})();

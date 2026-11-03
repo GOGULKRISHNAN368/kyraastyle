@@ -117,7 +117,9 @@ body{background:#fcfaf6;color:#171614;font-family:Georgia,'Times New Roman',seri
 .catalog-brand{flex:0 0 180px;width:180px}
 .header-actions{display:flex;align-items:center;gap:22px}
 .header-actions button{display:grid;width:28px;height:34px;place-items:center;padding:2px;border:0;background:transparent;cursor:pointer}
+.header-actions .header-bag{position:relative;display:grid;width:28px;height:34px;place-items:center;color:inherit}
 .header-actions svg{width:23px;height:23px;fill:none;stroke:#161616;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.55}
+.bag-count{position:absolute;top:1px;right:-6px;display:grid;min-width:15px;height:15px;place-items:center;border-radius:999px;background:#9a6a32;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:9px;line-height:1}
 .catalog-back{display:none}
 .catalog-page{width:100%;max-width:none;margin:0 auto;padding:0 clamp(22px,2.6vw,42px)}
 .breadcrumbs{margin:20px 0 0;padding:0;color:#36322d;font-family:Georgia,'Times New Roman',serif;font-size:12px}
@@ -208,4 +210,14 @@ body{background:#fcfaf6;color:#171614;font-family:Georgia,'Times New Roman',seri
   .collection-hero-copy{width:67%}
   .collection-hero h1{font-size:25px}
   .collection-hero p{font-size:11px}
+}
+
+/* Final desktop filter scale override: applies after the editorial theme rules. */
+@media(min-width:761px){
+  .catalog-layout{grid-template-columns:210px minmax(0,1fr)}
+  .filter-heading h2{font-size:14px}
+  .filter-panel summary{font-size:12px}
+  .filter-panel label,.filter-link{font-size:12px}
+  .filter-link{margin-top:10px;margin-bottom:10px}
+  .filter-panel input{width:15px;height:15px}
 }

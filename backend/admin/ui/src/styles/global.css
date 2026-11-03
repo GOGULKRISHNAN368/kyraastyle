@@ -190,6 +190,18 @@ textarea.control { min-height: 6rem; resize: vertical; }
 .product-card { min-width: 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); box-shadow: var(--shadow-sm); }
 .product-card[draggable="true"], .data-table tr[draggable="true"], .table-card[draggable="true"] { cursor: grab; }
 .product-card-image { display: grid; min-height: 12rem; place-items: center; padding: .75rem; background: var(--color-surface-muted); color: var(--color-text-muted); }
+.product-card-image { position: relative; width: 100%; border: 0; cursor: zoom-in; }
+.product-image-count { position: absolute; right: .75rem; bottom: .75rem; padding: .35rem .6rem; border-radius: 99rem; color: #fff; background: #17202dcc; font-size: .75rem; }
+.dress-gallery-backdrop { position: fixed; z-index: 1000; inset: 0; display: grid; place-items: center; padding: 1rem; background: #101828b8; }
+.dress-gallery-dialog { position: relative; display: grid; width: min(100%, 48rem); max-height: 94vh; gap: .75rem; padding: 1.25rem; overflow: auto; border-radius: 1rem; background: var(--color-surface); box-shadow: 0 1.5rem 5rem #0005; }
+.dress-gallery-dialog h2 { margin: 0; padding-right: 2.5rem; font-size: 1.15rem; }
+.dress-gallery-close { position: absolute; z-index: 1; top: .75rem; right: .75rem; width: 2.5rem; height: 2.5rem; border: 0; border-radius: 50%; background: var(--color-surface-muted); font-size: 1.5rem; cursor: pointer; }
+.dress-gallery-viewer { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr) 2.75rem; align-items: center; gap: .5rem; min-height: 12rem; touch-action: pan-y; }
+.dress-gallery-viewer > img { width: 100%; height: min(68vh, 42rem); object-fit: contain; }
+.dress-gallery-viewer > button { width: 2.75rem; height: 2.75rem; border: 1px solid var(--color-border); border-radius: 50%; background: var(--color-surface); font-size: 1.75rem; cursor: pointer; }
+.dress-gallery-dots { display: flex; justify-content: center; gap: .5rem; }
+.dress-gallery-dots button { width: 2rem; height: 2rem; border: 1px solid var(--color-border); border-radius: 50%; background: var(--color-surface); cursor: pointer; }
+.dress-gallery-dots button[aria-current="true"] { border-color: var(--color-primary); color: #fff; background: var(--color-primary); }
 .product-card-image img { display: block; width: 100%; height: 12rem; object-fit: contain; }
 .product-card-content { display: grid; gap: .625rem; padding: .875rem; }
 .product-card-title { display: flex; align-items: center; gap: .5rem; }

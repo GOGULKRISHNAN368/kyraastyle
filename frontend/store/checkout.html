@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffdfa">
+  <title>Delivery details | Kyraa Style</title>
+  <link rel="stylesheet" href="checkout.css">
+  <script src="checkout.js" defer></script>
+</head>
+<body>
+  <header class="checkout-header"><a href="../kyraastyle.com/index.html" class="brand"><img src="logo.png" alt="Kyraa Style"></a><a href="cart.html" class="back-link">← Return to bag</a></header>
+  <main class="checkout-main">
+    <section class="checkout-content">
+      <nav class="checkout-steps" aria-label="Checkout progress"><span class="is-done">01 Bag</span><i></i><span class="is-current">02 Delivery</span><i></i><span>03 Payment</span></nav>
+      <p class="eyebrow">ONE LAST DETAIL</p><h1>Where should we deliver your order?</h1><p class="intro">Add a delivery address and we will confirm the earliest available delivery date.</p>
+      <form id="delivery-form" class="delivery-form">
+        <div class="form-row"><label>Full name<input name="name" autocomplete="name" placeholder="Your full name" required></label><label>Mobile number<input name="phone" autocomplete="tel" inputmode="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required></label></div>
+        <label>Address<input name="address" autocomplete="street-address" placeholder="House number, street and area" required></label>
+        <div class="form-row three"><label>City<input name="city" autocomplete="address-level2" placeholder="City" required></label><label>State<input name="state" autocomplete="address-level1" placeholder="State" required></label><label>Pincode<input name="pincode" autocomplete="postal-code" inputmode="numeric" placeholder="Pincode" pattern="[0-9]{6}" required></label></div>
+        <label class="check-label"><input type="checkbox" name="default"> Save as my preferred delivery address</label>
+        <button type="submit">Save delivery address <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="privacy-note">Your details are used only to deliver this order and share order updates.</p>
+    </section>
+    <aside class="order-card"><p class="eyebrow">ORDER SUMMARY</p><h2 id="order-items">Your order</h2><div id="order-lines" class="order-lines"></div><div class="order-total"><span>Total</span><strong id="order-total">₹0</strong></div><p class="secure">✦ Secure checkout · Complimentary shipping above ₹2,999</p></aside>
+  </main>
+  <div class="toast" id="checkout-toast" role="status" aria-live="polite"></div>
+</body>
+</html>
