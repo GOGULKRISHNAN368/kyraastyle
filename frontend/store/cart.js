@@ -68,9 +68,11 @@
     if (button.dataset.action === 'remove') bag.splice(index, 1);
     saveBag(bag); render();
   });
-  document.getElementById('recommendations').addEventListener('click', (event) => {
+  document.getElementById('recommendations').addEventListener('click', async (event) => {
     const button = event.target.closest('button[data-product]');
     if (!button) return;
+    const customer = await window.KyraaCustomerAuth?.requireLogin();
+    if (!customer) return;
     const productName = button.dataset.product;
     const product = fallbackProducts[productName];
     if (!product) return;

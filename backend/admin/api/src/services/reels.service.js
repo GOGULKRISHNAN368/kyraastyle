@@ -25,7 +25,7 @@ function asReel(reel) {
 export async function listReels() {
   const reels = await Reel.find({ isActive: { $ne: false } }).sort({ createdAt: -1 }).lean();
   const productIds = [...new Set(reels.map((item) => item.productId).filter(Boolean).map(String))];
-  const products = productIds.length ? await Product.find({ _id: { $in: productIds } }).select('name category').lean() : [];
+  const products = productIds.length ? await Product.find({ _id: { $in: productIds }, mergedInto: { $exists: false } }).select('name category').lean() : [];
   const productMap = new Map(products.map((product) => [String(product._id), product]));
   return reels.map((item) => {
     const product = item.productId ? productMap.get(String(item.productId)) : null;
@@ -47,7 +47,7 @@ export async function createReel(input) {
   let product = null;
   if (input.productId) {
     if (!mongoose.isValidObjectId(input.productId)) throw new ReelError('Choose a valid dress.');
-    product = await Product.findById(input.productId).select('name category').lean();
+    product = await Product.findOne({ _id: input.productId, mergedInto: { $exists: false } }).select('name category').lean();
     if (!product) throw new ReelError('The selected dress could not be found.', 404);
     if (product.category !== input.category) throw new ReelError('Choose a dress from the selected category.');
   }

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fcf7f2">
+  <title>Shop | Kryaa Style</title>
+  <link rel="preconnect" href="https://res.cloudinary.com">
+  <link rel="stylesheet" href="shop.css">
+  <link rel="stylesheet" href="shop-flow.css?v=6">
+  <link rel="stylesheet" href="mobile-menu.css?v=1"><link rel="stylesheet" href="product-image-fit.css?v=2">
+  <script src="shop-mobile-menu.js?v=2" defer></script>
+  <script src="shop-menu.js?v=4" defer></script>
+  <script src="shop-auth.js?v=2" defer></script>
+  <script src="shop-bag.js?v=1" defer></script>
+  <script src="shop-runtime.js?v=9" defer></script>
+  <script src="product-images.js?v=1" defer></script>
+  <script src="shop.js?v=3" defer></script>
+</head>
+<body>
+  <header class="shop-header">
+    <a class="shop-brand" href="../kyraastyle.com/index.html" aria-label="Kryaa Style home">KYRAA<span>STYLE</span></a>
+    <nav class="shop-primary-nav" aria-label="Main navigation">
+      <div class="shop-menu" data-shop-menu>
+        <button class="shop-menu__trigger" type="button" aria-haspopup="menu" aria-expanded="false">
+          Shop <span class="shop-menu__chevron" aria-hidden="true"></span>
+        </button>
+        <div class="shop-menu__panel" role="menu" hidden></div>
+      </div>
+      <a href="../kyraastyle.com/index.html#collections">Collections</a>
+    </nav>
+    <a class="shop-header__bag" href="#shop-bag" data-shop-bag-trigger aria-label="Shopping bag">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
+      <span class="shop-header__bag-count" data-shop-bag-count hidden>0</span>
+    </a>
+  </header>
+
+  <main class="shop-page">
+    <section class="shop-heading" aria-labelledby="shop-title">
+      <p class="shop-eyebrow">KYRAA STYLE</p>
+      <h1 id="shop-title">ALL</h1>
+    </section>
+
+    <section class="shop-sticky-controls" aria-label="Shop controls">
+      <div class="shop-tab-and-tools">
+        <nav class="shop-tabs" id="shop-tabs" role="tablist" aria-label="Product categories">
+          <span class="shop-loading">Loading collections…</span>
+        </nav>
+        <div class="shop-tools">
+          <label class="shop-sort">Sort by
+            <select id="shop-sort" aria-label="Sort products">
+              <option value="newest">Newest</option>
+              <option value="price-low">Price low to high</option>
+              <option value="price-high">Price high to low</option>
+            </select>
+          </label>
+          <button class="shop-filter-trigger" id="shop-filter-open" type="button" aria-haspopup="dialog">
+            Filter <span class="shop-filter-count" id="shop-filter-count" hidden>0</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="shop-results-line">
+      <p id="shop-results-count" aria-live="polite">Loading styles…</p>
+    </div>
+    <section class="shop-grid" id="shop-grid" aria-label="Shop products" aria-live="polite"></section>
+    <p class="shop-error" id="shop-error" role="status" hidden></p>
+  </main>
+
+  <dialog class="shop-filter-dialog" id="shop-filter-dialog" aria-labelledby="shop-filter-title">
+    <form id="shop-filter-form" method="dialog">
+      <div class="shop-filter-dialog__heading">
+        <h2 id="shop-filter-title">Filter products</h2>
+        <button class="shop-icon-button" value="cancel" aria-label="Close filters">×</button>
+      </div>
+      <fieldset class="shop-price-range">
+        <legend>Price range</legend>
+        <label>Minimum price <input id="shop-price-min" type="number" min="0" inputmode="numeric" placeholder="₹0"></label>
+        <label>Maximum price <input id="shop-price-max" type="number" min="0" inputmode="numeric" placeholder="No limit"></label>
+      </fieldset>
+      <label class="shop-availability"><input id="shop-in-stock" type="checkbox"> In stock</label>
+      <div class="shop-filter-actions">
+        <button class="shop-clear-button" id="shop-filter-clear" type="button">Clear</button>
+        <button class="shop-apply-button" id="shop-filter-apply" type="button">Apply filters</button>
+      </div>
+    </form>
+  </dialog>
+  <div class="shop-toast" id="shop-toast" role="status" aria-live="polite"></div>
+</body>
+</html>

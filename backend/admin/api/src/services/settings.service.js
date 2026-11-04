@@ -1,7 +1,7 @@
 import Settings from '../models/Settings.js';
 
 export const DEFAULT_PRODUCT_CATEGORIES = [
-  'Kurta Sets', 'Short Tops', 'Salwar Suits', 'Unstitched', 'Other',
+  'Store', 'Kurta Sets', 'Short Tops', 'Salwar Suits', 'Unstitched', 'Other',
 ];
 
 export async function getProductCategories() {
@@ -17,7 +17,12 @@ export async function getProductCategories() {
   const categories = Array.isArray(settings?.categories)
     ? settings.categories.filter((category) => typeof category === 'string' && category.trim())
     : [];
-  if (categories.length) return [...new Set(categories.map((category) => category.trim()))];
+  if (categories.length) {
+    const unique = [...new Set(categories.map((category) => category.trim()))];
+    // "Store" is the neutral default. It lets an owner publish a dress without
+    // having to classify it into a special collection first.
+    return unique.includes('Store') ? unique : ['Store', ...unique];
+  }
   const initialized = await Settings.findByIdAndUpdate(
     'productCategories',
     { $set: { categories: DEFAULT_PRODUCT_CATEGORIES } },

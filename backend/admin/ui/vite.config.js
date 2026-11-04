@@ -9,6 +9,7 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       '/admin-api': { target: 'http://127.0.0.1:4000', changeOrigin: false },
+      '/api/admin': { target: 'http://127.0.0.1:4000', changeOrigin: false },
     },
   },
 });

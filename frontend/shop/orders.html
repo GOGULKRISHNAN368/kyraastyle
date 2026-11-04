@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#fcf7f2"><title>My Orders | Kryaa Style</title><script>document.write('<base href="'+(location.pathname.startsWith('/frontend/shop/')?'/frontend/shop/':'/shop/')+'">')</script><link rel="preconnect" href="https://res.cloudinary.com"><link rel="stylesheet" href="shop.css"><link rel="stylesheet" href="shop-flow.css?v=6"><link rel="stylesheet" href="../css/orders.css?v=1"><link rel="stylesheet" href="mobile-menu.css?v=1"><link rel="stylesheet" href="product-image-fit.css?v=2"><script src="shop-mobile-menu.js?v=1" defer></script><script src="shop-auth.js" defer></script><script src="shop-bag.js" defer></script><script src="shop-runtime.js?v=9" defer></script><script src="product-images.js?v=1" defer></script><script src="orders.js?v=2" defer></script></head>
+<body><header class="shop-header"><a class="shop-brand" href="index.html" aria-label="Kryaa Style home">KYRAA<span>STYLE</span></a><nav class="shop-primary-nav" aria-label="Main navigation"><a href="index.html">Continue shopping</a></nav><a class="shop-header__bag" href="cart.html" data-shop-bag-trigger aria-label="Shopping bag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg><span class="shop-header__bag-count" data-shop-bag-count hidden>0</span></a></header>
+<main class="orders-page">
+  <section class="orders-panel" id="orders-list-view" hidden><header class="orders-panel-heading"><a class="orders-back" href="index.html" aria-label="Back to shopping">←</a><h1>My Orders</h1></header><div class="orders-content" id="orders-content" aria-live="polite"></div></section>
+  <section class="order-detail-panel" id="order-detail-view" hidden>
+    <header class="orders-panel-heading"><a class="orders-back" href="orders.html" aria-label="Back to My Orders">←</a><h1>Order Details</h1></header>
+    <div class="order-detail-content" id="order-detail-content" aria-live="polite"></div>
+  </section>
+  <dialog class="cancel-order-dialog" id="cancel-dialog" aria-labelledby="cancel-title"><form method="dialog"><h2 id="cancel-title">Cancel this order?</h2><p>The order will be cancelled and the items returned to stock.</p><div class="cancel-dialog-actions"><button class="cancel-keep" value="keep">Keep order</button><button class="cancel-confirm" id="confirm-cancel" type="button">Yes, cancel</button></div></form></dialog>
+</main>
+</body></html>

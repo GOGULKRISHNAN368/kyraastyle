@@ -1,0 +1,13 @@
+{
+  "requireLoginForProduct": false,
+  "authImagePublicId": "White_Kurti_4",
+  "authBrandLine": "Made for the moments that matter.",
+  "authNote": "No spam. Only style updates.",
+  "pincodeMessage": "We’ll confirm delivery availability for this pincode.",
+  "trust": {
+    "freeShipping": { "enabled": false, "text": "" },
+    "returns": { "enabled": false, "text": "" },
+    "cashOnDelivery": { "enabled": false, "text": "" },
+    "assuredQuality": { "enabled": false, "text": "" }
+  }
+}

@@ -19,6 +19,9 @@ const dressDetailsSchema = new mongoose.Schema({
   isNewArrival: { type: Boolean, default: false },
   isBestSeller: { type: Boolean, default: false },
   isCuratedLook: { type: Boolean, default: false },
+  isEditorsPick: { type: Boolean, default: false },
+  isOccasionPick: { type: Boolean, default: false },
+  isLuxeCollection: { type: Boolean, default: false },
 }, {
   collection: 'admin_dress_details',
   timestamps: true,

@@ -1,0 +1,15 @@
+/* Full-viewport desktop delivery checkout. */
+@media (min-width:801px) {
+  body { min-height:100vh; }
+  .checkout-main {
+    width:100%;
+    max-width:none;
+    min-height:calc(100vh - 92px);
+    grid-template-columns:minmax(0,1.5fr) minmax(360px,.62fr);
+    gap:clamp(70px,11vw,240px);
+    margin:0;
+    padding:64px clamp(48px,8vw,150px) 92px;
+  }
+  .checkout-content { max-width:840px; }
+  .order-card { position:sticky; top:28px; min-height:280px; padding:30px; }
+}

@@ -23,7 +23,9 @@ const productSchema = new mongoose.Schema({
   price: { type: Number, min: 0 },
   link: String,
   isActive: { type: Boolean, default: true },
-}, { timestamps: true, collection: 'products' });
+  slug: String,
+  mergedInto: mongoose.Schema.Types.ObjectId,
+}, { timestamps: true, collection: 'products', autoIndex: false });
 const Product = mongoose.models.Product || mongoose.model('Product', productSchema);
 
 function slug(value) {
@@ -72,6 +74,8 @@ async function listFolderImages(folder) {
 async function syncDressImages(assets) {
   let synced = 0;
   for (const [position, asset] of assets.entries()) {
+    const existing = await Product.findOne({ cloudinaryId: asset.public_id }).select('slug mergedInto').lean();
+    if (existing?.mergedInto || existing?.slug) continue;
     const name = nameFromAsset(asset);
     await Product.updateOne(
       { cloudinaryId: asset.public_id },
@@ -91,7 +95,7 @@ async function syncDressImages(assets) {
           alt: name,
         },
       },
-      { upsert: true, runValidators: true },
+      { upsert: !existing, runValidators: true },
     );
     synced += 1;
   }

@@ -6,9 +6,11 @@
   <meta name="theme-color" content="#fff">
   <link rel="icon" type="image/png" href="">
   <title>Shop the Collection | Kyraa Style</title>
-  <link rel="stylesheet" href="category-page.css?v=7">
+  <link rel="stylesheet" href="category-page.css?v=8">
   <link rel="stylesheet" href="../storefront-sync.css">
-  <script src="category-page.js?v=6" defer></script>
+  <script src="../customer-auth.js" defer></script>
+  <script src="../shop/shop-menu.js?v=3" defer></script>
+  <script src="category-page.js?v=7" defer></script>
   <script src="../storefront-sync.js" defer></script>
 </head>
 <body>
@@ -61,30 +63,7 @@
     <div class="catalog-layout">
       <aside class="filter-panel" id="filter-panel" aria-label="Product filters">
         <div class="filter-heading"><h2>Filters</h2><button type="button" id="clear-filters">Clear all</button></div>
-        <details open>
-          <summary>Category</summary>
-          <a class="filter-link" href="category.html?category=chudi">Chudi</a>
-          <a class="filter-link" href="category.html?category=short-tops">Short Tops</a>
-          <a class="filter-link" href="category.html?category=full-frocks">Full Frocks</a>
-          <a class="filter-link" href="category.html?category=kurti-sets">Kurti Sets</a>
-          <a class="filter-link" href="category.html?category=sarees">Sarees</a>
-          <a class="filter-link" href="category.html?category=salwar-suits">Salwar Suits</a>
-          <a class="filter-link" href="category.html?category=anarkali-suits">Anarkali Suits</a>
-        </details>
-        <details open>
-          <summary>Occasion</summary>
-          <label><input type="checkbox" name="occasion" value="festive"> Festive</label>
-          <label><input type="checkbox" name="occasion" value="celebration"> Celebration</label>
-          <label><input type="checkbox" name="occasion" value="evening"> Evening</label>
-        </details>
-        <details open>
-          <summary>Colour</summary>
-          <label><input type="checkbox" name="color" value="red"> Red &amp; pink</label>
-          <label><input type="checkbox" name="color" value="green"> Green &amp; teal</label>
-          <label><input type="checkbox" name="color" value="blue"> Blue</label>
-          <label><input type="checkbox" name="color" value="light"> Light neutrals</label>
-          <label><input type="checkbox" name="color" value="other"> Other colours</label>
-        </details>
+        <div class="filter-groups" id="filter-groups"></div>
       </aside>
 
       <section class="results-area" aria-label="Collection products">

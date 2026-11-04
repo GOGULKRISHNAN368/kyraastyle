@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fcf7f2">
+  <title>Product | Kryaa Style</title>
+  <link rel="preconnect" href="https://res.cloudinary.com">
+  <link rel="stylesheet" href="shop.css">
+  <link rel="stylesheet" href="shop-flow.css?v=6">
+  <link rel="stylesheet" href="product-page.css?v=3">
+  <link rel="stylesheet" href="mobile-menu.css?v=1"><link rel="stylesheet" href="product-image-fit.css?v=2">
+  <script src="shop-mobile-menu.js?v=1" defer></script>
+  <script src="shop-menu.js?v=3" defer></script>
+  <script src="shop-auth.js?v=1" defer></script>
+  <script src="shop-bag.js?v=1" defer></script>
+  <script src="shop-runtime.js?v=9" defer></script>
+  <script src="product-images.js?v=1" defer></script>
+  <script src="product.js?v=5" defer></script>
+</head>
+<body>
+  <header class="shop-header">
+    <a class="shop-brand" href="../kyraastyle.com/index.html" aria-label="Kryaa Style home">KYRAA<span>STYLE</span></a>
+    <nav class="shop-primary-nav" aria-label="Main navigation">
+      <div class="shop-menu" data-shop-menu>
+        <button class="shop-menu__trigger" type="button" aria-haspopup="menu" aria-expanded="false">Shop <span class="shop-menu__chevron" aria-hidden="true"></span></button>
+        <div class="shop-menu__panel" role="menu" hidden></div>
+      </div>
+      <a href="index.html">All products</a>
+    </nav>
+    <a class="shop-header__bag" href="#shop-bag" data-shop-bag-trigger aria-label="Shopping bag">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
+      <span class="shop-header__bag-count" data-shop-bag-count hidden>0</span>
+    </a>
+  </header>
+  <main class="product-page" id="product-page">
+    <nav class="product-breadcrumbs" aria-label="Breadcrumb">
+      <a href="../kyraastyle.com/index.html">Home</a><span aria-hidden="true">/</span>
+      <a id="product-breadcrumb-category" href="index.html"></a><span aria-hidden="true">/</span><strong id="product-breadcrumb-name"></strong>
+    </nav>
+    <section class="product-loading" id="product-loading" aria-label="Loading product" aria-busy="true">
+      <div class="product-loading__image"></div><div class="product-loading__copy"><i></i><i></i><i></i><i></i></div>
+    </section>
+    <section class="product-error-panel" id="product-error" role="status" hidden>
+      <h1 id="product-error-title">Product not found</h1>
+      <p id="product-error-message"></p>
+      <button id="product-retry" type="button" hidden>Try again</button>
+      <a href="index.html">Back to shop</a>
+    </section>
+    <section class="product-layout" id="product-content" hidden>
+      <div class="product-gallery" aria-label="Product images">
+        <div class="product-thumbnails" id="product-thumbnails" role="list"></div>
+        <div class="product-main-image-wrap" id="product-main-image-wrap" tabindex="0" aria-label="Product photo gallery">
+          <div class="product-gallery-track" id="product-gallery-track"></div>
+          <div class="product-image-badges" id="product-image-badges"></div>
+          <button class="product-image-arrow product-image-arrow--prev" id="product-image-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+          <button class="product-image-arrow product-image-arrow--next" id="product-image-next" type="button" aria-label="Next image">&rsaquo;</button>
+          <p class="product-gallery-counter" id="product-gallery-counter" aria-live="polite"></p>
+          <div class="product-gallery-dots" id="product-gallery-dots" aria-label="Choose product photo"></div>
+        </div>
+      </div>
+      <section class="product-info" aria-labelledby="product-title">
+        <h1 id="product-title"></h1>
+        <p class="product-price-row"><strong class="product-current-price" id="product-price" hidden></strong><del class="product-mrp" id="product-mrp" hidden></del><span class="product-discount" id="product-discount" hidden></span></p>
+        <div class="product-size-block" id="product-size-block" hidden>
+          <p class="product-size-label"><span>Select size</span><a id="product-size-guide" href="#" hidden>Size guide</a></p>
+          <div class="product-size-options" id="product-size-options" role="group" aria-label="Select size"></div>
+          <p class="product-size-error" id="product-size-error" role="status" hidden></p>
+        </div>
+        <p class="product-stock-note" id="product-stock-note" aria-live="polite"></p>
+        <div class="product-actions">
+          <button class="product-action" id="product-add-button" type="button">Add to bag</button>
+          <button class="product-action product-action--primary" id="product-buy-button" type="button">Buy now</button>
+        </div>
+        <details class="product-details" id="product-details" hidden>
+          <summary>Product details</summary>
+          <div class="product-details__body" id="product-details-body"></div>
+        </details>
+      </section>
+    </section>
+    <section class="product-similar" id="product-similar" hidden>
+      <h2>Similar products</h2>
+      <div class="product-similar-grid" id="product-similar-grid"></div>
+    </section>
+  </main>
+  <dialog class="product-lightbox" id="product-lightbox" aria-label="Product image viewer">
+    <button class="product-lightbox-close" id="product-lightbox-close" type="button" aria-label="Close image">&times;</button>
+    <button class="product-lightbox-arrow product-lightbox-arrow--prev" id="product-lightbox-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+    <img id="product-lightbox-image" alt="">
+    <button class="product-lightbox-arrow product-lightbox-arrow--next" id="product-lightbox-next" type="button" aria-label="Next image">&rsaquo;</button>
+    <p id="product-lightbox-counter" aria-live="polite"></p>
+  </dialog>
+  <div class="shop-toast" id="product-toast" role="status" aria-live="polite"></div>
+</body>
+</html>

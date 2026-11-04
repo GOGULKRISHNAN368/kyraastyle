@@ -2,14 +2,18 @@ import { env } from './env.js';
 
 export function getCloudinaryName() {
   const match = /^cloudinary:\/\/[^@]+@([^/?#]+)/i.exec(env.cloudinaryUrl || '');
-  if (!match) throw new Error('CLOUDINARY_URL is not configured correctly');
-  return match[1];
+  const cloudName = match?.[1] || env.cloudinaryCloudName;
+  if (!cloudName) throw new Error('Cloudinary is not configured. Set CLOUDINARY_URL or CLOUDINARY_CLOUD_NAME.');
+  return cloudName;
 }
 
 export function getCloudinaryCredentials() {
   const match = /^cloudinary:\/\/([^:]+):([^@]+)@([^/?#]+)/i.exec(env.cloudinaryUrl || '');
-  if (!match) throw new Error('CLOUDINARY_URL is not configured correctly');
-  return { apiKey: decodeURIComponent(match[1]), apiSecret: decodeURIComponent(match[2]), cloudName: match[3] };
+  if (match) return { apiKey: decodeURIComponent(match[1]), apiSecret: decodeURIComponent(match[2]), cloudName: match[3] };
+  if (env.cloudinaryApiKey && env.cloudinaryApiSecret && env.cloudinaryCloudName) {
+    return { apiKey: env.cloudinaryApiKey, apiSecret: env.cloudinaryApiSecret, cloudName: env.cloudinaryCloudName };
+  }
+  throw new Error('Cloudinary is not configured. Set CLOUDINARY_URL or the CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET, and CLOUDINARY_CLOUD_NAME values.');
 }
 
 export function buildProductImageUrl(cloudinaryId, width = 800) {

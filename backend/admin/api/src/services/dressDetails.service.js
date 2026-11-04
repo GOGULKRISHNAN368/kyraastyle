@@ -15,6 +15,9 @@ export function emptyDressDetails() {
     isNewArrival: false,
     isBestSeller: false,
     isCuratedLook: false,
+    isEditorsPick: false,
+    isOccasionPick: false,
+    isLuxeCollection: false,
   };
 }
 
@@ -27,6 +30,9 @@ function publicDetails(document) {
     isNewArrival: Boolean(document?.isNewArrival),
     isBestSeller: Boolean(document?.isBestSeller),
     isCuratedLook: Boolean(document?.isCuratedLook),
+    isEditorsPick: Boolean(document?.isEditorsPick),
+    isOccasionPick: Boolean(document?.isOccasionPick),
+    isLuxeCollection: Boolean(document?.isLuxeCollection),
   };
 }
 
@@ -38,6 +44,9 @@ export function validateDressDetails(input, existing = emptyDressDetails()) {
     isNewArrival: Boolean(existing.isNewArrival),
     isBestSeller: Boolean(existing.isBestSeller),
     isCuratedLook: Boolean(existing.isCuratedLook),
+    isEditorsPick: Boolean(existing.isEditorsPick),
+    isOccasionPick: Boolean(existing.isOccasionPick),
+    isLuxeCollection: Boolean(existing.isLuxeCollection),
   };
   if (Object.hasOwn(input, 'oldPrice')) {
     if (input.oldPrice === null || input.oldPrice === '') result.oldPrice = null;
@@ -74,7 +83,7 @@ export function validateDressDetails(input, existing = emptyDressDetails()) {
       return { cloudinaryId: image.cloudinaryId.trim(), width, height };
     });
   }
-  for (const field of ['isNewArrival', 'isBestSeller', 'isCuratedLook']) {
+  for (const field of ['isNewArrival', 'isBestSeller', 'isCuratedLook', 'isEditorsPick', 'isOccasionPick', 'isLuxeCollection']) {
     if (Object.hasOwn(input, field)) {
       if (typeof input[field] !== 'boolean') throw new DressDetailsError(`${field} must be true or false.`);
       result[field] = input[field];

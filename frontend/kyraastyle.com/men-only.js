@@ -3,28 +3,28 @@
 
   const newArrivalImages = [
     'https://res.cloudinary.com/l8xwk9bz/image/upload/f_auto,q_auto:best,c_limit,w_800/Black_Kurti_3',
-    '../images/real-products/IceBlue_Kurti_1.webp',
-    '../images/real-products/Green_Kurti_1.webp',
-    '../images/real-products/Salwar_Suits_1.webp',
-    '../images/real-products/White_Kurti_1_DNG.webp',
-    '../image/newarrival6.jpg',
-    '../image/newarrival7.jpg',
-    '../image/newarrival8.jpg',
-    '../image/newarrival9.jpg',
-    '../image/newarrival10.jpg'
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546226/kryaastyle/template/095590220b7e0493-webp.webp',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546228/kryaastyle/template/d714bef591f67981-webp.webp',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546229/kryaastyle/template/951e9ab8b767d017-webp.webp',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546233/kryaastyle/template/0dd03da69898030d-webp.webp',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546234/kryaastyle/template/d5fae943b6469e5f-jpg.jpg',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546234/kryaastyle/template/60c61d28ad0a93ff-jpg.jpg',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546235/kryaastyle/template/e78cf56cb22cf750-jpg.jpg',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546236/kryaastyle/template/341bf8c725a58da6-jpg.jpg',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546237/kryaastyle/template/b9c77c774a545747-jpg.jpg'
   ];
 
   const newArrivalHoverImages = [
-    '../images/real-products/Unstiched_Kurti_Material_Black.webp',
-    '../images/real-products/Unstiched_Kurti_Material_IceBlue.webp',
-    '../images/real-products/Unstiched_Kurti_Material_Green.webp',
-    '../images/real-products/Unstiched_Kurti_Material_Pink.webp',
-    '../images/real-products/Unstiched_Kurti_Material_White.webp',
-    '../image/newarrival6-cloth.jpg',
-    '../image/newarrival7-cloth.jpg',
-    '../image/newarrival8-cloth.jpg',
-    '../image/newarrival9-cloth.jpg',
-    '../image/newarrival10-cloth.jpg'
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546238/kryaastyle/template/122f34d99567e2c6-webp.webp',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546239/kryaastyle/template/322429340e19209b-webp.webp',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546240/kryaastyle/template/cca7ad155d84ce98-webp.webp',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546241/kryaastyle/template/a37559c92bcff66c-webp.webp',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546242/kryaastyle/template/b3b22c51c13f5f1e-webp.webp',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546243/kryaastyle/template/89d53561818773bd-jpg.jpg',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546244/kryaastyle/template/74558baa731f8ed9-jpg.jpg',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546245/kryaastyle/template/8964f6da566817dc-jpg.jpg',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546246/kryaastyle/template/2a01afb9b3cde748-jpg.jpg',
+    'https://res.cloudinary.com/r3jgeild/image/upload/v1793546247/kryaastyle/template/eb7244ed86e0e58e-jpg.jpg'
   ];
 
   const newArrivalNames = [
@@ -38,57 +38,59 @@
   const shopByOccasionCards = [
     {
       title: 'Wedding',
-      image: '../images/Wedding.png',
+      image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546250/kryaastyle/template/93671f2e06cdf45e-png.png',
       href: '../store/category.html?edit=wedding'
     },
     {
       title: 'Sangeet',
-      image: '../images/sangeet.png',
+      image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546252/kryaastyle/template/f1c35f8bfb0fe382-png.png',
       href: '../store/category.html?edit=sangeet'
     },
     {
       title: 'Reception & Cocktail',
-      image: '../images/Reception.png',
+      image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546254/kryaastyle/template/8decffbdfb67df9f-png.png',
       href: '../store/category.html?edit=reception'
     },
     {
       title: 'Festive',
-      image: '../images/festival.png',
+      image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546256/kryaastyle/template/97839346ce145ca9-png.png',
       href: '../store/category.html?edit=festival'
     },
     {
       title: 'Casuals',
-      image: '../images/real-products/Casuals_Short_Tops_3.webp',
+      image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546258/kryaastyle/template/8dc4145a121680aa-webp.webp',
       href: '../store/category.html?edit=casual'
     },
     {
       title: 'Office Wear',
-      image: '../images/real-products/Office_Wear_White_Kurti_3.webp',
+      image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546260/kryaastyle/template/04c5aadcd05f39d7-webp.webp',
       href: '../store/category.html?edit=office-wear'
     }
   ];
 
   const curatedTrendingLooks = [
-    { title: 'Ivory Garden Kurta Set', caption: 'Soft floral embroidery and a flowing dupatta bring a graceful touch to every day.', image: '../images/real-products/Curated_Ivory_Floral_Set.webp', href: '../store/category.html?category=salwar-suits' },
-    { title: 'Midnight Paisley Suit Set', caption: 'Rich embroidery gives this deep charcoal ensemble a striking, refined finish.', image: '../images/real-products/Curated_Midnight_Paisley_Black_Kurti_5.webp', href: '../store/category.html?category=chudi' },
-    { title: 'Paisley Tunic & Denim', caption: 'An easy sleeveless silhouette pairs with relaxed denim for a confident daytime look.', image: '../images/real-products/Curated_Modern_Kurta_Short_Tops_2.webp', href: '../store/category.html?category=short-tops' },
-    { title: 'Sapphire Embroidered Gown', caption: 'A midnight blue statement with delicate embroidery and a fluid finish.', image: '../image/newarrival4.jpg', href: '../store/category.html?category=full-frocks' },
-    { title: 'Golden Hour Celebration Suit', caption: 'A warm golden look designed for festive gatherings and special moments.', image: '../image/newarrival5.jpg', href: '../store/category.html?category=salwar-suits' },
-    { title: 'Teal Blossom Anarkali', caption: 'A teal embroidered silhouette with soft movement and timeless detail.', image: '../image/newarrival6.jpg', href: '../store/category.html?category=anarkali-suits' },
-    { title: 'Lavender Dream Gown', caption: 'Light lavender layers and delicate embellishment create an ethereal finish.', image: '../image/newarrival7.jpg', href: '../store/category.html?category=full-frocks' },
-    { title: 'Coral Garden Occasion Look', caption: 'A fresh coral palette with floral detailing for daytime celebrations.', image: '../image/newarrival8.jpg', href: '../store/category.html?category=full-frocks' },
-    { title: 'Ivory Lumière Embroidered Look', caption: 'Soft ivory embroidery brings understated elegance to occasion dressing.', image: '../image/newarrival9.jpg', href: '../store/category.html?category=kurti-sets' },
-    { title: 'Plum Royale Anarkali', caption: 'A rich plum tone and intricate finish make this a striking celebration look.', image: '../image/newarrival10.jpg', href: '../store/category.html?category=anarkali-suits' }
+    { title: 'Ivory Garden Kurta Set', caption: 'Soft floral embroidery and a flowing dupatta bring a graceful touch to every day.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546262/kryaastyle/template/b108db9dd7e6a355-webp.webp', href: '../store/category.html?category=salwar-suits' },
+    { title: 'Midnight Paisley Suit Set', caption: 'Rich embroidery gives this deep charcoal ensemble a striking, refined finish.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546265/kryaastyle/template/8f2261c0b93fe7a2-webp.webp', href: '../store/category.html?category=chudi' },
+    { title: 'Paisley Tunic & Denim', caption: 'An easy sleeveless silhouette pairs with relaxed denim for a confident daytime look.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546187/kryaastyle/template/0a326d52a967adff-webp.webp', href: '../store/category.html?category=short-tops' },
+    { title: 'Sapphire Embroidered Gown', caption: 'A midnight blue statement with delicate embroidery and a fluid finish.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546266/kryaastyle/template/096075c9b337b5c6-jpg.jpg', href: '../store/category.html?category=full-frocks' },
+    { title: 'Golden Hour Celebration Suit', caption: 'A warm golden look designed for festive gatherings and special moments.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546267/kryaastyle/template/f27c6d604da31f97-jpg.jpg', href: '../store/category.html?category=salwar-suits' },
+    { title: 'Teal Blossom Anarkali', caption: 'A teal embroidered silhouette with soft movement and timeless detail.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546234/kryaastyle/template/d5fae943b6469e5f-jpg.jpg', href: '../store/category.html?category=anarkali-suits' },
+    { title: 'Lavender Dream Gown', caption: 'Light lavender layers and delicate embellishment create an ethereal finish.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546234/kryaastyle/template/60c61d28ad0a93ff-jpg.jpg', href: '../store/category.html?category=full-frocks' },
+    { title: 'Coral Garden Occasion Look', caption: 'A fresh coral palette with floral detailing for daytime celebrations.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546235/kryaastyle/template/e78cf56cb22cf750-jpg.jpg', href: '../store/category.html?category=full-frocks' },
+    { title: 'Ivory Lumière Embroidered Look', caption: 'Soft ivory embroidery brings understated elegance to occasion dressing.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546236/kryaastyle/template/341bf8c725a58da6-jpg.jpg', href: '../store/category.html?category=kurti-sets' },
+    { title: 'Plum Royale Anarkali', caption: 'A rich plum tone and intricate finish make this a striking celebration look.', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546237/kryaastyle/template/b9c77c774a545747-jpg.jpg', href: '../store/category.html?category=anarkali-suits' }
   ];
 
+  // These are the seven original photographs from the supplied category design.
+  // They are all served from the Kryaa Cloudinary account, not from local assets.
   const shopByCategoryCards = [
-    { title: 'Chudi', image: 'https://res.cloudinary.com/l8xwk9bz/image/upload/f_auto,q_auto:best,c_limit,w_800/Black_Kurti_3', href: '../store/category.html?category=chudi' },
-    { title: 'Short Tops', image: '../images/real-products/Short_Tops_2.webp', href: '../store/category.html?category=short-tops' },
-    { title: 'Full Frocks', image: '../image/category-full-frocks.png', href: '../store/category.html?category=full-frocks' },
-    { title: 'Kurti Sets', image: '../images/real-products/White_Kurti_1.webp', href: '../store/category.html?category=kurti-sets' },
-    { title: 'Sarees', image: '../image/category-sarees.png', href: '../store/category.html?category=sarees' },
-    { title: 'Salwar Suits', image: '../images/real-products/Salwar_Suits_1.webp', href: '../store/category.html?category=salwar-suits' },
-    { title: 'Anarkali Suits', image: '../image/category-anarkali-suits.png', href: '../store/category.html?category=anarkali-suits' }
+    { title: 'Chudi', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546191/kryaastyle/template/6de270b4ec31cf7b-webp.webp', href: '../store/category.html?category=chudi' },
+    { title: 'Short Tops', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546187/kryaastyle/template/0a326d52a967adff-webp.webp', href: '../store/category.html?category=short-tops' },
+    { title: 'Full Frocks', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546271/kryaastyle/template/27e415a5de51dc96-png.png', href: '../store/category.html?category=full-frocks' },
+    { title: 'Kurti Sets', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546196/kryaastyle/template/63018ff3f5d8b0a9-webp.webp', href: '../store/category.html?category=kurti-sets' },
+    { title: 'Sarees', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546274/kryaastyle/template/a9e5ce03f78f3c9a-png.png', href: '../store/category.html?category=sarees' },
+    { title: 'Salwar Suits', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546229/kryaastyle/template/951e9ab8b767d017-webp.webp', href: '../store/category.html?category=salwar-suits' },
+    { title: 'Anarkali Suits', image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546276/kryaastyle/template/d01d56e99bd331b4-png.png', href: '../store/category.html?category=anarkali-suits' }
   ];
 
   // Only photos that originate in frontend/Real_Imgs are switched to Cloudinary.
@@ -147,12 +149,14 @@
 
   const loadRealImagesFromApi = () => {
     const apiBase = window.KYRAA_API_URL || 'http://localhost:3000';
-    fetch(`${apiBase}/api/products`)
+    fetch(`${apiBase}/api/shop/products`)
       .then((response) => {
         if (!response.ok) throw new Error(`Product API returned ${response.status}`);
         return response.json();
       })
-      .then((products) => {
+      .then((payload) => {
+        const products = Array.isArray(payload) ? payload : payload?.data;
+        if (!Array.isArray(products)) throw new Error('Product API returned an invalid response');
         products.forEach((product) => {
           if (realImageIds.has(product.cloudinaryId) && product.imageUrl) {
             cloudinaryImageUrls.set(product.cloudinaryId, product.imageUrl);
@@ -167,15 +171,15 @@
 
 const kryaaLuxeSlides = [
     {
-      image: '../images/real-products/Curated_Modern_Kurta_Short_Tops_2.webp',
+      image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546187/kryaastyle/template/0a326d52a967adff-webp.webp',
       alt: 'Woman wearing a patterned sleeveless top with denim'
     },
     {
-      image: '../images/real-products/Curated_Salwar_Black_Kurti_3.webp',
+      image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546191/kryaastyle/template/6de270b4ec31cf7b-webp.webp',
       alt: 'Woman wearing a dark embroidered kurti set'
     },
     {
-      image: '../images/real-products/Kryaa_Luxe_White_Kurti_1.webp',
+      image: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793546279/kryaastyle/template/41d676293ea2d2b6-webp.webp',
       alt: 'Woman wearing a white floral kurti set'
     }
   ];
@@ -255,6 +259,58 @@ const kryaaLuxeSlides = [
     });
   };
 
+  const setupStorefrontNavigation = () => {
+    if (document.querySelector('.kr-storefront-nav')) return;
+
+    const app = document.getElementById('__next');
+    const main = app?.querySelector('main');
+    if (!app || !main) return;
+
+    app.querySelectorAll(':scope > div > header').forEach((header) => {
+      header.classList.add('kr-legacy-header');
+    });
+
+    const nav = document.createElement('header');
+    nav.className = 'kr-storefront-nav';
+    nav.setAttribute('aria-label', 'Primary navigation');
+    nav.innerHTML = `
+      <a class="kr-storefront-nav__brand" href="index.html" aria-label="Kryaa Style home">
+        <img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546160/kryaastyle/template/674fb82d593b7315-png.png" alt="Kryaa Style">
+      </a>
+      <nav class="kr-storefront-nav__links" aria-label="Shop navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <div class="kr-storefront-shop-menu shop-menu" data-shop-menu>
+          <button class="shop-menu__trigger" type="button" aria-haspopup="menu" aria-expanded="false">
+            Shop <span class="shop-menu__chevron" aria-hidden="true"></span>
+          </button>
+          <div class="shop-menu__panel" role="menu" hidden></div>
+        </div>
+        <a href="#kr-own-style">Collections</a>
+        <a href="#kr-shopper-footer">About</a>
+      </nav>
+      <div class="kr-storefront-nav__actions">
+        <a href="../store/category.html" aria-label="Search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"></circle><path d="m16 16 4.7 4.7"></path></svg>
+        </a>
+        <button type="button" class="kr-home-account-trigger" data-shop-account="true" aria-label="Account" aria-haspopup="menu" aria-expanded="false" aria-controls="shop-account-menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.4"></circle><path d="M4.6 21c.5-4.1 2.9-6.2 7.4-6.2s6.9 2.1 7.4 6.2"></path></svg>
+        </button>
+        <a href="#shop-bag" data-shop-bag-trigger aria-label="Shopping bag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.7 7.8h14.6l-1.1 12H5.8z"></path><path d="M8.7 8V6.6a3.3 3.3 0 0 1 6.6 0V8"></path></svg>
+          <span data-shop-bag-count hidden>0</span>
+        </a>
+      </div>`;
+    main.insertAdjacentElement('beforebegin', nav);
+    if (!document.querySelector('script[data-kyraa-shop-menu]')) {
+      const shopMenuScript = document.createElement('script');
+      shopMenuScript.dataset.kyraaShopMenu = 'true';
+      const shopMenuUrl = new URL('../shop/shop-menu.js', window.location.href);
+      shopMenuUrl.searchParams.set('v', '4');
+      shopMenuScript.src = shopMenuUrl.href;
+      document.head.appendChild(shopMenuScript);
+    }
+  };
+
   const setupHeroCarousel = () => {
     const hero = Array.from(document.querySelectorAll('.slick-slider'))
       .find((slider) => slider.querySelector('img[src*="banner-desktop"]'));
@@ -269,17 +325,17 @@ const kryaaLuxeSlides = [
     secondSlide.setAttribute('aria-hidden', 'true');
     const image = secondSlide.querySelector('img');
     const source = secondSlide.querySelector('source');
-    const imagePath = '../images/Inclusive%20Comfort%20Fashion%20Collection%20(1).png';
+    const imagePath = 'https://res.cloudinary.com/r3jgeild/image/upload/v1793548715/kryaastyle/template/3d7bbbb09be9393f-png.png';
     if (image) {
       image.src = imagePath;
       image.alt = 'Inclusive Comfort Fashion Collection';
       image.removeAttribute('srcset');
       image.removeAttribute('fetchpriority');
     }
-    if (source) source.srcset = '../images/Designed%20for%20Every%20Story.png';
+    if (source) source.srcset = 'https://res.cloudinary.com/r3jgeild/image/upload/v1793548651/kryaastyle/template/82156dc28e695b3c-png.png';
     const link = secondSlide.querySelector('a');
     if (link) {
-      link.href = 'collection/men';
+      link.href = '../store/category.html';
       link.setAttribute('aria-label', 'Shop the Inclusive Comfort Fashion collection');
     }
     track.prepend(secondSlide);
@@ -378,6 +434,17 @@ const kryaaLuxeSlides = [
     style.id = 'new-arrivals-hover-styles';
     style.textContent = `
       .kryaa-new-arrivals-hover-frame { position: relative !important; }
+      .kryaa-new-arrivals-hover-section .slick-slide .overflow-hidden {
+        aspect-ratio: 437 / 524 !important;
+        overflow: hidden !important;
+      }
+      .kryaa-new-arrivals-hover-section .slick-slide .overflow-hidden > img:not(.kryaa-new-arrivals-hover-image) {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+      }
       .kryaa-new-arrivals-hover-section .slick-slide h3 { white-space: nowrap !important; font-size: clamp(12px, 1.1vw, 15px) !important; }
       .kryaa-new-arrivals-hover-image {
         position: absolute !important;
@@ -933,14 +1000,14 @@ const kryaaLuxeSlides = [
       <h2 class="kr-own__heading __className_f37194" id="kr-own-heading">Make your own style</h2>
       <div class="kr-own__collage" aria-label="Kryaa custom style collection">
         <div class="kr-own__tile kr-own__tile--video">
-          <img class="kr-own__poster" src="../images/unstiched_img/img%203.png" alt="Kryaa custom outfit preview" width="566" height="673" loading="lazy" decoding="async">
-          <video class="kr-own__video" muted loop playsinline autoplay preload="auto" poster="../images/unstiched_img/img%203.png" width="566" height="673" aria-label="Kryaa outfit styling video">
+          <img class="kr-own__poster" src="https://res.cloudinary.com/r3jgeild/image/upload/v1793548652/kryaastyle/template/12f58882f486621c-png.png" alt="Kryaa custom outfit preview" width="566" height="673" loading="lazy" decoding="async">
+          <video class="kr-own__video" muted loop playsinline autoplay preload="auto" poster="https://res.cloudinary.com/r3jgeild/image/upload/v1793548652/kryaastyle/template/12f58882f486621c-png.png" width="566" height="673" aria-label="Kryaa outfit styling video">
             <source src="../images/unstiched_img/Kryaa%20video.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="kr-own__tile kr-own__tile--own1"><img src="../images/unstiched_img/img1.png" alt="Kryaa fabric and outfit styling details" width="564" height="401" loading="lazy" decoding="async"></div>
-        <div class="kr-own__tile kr-own__tile--own2"><img src="../images/unstiched_img/img2.png" alt="Kryaa outfit viewed from behind" width="558" height="632" loading="lazy" decoding="async"></div>
-        <div class="kr-own__tile kr-own__tile--own3"><img src="../images/unstiched_img/img%203.png" alt="Kryaa outfit styled for a special occasion" width="566" height="673" loading="lazy" decoding="async"></div>
+        <div class="kr-own__tile kr-own__tile--own1"><img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546280/kryaastyle/template/de51a63477f45b5b-png.png" alt="Kryaa fabric and outfit styling details" width="564" height="401" loading="lazy" decoding="async"></div>
+        <div class="kr-own__tile kr-own__tile--own2"><img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546281/kryaastyle/template/c10d15fb069a294e-png.png" alt="Kryaa outfit viewed from behind" width="558" height="632" loading="lazy" decoding="async"></div>
+        <div class="kr-own__tile kr-own__tile--own3"><img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793548652/kryaastyle/template/12f58882f486621c-png.png" alt="Kryaa outfit styled for a special occasion" width="566" height="673" loading="lazy" decoding="async"></div>
       </div>
       <div class="kr-own__content">
         <p class="kr-own__eyebrow">A LOOK THAT IS YOURS</p>
@@ -972,8 +1039,15 @@ const kryaaLuxeSlides = [
   const setupShopByCategorySection = () => {
     const heading = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, [role="heading"]'))
       .find((item) => item.textContent.replace(/\s+/g, ' ').trim() === 'Shop By Category');
-    const section = heading?.closest('.kryaa-category-section') || heading?.parentElement?.parentElement;
-    if (!section || section.dataset.womenCategoriesReady === 'true') return;
+    let section = heading?.closest('.kryaa-category-section') || heading?.parentElement?.parentElement;
+    if (!section) {
+      section = document.createElement('section');
+      section.className = 'pt-6 lg:pt-12 pb-3 lg:pb-5 space-y-4 lg:space-y-8 wrapperContainer kryaa-category-section';
+      const hero = document.querySelector('.kryaa-hero-carousel') || document.querySelector('main > div');
+      if (hero?.parentElement) hero.parentElement.insertAdjacentElement('afterend', section);
+      else document.querySelector('main')?.prepend(section);
+    }
+    if (section.dataset.womenCategoriesReady === 'true') return;
 
     section.dataset.womenCategoriesReady = 'true';
     section.id = 'shop-by-category';
@@ -989,8 +1063,9 @@ const kryaaLuxeSlides = [
     `;
 
     section.innerHTML = `
-      <div class="flex items-center gap-x-3 lg:gap-x-7 px-4 lg:px-0 justify-center">
-        <h2 class="lg:text-[32px] lg:leading-9 text-xl flex items-center text-azaBlackShade3 __className_f37194 font-normal">Shop By Category</h2>
+      <div class="women-category-heading">
+        <h2>Shop By Category</h2>
+        <div class="women-category-rule" aria-hidden="true"><span></span></div>
       </div>
       <div class="women-category-desktop">${shopByCategoryCards.map(makeCard).join('')}</div>
       <div class="women-category-mobile" aria-label="Women categories">
@@ -1012,8 +1087,52 @@ const kryaaLuxeSlides = [
         .women-category-desktop {
           display: grid;
           grid-template-columns: repeat(7, minmax(0, 1fr));
-          gap: 14px;
-          padding: 0 8px;
+          width: min(1180px, 100%);
+          margin: 0 auto;
+          gap: clamp(12px, 2vw, 28px);
+          padding: 0 24px;
+          box-sizing: border-box;
+        }
+
+        .women-category-heading {
+          width: min(510px, calc(100% - 32px));
+          margin: 0 auto 42px;
+          text-align: center;
+        }
+
+        .women-category-heading h2 {
+          margin: 0;
+          color: #272522;
+          font-family: Georgia, 'Times New Roman', serif;
+          font-size: clamp(24px, 2.3vw, 34px);
+          font-weight: 400;
+          line-height: 1.15;
+        }
+
+        .women-category-rule {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          margin-top: 24px;
+        }
+
+        .women-category-rule::before,
+        .women-category-rule::after {
+          display: block;
+          width: calc(50% - 11px);
+          height: 1px;
+          content: '';
+          background: #d8d2c8;
+        }
+
+        .women-category-rule span {
+          display: block;
+          width: 11px;
+          height: 11px;
+          margin: 0 11px;
+          transform: rotate(45deg);
+          background: #cda24c;
         }
 
         .women-category-card {
@@ -1027,13 +1146,13 @@ const kryaaLuxeSlides = [
 
         .women-category-circle {
           display: block;
-          width: min(160px, 100%);
+          width: min(150px, 100%);
           aspect-ratio: 1;
           overflow: hidden;
-          border: 1px solid #b8b8b8;
+          border: 1px solid #e1ded8;
           border-radius: 999px;
           background: #f7f7f7;
-          box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
+          box-shadow: 0 4px 10px rgb(0 0 0 / 16%);
         }
 
         .women-category-circle img {
@@ -1050,9 +1169,9 @@ const kryaaLuxeSlides = [
         }
 
         .women-category-title {
-          margin-top: 12px;
-          color: #3c4242;
-          font-size: 15px;
+          margin-top: 14px;
+          color: #3e3a37;
+          font-size: 18px;
           line-height: 1.3;
           text-align: center;
         }
@@ -1064,6 +1183,18 @@ const kryaaLuxeSlides = [
         @media screen and (max-width: 768px) {
           .women-category-desktop {
             display: none;
+          }
+
+          .women-category-heading {
+            margin-bottom: 26px;
+          }
+
+          .women-category-heading h2 {
+            font-size: 24px;
+          }
+
+          .women-category-rule {
+            margin-top: 16px;
           }
 
           .women-category-mobile {
@@ -1167,7 +1298,7 @@ const kryaaLuxeSlides = [
     section.innerHTML = `
       <div class="kryaa-luxe-banner">
         <div class="kr-luxe__panel">
-          <img class="kr-luxe__logo" src="../image/logo.png" alt="Kryaa Style" width="50" height="18" decoding="async">
+          <img class="kr-luxe__logo" src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546160/kryaastyle/template/674fb82d593b7315-png.png" alt="Kryaa Style" width="50" height="18" decoding="async">
           <h2 class="kr-luxe__heading __className_f37194">KRYAA STYLE</h2>
           <span class="kr-luxe__divider" aria-hidden="true"></span>
           <p class="kr-luxe__tagline __className_f37194">Elegance curated, luxury redefined</p>
@@ -1344,6 +1475,7 @@ const kryaaLuxeSlides = [
         initials: 'KL',
         followers: '3,084 followers',
         imageFile: 'Ethnic1.avif',
+        imageUrl: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793548771/kryaastyle/template/bbcebf9bc162cc7e-avif.avif',
         alt: 'Ethnic wear look by Kavya Lakshmi',
         title: 'Festive Glow | Ethnic Wear',
         description: 'Comfortable for festive evenings and family functions.',
@@ -1354,6 +1486,7 @@ const kryaaLuxeSlides = [
         initials: 'MS',
         followers: '2,716 followers',
         imageFile: 'Kurta1.avif',
+        imageUrl: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793548772/kryaastyle/template/33c9ba60dc33b8a7-avif.avif',
         alt: 'Kurta set look by Meenakshi Sundaram',
         title: 'Everyday Chic | Kurta Sets',
         description: 'Light, easy outfits for office and casual days.',
@@ -1364,6 +1497,7 @@ const kryaaLuxeSlides = [
         initials: 'TR',
         followers: '4,152 followers',
         imageFile: 'salwar1.avif',
+        imageUrl: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793548773/kryaastyle/template/05a5378673ed3e72-avif.avif',
         alt: 'Salwar suit look by Thenmozhi Rajan',
         title: 'Evening Elegance | Salwar Suits',
         description: 'Statement sets for receptions and festive nights.',
@@ -1374,6 +1508,7 @@ const kryaaLuxeSlides = [
         initials: 'AK',
         followers: '1,978 followers',
         imageFile: 'Saree_Img1.avif',
+        imageUrl: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793548773/kryaastyle/template/cb8eeb4a3b050bd5-avif.avif',
         alt: 'Saree look by Aarthi Karthik',
         title: 'Sparkle in Style | Saree',
         description: 'Rich drapes for weddings, cocktails and evening receptions.',
@@ -1384,6 +1519,7 @@ const kryaaLuxeSlides = [
         initials: 'PD',
         followers: '3,645 followers',
         imageFile: 'top1.avif',
+        imageUrl: 'https://res.cloudinary.com/r3jgeild/image/upload/v1793548774/kryaastyle/template/2503372aed511871-avif.avif',
         alt: 'Casual top look by Priya Dharshini',
         title: 'Chic Tops | Casual Wear',
         description: 'Fresh, easy tops for brunch, college and city days.',
@@ -1436,9 +1572,10 @@ const kryaaLuxeSlides = [
         const category = escapeHtml(post.categoryHref);
         const cardClass = desktop ? 'kr-lookbook__desktop-card' : 'kr-lookbook__post';
         const indexAttribute = desktop ? 'data-desktop-index' : 'data-post-index';
+        const imageUrl = post.imageUrl || ('../images/Insta_Img/' + post.imageFile);
         const image = desktop
-          ? '<a class="kr-lookbook__desktop-image-link" data-desktop-card-link href="#" aria-label="Open ' + title + '"><img data-desktop-image src="../images/Insta_Img/' + escapeHtml(post.imageFile) + '" alt="' + escapeHtml(post.alt) + '"' + loading + '></a>'
-          : '<img class="kr-lookbook__mobile-image" data-lookbook-image src="../images/Insta_Img/' + escapeHtml(post.imageFile) + '" alt="' + escapeHtml(post.alt) + '"' + loading + '>';
+          ? '<a class="kr-lookbook__desktop-image-link" data-desktop-card-link href="#" aria-label="Open ' + title + '"><img data-desktop-image src="' + escapeHtml(imageUrl) + '" alt="' + escapeHtml(post.alt) + '"' + loading + '></a>'
+          : '<img class="kr-lookbook__mobile-image" data-lookbook-image src="' + escapeHtml(imageUrl) + '" alt="' + escapeHtml(post.alt) + '"' + loading + '>';
         const mobileControls = desktop ? '' : '<button type="button" class="kr-lookbook__arrow kr-lookbook__arrow--prev" data-post-action="prev" aria-label="Previous post">' + arrowIcon('prev') + '</button>' +
           '<button type="button" class="kr-lookbook__arrow kr-lookbook__arrow--next" data-post-action="next" aria-label="Next post">' + arrowIcon('next') + '</button>';
         return '<article class="' + cardClass + ' kr-lookbook__ig-card" ' + indexAttribute + '="' + index + '" role="group" aria-roledescription="slide" aria-label="' +
@@ -2111,8 +2248,22 @@ const kryaaLuxeSlides = [
     document.querySelectorAll('h1, h2, h3, h4, h5, h6, [role="heading"]').forEach((heading) => {
       if (heading.textContent.replace(/\s+/g, ' ').trim().toLowerCase() !== 'get insider access') return;
 
-      const section = heading.closest('div[style*="men-desk.jpg"]') || heading.closest('section');
+      const section = heading.closest('div[style*="men-desk.jpg"]') || heading.closest('.wrapperContainer') || heading.closest('section');
       if (section) section.remove();
+    });
+  };
+
+  const removeFooterPromotions = () => {
+    const unwanted = /^(discount\s*coupons?|from\s+our\s+stories)$/i;
+    const candidates = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, [role="heading"], p, span, a, div'))
+      .filter((element) => unwanted.test(element.textContent.replace(/\s+/g, ' ').trim()))
+      .sort((first, second) => first.textContent.length - second.textContent.length);
+
+    candidates.forEach((element) => {
+      const section = element.closest('section, article, [data-section], [class*="section"]')
+        || element.closest('.wrapperContainer')
+        || element.parentElement?.parentElement;
+      if (section && section !== document.querySelector('main') && !section.matches('footer')) section.remove();
     });
   };
 
@@ -2130,8 +2281,8 @@ const kryaaLuxeSlides = [
     section.setAttribute('aria-labelledby', 'kr-updates-signup-heading');
     section.innerHTML = `
       <picture class="kr-updates-signup__media" aria-hidden="true">
-        <source media="(max-width: 767px)" srcset="../image/women-insider-access-banner-mobile.png">
-        <img src="../image/women-insider-access-banner.png" alt="" loading="lazy" decoding="async">
+        <source media="(max-width: 767px)" srcset="https://res.cloudinary.com/r3jgeild/image/upload/v1793546282/kryaastyle/template/2b4b2bc29a9cc707-png.png">
+        <img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546284/kryaastyle/template/9f2777aa197a7df5-png.png" alt="" loading="lazy" decoding="async">
       </picture>
       <div class="kr-updates-signup__content">
         <h2 id="kr-updates-signup-heading" class="kr-updates-signup__title">JOIN WITH US</h2>
@@ -2191,22 +2342,22 @@ const kryaaLuxeSlides = [
       </div>
       <div class="kr-editors-picks__grid">
         <a class="kr-editors-picks__card kr-editors-picks__card--featured" href="../store/category.html?category=chudi">
-          <img src="../images/real-products/Black_Kurti.webp" alt="Woman wearing a black embroidered kurti set" width="900" height="1350" loading="eager">
+          <img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546286/kryaastyle/template/7acbad6ea4443dbd-webp.webp" alt="Woman wearing a black embroidered kurti set" width="900" height="1350" loading="eager">
           <span class="kr-editors-picks__shade"></span>
           <span class="kr-editors-picks__copy"><small>EVERYDAY CLASSIC</small><strong>Black Kurti Elegance</strong><em>Shop kurti sets</em></span>
         </a>
         <a class="kr-editors-picks__card" href="../store/category.html?category=short-tops">
-          <img src="../images/real-products/Short_Tops_2.webp" alt="Woman wearing a dark paisley sleeveless top" width="900" height="1350" loading="lazy">
+          <img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546269/kryaastyle/template/7c6a923fe06942af-webp.webp" alt="Woman wearing a dark paisley sleeveless top" width="900" height="1350" loading="lazy">
           <span class="kr-editors-picks__shade"></span>
           <span class="kr-editors-picks__copy"><small>EASY DAY STYLE</small><strong>Paisley Sleeveless Top</strong><em>Shop short tops</em></span>
         </a>
         <a class="kr-editors-picks__card" href="../store/category.html?category=salwar-suits">
-          <img src="../images/real-products/White_Kurti_1.webp" alt="Woman wearing a white floral kurti set" width="900" height="1350" loading="lazy">
+          <img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546272/kryaastyle/template/f545fab9208931c1-webp.webp" alt="Woman wearing a white floral kurti set" width="900" height="1350" loading="lazy">
           <span class="kr-editors-picks__shade"></span>
           <span class="kr-editors-picks__copy"><small>SOFT FLORAL EDIT</small><strong>Ivory Floral Kurti Set</strong><em>Shop kurti sets</em></span>
         </a>
         <a class="kr-editors-picks__card" href="../store/category.html?category=kurti-sets">
-          <img src="../images/real-products/Green_Kurti_1.webp" alt="Woman wearing a green printed kurti" width="900" height="1350" loading="lazy">
+          <img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546228/kryaastyle/template/d714bef591f67981-webp.webp" alt="Woman wearing a green printed kurti" width="900" height="1350" loading="lazy">
           <span class="kr-editors-picks__shade"></span>
           <span class="kr-editors-picks__copy"><small>FRESH GREEN EDIT</small><strong>Emerald Everyday Kurti</strong><em>Shop kurti sets</em></span>
         </a>
@@ -2215,12 +2366,110 @@ const kryaaLuxeSlides = [
     original.replaceWith(section);
   };
 
+  const setupBestSellersSection = () => {
+    const existing = document.getElementById('kr-best-sellers');
+    const existingEditorsPicks = document.getElementById('kr-editors-picks');
+    if (existing) {
+      if (existingEditorsPicks && existing.nextElementSibling !== existingEditorsPicks) {
+        existingEditorsPicks.insertAdjacentElement('beforebegin', existing);
+      }
+      return;
+    }
+
+    const editorsPicks = document.getElementById('kr-editors-picks');
+    if (!editorsPicks) return;
+
+    const section = document.createElement('section');
+    section.id = 'kr-best-sellers';
+    section.className = 'kr-best-sellers';
+    section.setAttribute('aria-labelledby', 'kr-best-sellers-heading');
+    section.innerHTML = `
+      <div class="kr-best-sellers__heading">
+        <div>
+          <p>THE KYRAA EDIT</p>
+          <h2 class="kr-section-title" id="kr-best-sellers-heading">Kyraa's Best Sellers</h2>
+        </div>
+        <a href="../store/category.html?edit=new-arrivals">VIEW ALL <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="kr-best-sellers__grid">
+        <a class="kr-best-sellers__card" href="../store/category.html?category=chudi">
+          <span class="kr-best-sellers__image"><img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546286/kryaastyle/template/7acbad6ea4443dbd-webp.webp" alt="Black embroidered kurti set" width="900" height="1350" loading="lazy" decoding="async"></span>
+          <span class="kr-best-sellers__meta"><small>KYRAA SIGNATURE</small><strong>Midnight Embroidered Set</strong><em>Shop now</em></span>
+        </a>
+        <a class="kr-best-sellers__card" href="../store/category.html?category=salwar-suits">
+          <span class="kr-best-sellers__image"><img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546272/kryaastyle/template/f545fab9208931c1-webp.webp" alt="Ivory floral kurti set" width="900" height="1350" loading="lazy" decoding="async"></span>
+          <span class="kr-best-sellers__meta"><small>SOFT CELEBRATION</small><strong>Ivory Garden Kurti Set</strong><em>Shop now</em></span>
+        </a>
+        <a class="kr-best-sellers__card" href="../store/category.html?category=kurti-sets">
+          <span class="kr-best-sellers__image"><img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546228/kryaastyle/template/d714bef591f67981-webp.webp" alt="Green printed kurti set" width="900" height="1350" loading="lazy" decoding="async"></span>
+          <span class="kr-best-sellers__meta"><small>FRESH EDIT</small><strong>Emerald Everyday Kurti</strong><em>Shop now</em></span>
+        </a>
+        <a class="kr-best-sellers__card" href="../store/category.html?category=short-tops">
+          <span class="kr-best-sellers__image"><img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546269/kryaastyle/template/7c6a923fe06942af-webp.webp" alt="Paisley sleeveless top" width="900" height="1350" loading="lazy" decoding="async"></span>
+          <span class="kr-best-sellers__meta"><small>DAYTIME FAVOURITE</small><strong>Paisley Sleeveless Top</strong><em>Shop now</em></span>
+        </a>
+      </div>
+    `;
+
+    editorsPicks.insertAdjacentElement('beforebegin', section);
+
+    if (document.getElementById('kr-best-sellers-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'kr-best-sellers-styles';
+    style.textContent = `
+      .kr-best-sellers { padding: clamp(54px, 7vw, 96px) clamp(20px, 5.5vw, 96px); background: #fbfaf8; }
+      .kr-best-sellers__heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; max-width: 1440px; margin: 0 auto 28px; }
+      .kr-best-sellers__heading p { margin: 0 0 8px; color: #8d6240; font: 600 10px/1.2 Arial, sans-serif; letter-spacing: .18em; }
+      .kr-best-sellers__heading h2 { margin: 0; color: #22201e; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(31px, 3.2vw, 48px); font-weight: 400; letter-spacing: -.035em; }
+      .kr-best-sellers__heading > a { color: #2a2927; font: 600 10px/1 Arial, sans-serif; letter-spacing: .12em; text-decoration: none; white-space: nowrap; }
+      .kr-best-sellers__heading > a:hover { color: #8d6240; }
+      .kr-best-sellers__heading > a span { padding-left: 6px; font-size: 16px; }
+      .kr-best-sellers__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.8vw, 26px); max-width: 1440px; margin: 0 auto; }
+      .kr-best-sellers__card { display: block; min-width: 0; color: #252320; text-decoration: none; }
+      .kr-best-sellers__image { display: block; overflow: hidden; background: #ede8e1; }
+      .kr-best-sellers__image img { display: block; width: 100%; aspect-ratio: .74; object-fit: cover; object-position: center 24%; transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+      .kr-best-sellers__card:hover .kr-best-sellers__image img { transform: scale(1.04); }
+      .kr-best-sellers__meta { display: block; padding: 15px 2px 0; }
+      .kr-best-sellers__meta small { display: block; margin-bottom: 7px; color: #8d6240; font: 600 9px/1 Arial, sans-serif; letter-spacing: .13em; }
+      .kr-best-sellers__meta strong { display: block; overflow: hidden; font: 400 clamp(15px, 1.25vw, 18px)/1.25 Georgia, 'Times New Roman', serif; text-overflow: ellipsis; white-space: nowrap; }
+      .kr-best-sellers__meta em { display: inline-block; margin-top: 9px; border-bottom: 1px solid #988c80; color: #5d554d; font: 11px/1.2 Arial, sans-serif; font-style: normal; padding-bottom: 3px; }
+      /* Match the visual language of the Curated By Kryaa tiles. */
+      .kr-best-sellers { padding: 58px clamp(20px, 5.5vw, 96px) 74px; background: #fff; }
+      .kr-best-sellers__heading { display: block; max-width: 1440px; margin: 0 auto 32px; text-align: center; }
+      .kr-best-sellers__heading p, .kr-best-sellers__heading > a { display: none; }
+      .kr-best-sellers__heading h2.kr-section-title { display: flex !important; width: 100%; min-height: 1.25em; align-items: center; justify-content: center; margin: 0 0 40px !important; color: #3c4242; font: 400 clamp(28px, 2.4vw, 36px)/1.25 Georgia, 'Times New Roman', serif; text-align: center; }
+      .kr-best-sellers__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .kr-best-sellers__card { position: relative; overflow: hidden; aspect-ratio: 3 / 4.1; border-radius: 18px; isolation: isolate; color: #fff; }
+      .kr-best-sellers__card:nth-child(4) { display: none; }
+      .kr-best-sellers__image { position: absolute; inset: 0; display: block; background: #ede8e1; }
+      .kr-best-sellers__image img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-position: center top; }
+      .kr-best-sellers__card::before { position: absolute; z-index: 1; right: 0; bottom: 0; left: 0; height: 44%; background: linear-gradient(to top, rgba(20, 12, 8, .62), rgba(20, 12, 8, 0)); content: ''; pointer-events: none; }
+      .kr-best-sellers__card::after { position: absolute; z-index: 1; inset: 8px; border: 1px solid rgba(255, 255, 255, .35); border-radius: 12px; content: ''; pointer-events: none; }
+      .kr-best-sellers__meta { position: absolute; z-index: 2; right: 12px; bottom: 18px; left: 12px; display: flex; align-items: center; flex-direction: column; padding: 0; color: #fff; text-align: center; }
+      .kr-best-sellers__meta small { display: none; }
+      .kr-best-sellers__meta strong { overflow: visible; color: #fff; font: 500 17px/1.2 Arial, sans-serif; text-overflow: clip; white-space: normal; }
+      .kr-best-sellers__meta em { margin-top: 8px; border: 0; color: rgba(255, 255, 255, .9); font: 11px/1.2 Arial, sans-serif; letter-spacing: .2em; padding: 0; text-transform: uppercase; }
+      @media screen and (max-width: 767px) {
+        .kr-best-sellers { padding: 48px 16px 52px; }
+        .kr-best-sellers__heading { align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+        .kr-best-sellers__heading h2 { font-size: 31px; }
+        .kr-best-sellers__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+        .kr-best-sellers__meta { padding-top: 10px; }
+        .kr-best-sellers__meta strong { white-space: normal; font-size: 15px; }
+        .kr-best-sellers__meta em { margin-top: 7px; font-size: 10px; }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
   const cleanMenPage = () => {
     setupEditorsPicksSection();
+    setupBestSellersSection();
     setupHeroCarousel();
     injectNewArrivalsMobileStyles();
     cleanHeader();
     cleanImageSearch();
+    setupStorefrontNavigation();
     renameNewArrivalsSection();
     replaceFirstNewArrivalImage();
     setupNewArrivalsMobileCarousel();
@@ -2238,6 +2487,7 @@ const kryaaLuxeSlides = [
     cleanEditorialSection();
     cleanCelebrityClosetSection();
     cleanInsiderAccessSection();
+    removeFooterPromotions();
     cleanVisitStoreCaptions();
     setupUpdatesSignup();
   };
@@ -2253,7 +2503,7 @@ const kryaaLuxeSlides = [
       <div class="kr-shopper-footer__inner">
         <div class="kr-shopper-footer__top">
           <section class="kr-shopper-footer__brand" aria-label="Kryaa Style">
-            <a class="kr-shopper-footer__wordmark" href="index.html"><img src="../image/logo.png" alt="Kryaa Style"></a>
+            <a class="kr-shopper-footer__wordmark" href="index.html"><img src="https://res.cloudinary.com/r3jgeild/image/upload/v1793546160/kryaastyle/template/674fb82d593b7315-png.png" alt="Kryaa Style"></a>
             <p>Discover designer Indian occasionwear, curated for every celebration.</p>
             <div class="kr-shopper-footer__social" aria-label="Follow Kryaa Style">
               <a href="https://www.instagram.com/kryafasions/" target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>
@@ -2265,11 +2515,11 @@ const kryaaLuxeSlides = [
           <section>
             <h2>SHOP</h2>
             <ul>
-              <li><a href="collection/men/kurta-sets.html">Kurta Sets</a></li>
-              <li><a href="collection/men/sherwanis.html">Sherwanis</a></li>
-              <li><a href="collection/men/nehru-jacket-and-sets.html">Nehru Jackets</a></li>
-              <li><a href="collection/men/bandhgalas.html">Bandhgalas</a></li>
-              <li><a href="collection/men/kurtas.html">Kurtas</a></li>
+              <li><a href="../store/category.html?category=kurti-sets">Kurti Sets</a></li>
+              <li><a href="../store/category.html?category=anarkali-suits">Anarkali Suits</a></li>
+              <li><a href="../store/category.html?category=salwar-suits">Salwar Suits</a></li>
+              <li><a href="../store/category.html?category=sarees">Sarees</a></li>
+              <li><a href="../store/category.html?category=full-frocks">Full Frocks</a></li>
             </ul>
           </section>
           <section>
@@ -2323,11 +2573,15 @@ const kryaaLuxeSlides = [
   loadRealImagesFromApi();
   const storefrontStyles = document.createElement('link');
   storefrontStyles.rel = 'stylesheet';
-  storefrontStyles.href = '../storefront-sync.css';
+  storefrontStyles.href = '../storefront-sync.css?v=7';
   document.head.appendChild(storefrontStyles);
+  const customerAuth = document.createElement('script');
+  customerAuth.src = '../customer-auth.js?v=2';
+  customerAuth.async = false;
+  document.body.appendChild(customerAuth);
   const storefrontSync = document.createElement('script');
-  storefrontSync.src = '../storefront-sync.js';
-  storefrontSync.defer = true;
+  storefrontSync.src = '../storefront-sync.js?v=7';
+  storefrontSync.async = false;
   document.body.appendChild(storefrontSync);
   const observer = new MutationObserver(() => {
     cleanMenPage();

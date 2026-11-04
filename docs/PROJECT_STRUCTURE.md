@@ -21,10 +21,15 @@ kyraastyle/
 │   ├── store/                 # Catalogue page and its separate captured _next runtime
 │   └── www.googletagmanager.com/
 ├── backend/
-│   ├── server.js
-│   ├── package.json
-│   └── .env.example
-├── admin/                     # Intentionally empty
+│   ├── admin/
+│   │   ├── api/                # Protected admin API
+│   │   └── ui/                 # React admin panel
+│   ├── scripts/                # Storefront asset and data maintenance
+│   ├── server.js               # Storefront API and static server
+│   ├── customerAuth.js
+│   ├── seed.js
+│   ├── serve.js
+│   └── package.json
 ├── docs/
 │   └── PROJECT_STRUCTURE.md
 ├── .gitignore
@@ -39,15 +44,15 @@ The two captured `_next` directories and the captured third-party resource direc
 
 `frontend/` contains all browser-facing content: the welcome screen, captured homepage, catalogue, CSS, browser JavaScript, fonts, videos, logos, product imagery, editorial imagery, payment icons, and captured static resources. It contains no server code or private environment files.
 
-`backend/` contains only the dependency-free Node development server and its package metadata. There are no routes, controllers, services, models, middleware, database, authentication, checkout, payment, or product API modules because the current application is static-only.
+`backend/` contains the storefront API and server, customer authentication, catalog seeding and maintenance scripts, and the admin application under `backend/admin/`.
 
-`admin/` must remain a physically empty directory. It has no tracked placeholder file, configuration, or source code.
+`backend/admin/api/` contains the protected admin API, and `backend/admin/ui/` contains the React admin panel. Keep both inside `backend/` so the admin application has a single location alongside the storefront backend.
 
 ## Static serving
 
-`backend/server.js` resolves the frontend root from the server file location, so it works when started from the repository root or from `backend/`. It serves only files beneath `frontend/`, supports `GET` and `HEAD`, resolves directory requests to `index.html`, uses an explicit MIME map for the captured file types, rejects traversal/private-path requests, and does not expose `.env`, `.git`, `node_modules`, or backend files.
+`backend/server.js` resolves the frontend root from the server file location, so it works when started from the repository root or from `backend/`. It serves storefront routes and content, and reads admin Instagram uploads from `backend/admin/api/uploads/`.
 
-There is no API and therefore no CORS policy or cross-origin API surface.
+The admin UI calls the protected admin API; the storefront server broadcasts updates when admin-managed collections change.
 
 ## Local development
 
@@ -59,7 +64,7 @@ npm start
 
 The default port is `3000`. Use `PORT=4000 npm start` in a POSIX shell or `$env:PORT=4000; npm start` in PowerShell. `npm run dev` starts the same server. The root `npm run serve` command is an optional `npx serve frontend` preview and may download the `serve` CLI if it is not already available.
 
-The backend does not load `.env` files automatically; copy values from `backend/.env.example` into the shell environment when needed. Real environment files, Vercel credentials, and API keys must not be committed.
+The storefront backend loads `backend/.env`. The admin API and UI use their own environment files under `backend/admin/api/` and `backend/admin/ui/`. Keep real environment files and API keys out of source control.
 
 The frontend also has a small `frontend/package.json` containing `dev` and `start` scripts. From inside `frontend/`, `npm run dev` delegates to `../backend/server.js`, so the website can be started from its own directory while the static-server implementation remains in `backend/`. The optional root shortcut is `npm run frontend:dev`.
 
@@ -77,7 +82,7 @@ High-resolution source/reference photography is kept in `frontend/Real_Imgs/`. T
 
 Cleanup keeps only the captured resources that belong to a page or its path-sensitive runtime. The homepage Cloudflare email decoder and Google Tag Manager capture remain because `frontend/kyraastyle.com/index.html` references them. The catalogue-side unused decoder and empty capture placeholders were removed.
 
-The welcome transition, homepage sections, responsive styling, animations, catalogue filtering/sorting, hover images, quick view, wishlist toggles, and localStorage bag are all frontend-only demonstrations. There is no real account system, search backend, inventory, checkout, payment processing, newsletter endpoint, persistence layer, or admin application.
+The welcome transition, homepage sections, responsive styling, animations, catalogue filtering/sorting, hover images, quick view, wishlist toggles, and localStorage bag include frontend demonstrations. The admin app manages shared product and content records through its protected API.
 
 ## Known limitations
 

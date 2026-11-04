@@ -39,7 +39,7 @@ export async function listCategories() {
   const categories = await getProductCategories();
   const [details, products] = await Promise.all([
     CategoryDetails.find({ _id: { $in: categories.map(categoryKey) } }).lean(),
-    Product.find({ category: { $in: categories } }).select('category cloudinaryId imageUrl width height').lean(),
+    Product.find({ category: { $in: categories }, mergedInto: { $exists: false } }).select('category cloudinaryId imageUrl width height').lean(),
   ]);
   const detailMap = new Map(details.map((item) => [item._id, item]));
   const productMap = new Map();
@@ -118,7 +118,7 @@ export async function deleteCategory(key) {
   const categories = await getProductCategories();
   const name = await findCategoryName(key, categories);
   if (!name) throw new CategoryError('Category not found.', 404);
-  const count = await Product.countDocuments({ category: name });
+  const count = await Product.countDocuments({ category: name, mergedInto: { $exists: false } });
   if (count) throw new CategoryError(`This category is used by ${count} ${count === 1 ? 'dress' : 'dresses'}. Move them to another category before deleting it.`, 409);
   const remaining = categories.filter((item) => item !== name);
   if (!remaining.length) throw new CategoryError('Keep at least one product category.', 409);

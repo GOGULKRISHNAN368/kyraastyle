@@ -1,4 +1,4 @@
-# HTTrack Mirror logs and cache
+﻿# HTTrack Mirror logs and cache
 hts-cache/
 hts-log.txt
 cookies.txt
@@ -7,7 +7,3 @@ node_modules/
 .env
 .env.*
 !.env.example
-<<<<<<< HEAD
-=======
-!.env
->>>>>>> d5d96b6727d92a3c971cc6824c41d31fd6db13c4

@@ -25,9 +25,11 @@ const productSchema = new mongoose.Schema({
   height: Number,
   alt: String,
   price: { type: Number, min: 0 },
+  slug: String,
+  mergedInto: mongoose.Schema.Types.ObjectId,
   link: String,
   isActive: { type: Boolean, default: true }
-}, { timestamps: true, collection: 'products' });
+}, { timestamps: true, collection: 'products', autoIndex: false });
 const Product = mongoose.models.Product || mongoose.model('Product', productSchema);
 
 function categoryFor(name) {
@@ -67,8 +69,11 @@ async function seed() {
   const cloudinaryIds = localIds.filter((id) => verifiedCloudinaryIds.has(id));
   const unavailableIds = localIds.filter((id) => !verifiedCloudinaryIds.has(id));
   let upserted = 0;
+  let skippedGrouped = 0;
   for (let index = 0; index < cloudinaryIds.length; index += 1) {
     const cloudinaryId = cloudinaryIds[index];
+    const existing = await Product.findOne({ cloudinaryId }).select('slug mergedInto').lean();
+    if (existing?.mergedInto || existing?.slug) { skippedGrouped += 1; continue; }
     const name = cloudinaryId.replace(/[_-]+/g, ' ');
     const imageUrl = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto:best,c_limit,w_800/${encodeURIComponent(cloudinaryId)}`;
     await Product.updateOne(
@@ -87,9 +92,9 @@ async function seed() {
     upserted += 1;
   }
   if (unavailableIds.length) {
-    await Product.updateMany({ cloudinaryId: { $in: unavailableIds } }, { $set: { isActive: false } });
+    await Product.updateMany({ cloudinaryId: { $in: unavailableIds }, mergedInto: { $exists: false }, slug: { $exists: false } }, { $set: { isActive: false } });
   }
-  console.log(`Seed complete: ${upserted} verified Real_Imgs Cloudinary references active in ${DB_NAME}.products; ${unavailableIds.length} unmatched IDs excluded from the API.`);
+  console.log(`Seed complete: ${upserted} legacy product images updated; ${skippedGrouped} grouped products preserved; ${unavailableIds.length} unmatched IDs excluded from the API.`);
 }
 
 seed()

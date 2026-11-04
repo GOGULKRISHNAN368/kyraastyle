@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Badge from '../components/common/Badge.jsx';
 import Button from '../components/common/Button.jsx';
 import Card from '../components/common/Card.jsx';
@@ -40,9 +40,6 @@ export default function ProductsPage() {
   const [stockProduct, setStockProduct] = useState(null);
   const [deletingProduct, setDeletingProduct] = useState(null);
   const [draggedId, setDraggedId] = useState(null);
-  const [galleryProduct, setGalleryProduct] = useState(null);
-  const [galleryIndex, setGalleryIndex] = useState(0);
-  const galleryTouchStart = useRef(0);
 
   useEffect(() => {
     const timer = window.setTimeout(() => { setDebouncedSearch(search); setPage(1); }, 250);
@@ -80,7 +77,7 @@ export default function ProductsPage() {
   }
   async function confirmDelete() {
     if (!deletingProduct) return;
-    try { await deleteProduct(deletingProduct._id); setDeletingProduct(null); setReloadKey((value) => value + 1); notify('Product moved to inactive.'); }
+    try { await deleteProduct(deletingProduct._id); setDeletingProduct(null); setReloadKey((value) => value + 1); notify('Dress deleted from the store.'); }
     catch (reason) { notify(reason.message || 'Could not delete product.', 'error'); }
   }
   async function saveOrder(ordered) {
@@ -115,16 +112,6 @@ export default function ProductsPage() {
     void saveOrder(ordered);
   }
 
-  function openGallery(product) {
-    setGalleryProduct(product);
-    setGalleryIndex(0);
-  }
-
-  function moveGallery(offset) {
-    const imageCount = 1 + (galleryProduct?.images?.length || 0);
-    setGalleryIndex((current) => (current + offset + imageCount) % imageCount);
-  }
-
   const columns = [
     { key: 'product', label: 'Product', sortable: false, render: (row) => <div className="product-row-identity"><ImageThumb src={row.imageUrl} fallbackSrc={getProductImageFallback(row)} alt={row.alt || row.name} size="sm"/><span><strong>{row.name}</strong><small>{row.cloudinaryId}</small></span></div> },
     { key: 'category', label: 'Category', sortable: false },
@@ -136,7 +123,7 @@ export default function ProductsPage() {
 
   return <div className="products-page">
     <Card className="products-toolbar">
-      <SearchBar value={search} onChange={setSearch} placeholder="Search name, description, or Cloudinary ID"/>
+      <SearchBar value={search} onChange={setSearch} placeholder="Search dress name or product details"/>
       <div className="products-filters">
         <Select label="Category" value={category} onChange={(event) => { setCategory(event.target.value); setPage(1); }}><option value="">All categories</option>{categories.map((item) => <option key={item}>{item}</option>)}</Select>
         <div className="field"><label htmlFor="section-filter">Section</label><input className="control" id="section-filter" list="product-sections" value={section} onChange={(event) => { setSection(event.target.value); setPage(1); }} placeholder="All sections"/><datalist id="product-sections">{sections.map((item) => <option key={item} value={item}/>)}</datalist></div>
@@ -150,15 +137,15 @@ export default function ProductsPage() {
     <Card className="products-list-card">
       {canReorder && <p className="reorder-hint">Drag products or use the up and down controls to change their order in this section.</p>}
       {loading ? <Skeleton lines={7} className="products-skeleton"/> : error ? <div className="products-error" role="alert">{error}<Button variant="secondary" onClick={() => setReloadKey((value) => value + 1)}>Retry</Button></div> : products.length === 0 ? <EmptyState title="No dresses found" description="Adjust the filters or add a dress to the Kryaa Style collection." action={<Button onClick={openCreate}>Add dress</Button>}/> : view === 'table' ? <DataTable columns={columns} rows={products} rowKey="_id" pageSize={pageLimit} draggable={canReorder} onReorder={saveOrder}/> : <div className="product-grid">{products.map((product, index) => <article className="product-card" key={product._id} draggable={canReorder} onDragStart={() => setDraggedId(product._id)} onDragOver={(event) => canReorder && event.preventDefault()} onDrop={() => onDropCard(product)}>
-        <button className="product-card-image" type="button" onClick={() => openGallery(product)} aria-label={`View images for ${product.name}`}>{product.imageUrl ? <img src={product.imageUrl} alt={product.alt || product.name} onError={(event) => applyImageFallback(event, getProductImageFallback(product))}/> : getProductImageFallback(product) ? <img src={getProductImageFallback(product)} alt={product.alt || product.name}/> : <span>No image preview</span>}{(product.images?.length || 0) > 0 && <span className="product-image-count">View {product.images.length + 1} photos</span>}</button>
+        <div className="product-card-image">{product.imageUrl ? <img src={product.imageUrl} alt={product.alt || product.name} onError={(event) => applyImageFallback(event, getProductImageFallback(product))}/> : getProductImageFallback(product) ? <img src={getProductImageFallback(product)} alt={product.alt || product.name}/> : <span>No image preview</span>}</div>
         <div className="product-card-content">
           <div className="product-card-title"><strong>{product.name}</strong></div>
-          <div className="product-card-price">{product.price == null ? 'Price not set' : `Rs. ${Number(product.price).toLocaleString('en-IN')}`} {product.oldPrice != null && <del>Rs. {Number(product.oldPrice).toLocaleString('en-IN')}</del>}</div>
+          <div className="product-card-price">{product.price == null ? 'Price not set' : `Rs. ${Number(product.price).toLocaleString('en-IN')}`} {product.mrp != null && <del>Rs. {Number(product.mrp).toLocaleString('en-IN')}</del>}</div>
           <div className="product-card-meta"><span>{product.category}</span><Badge tone={product.isActive ? 'success' : 'neutral'}>{product.isActive ? 'Active' : 'Inactive'}</Badge></div>
-          <div className="product-stock-summary">{product.sizes?.some((item) => item.available) ? product.sizes.filter((item) => item.available).map((item) => `${item.size}: ${item.quantity}`).join(' · ') : 'Size stock not set'}</div>
-          {(product.isNewArrival || product.isBestSeller || product.isCuratedLook) && <div className="product-flag-list">{product.isNewArrival && <span>New arrival</span>}{product.isBestSeller && <span>Best seller</span>}{product.isCuratedLook && <span>Curated look</span>}</div>}
+          <div className="product-stock-summary">{product.hasSizes && product.sizes?.length ? product.sizes.map((item) => `${item.label}: ${item.stock}`).join(' · ') : `Stock: ${product.stock ?? 0}`}</div>
+          {(product.isNewArrival || product.isBestSeller || product.isCuratedLook || product.isEditorsPick || product.isOccasionPick || product.isLuxeCollection) && <div className="product-flag-list">{product.isNewArrival && <span>New arrival</span>}{product.isEditorsPick && <span>Editor's pick</span>}{product.isBestSeller && <span>Best seller</span>}{product.isCuratedLook && <span>Curated look</span>}{product.isOccasionPick && <span>Occasion</span>}{product.isLuxeCollection && <span>Luxe</span>}</div>}
           {product.description && <p className="product-card-description">{product.description}</p>}
-          <div className="product-card-actions">{canReorder && <><Button variant="ghost" size="sm" disabled={index === 0} aria-label="Move dress up" onClick={() => moveProduct(product, -1)}>Up</Button><Button variant="ghost" size="sm" disabled={index === products.length - 1} aria-label="Move dress down" onClick={() => moveProduct(product, 1)}>Down</Button></>}<Button variant="secondary" size="sm" onClick={() => setStockProduct(product)}>Stock</Button><Button variant="secondary" size="sm" onClick={() => openEdit(product)}>Edit</Button><Button variant="ghost" size="sm" onClick={() => toggleActive(product)}>{product.isActive ? 'Deactivate' : 'Activate'}</Button><Button variant="danger" size="sm" onClick={() => setDeletingProduct(product)}>Remove</Button></div>
+          <div className="product-card-actions">{canReorder && <><Button variant="ghost" size="sm" disabled={index === 0} aria-label="Move dress up" onClick={() => moveProduct(product, -1)}>Up</Button><Button variant="ghost" size="sm" disabled={index === products.length - 1} aria-label="Move dress down" onClick={() => moveProduct(product, 1)}>Down</Button></>}<Button variant="secondary" size="sm" onClick={() => setStockProduct(product)}>Stock</Button><Button variant="secondary" size="sm" onClick={() => openEdit(product)}>Edit</Button><Button variant="ghost" size="sm" onClick={() => toggleActive(product)}>{product.isActive ? 'Deactivate' : 'Activate'}</Button><Button variant="danger" size="sm" onClick={() => setDeletingProduct(product)}>Delete</Button></div>
         </div>
       </article>)}</div>}
       {!loading && !error && products.length > 0 && <Pagination page={page} pages={pages} onChange={setPage}/>}
@@ -166,9 +153,8 @@ export default function ProductsPage() {
     </Card>
 
     <ProductForm key={editingProduct?._id || 'new'} open={editorOpen} product={editingProduct} categories={categories} onClose={() => setEditorOpen(false)} onSaved={saveComplete}/>
-    {galleryProduct && <div className="dress-gallery-backdrop" role="presentation" onClick={() => setGalleryProduct(null)}><section className="dress-gallery-dialog" role="dialog" aria-modal="true" aria-label={`${galleryProduct.name} images`} onClick={(event) => event.stopPropagation()}><button className="dress-gallery-close" type="button" aria-label="Close image gallery" onClick={() => setGalleryProduct(null)}>×</button><h2>{galleryProduct.name}</h2><div className="dress-gallery-viewer" onTouchStart={(event) => { galleryTouchStart.current = event.touches[0].clientX; }} onTouchEnd={(event) => { const delta = event.changedTouches[0].clientX - galleryTouchStart.current; if (Math.abs(delta) > 40) moveGallery(delta < 0 ? 1 : -1); }}><button type="button" aria-label="Previous image" onClick={() => moveGallery(-1)}>‹</button><img src={[galleryProduct.imageUrl, ...(galleryProduct.images || []).map((image) => image.imageUrl)].filter(Boolean)[galleryIndex]} alt={`${galleryProduct.alt || galleryProduct.name} ${galleryIndex + 1}`} onError={(event) => applyImageFallback(event, getProductImageFallback(galleryProduct))}/><button type="button" aria-label="Next image" onClick={() => moveGallery(1)}>›</button></div><div className="dress-gallery-dots">{[galleryProduct.imageUrl, ...(galleryProduct.images || []).map((image) => image.imageUrl)].filter(Boolean).map((image, index) => <button key={`${image}-${index}`} type="button" aria-label={`Show image ${index + 1}`} aria-current={index === galleryIndex} onClick={() => setGalleryIndex(index)}>{index + 1}</button>)}</div></section></div>}
     <StockEditor product={stockProduct} onClose={() => setStockProduct(null)} onSaved={() => { setStockProduct(null); setReloadKey((value) => value + 1); notify('Dress stock saved.'); }}/>
-    <ConfirmDialog open={Boolean(deletingProduct)} title="Delete product?" confirmLabel="Delete product" onClose={() => setDeletingProduct(null)} onConfirm={confirmDelete}>This product will be deactivated and hidden from the website. Its image will remain in Cloudinary.</ConfirmDialog>
+    <ConfirmDialog open={Boolean(deletingProduct)} title="Delete dress?" confirmLabel="Delete dress" onClose={() => setDeletingProduct(null)} onConfirm={confirmDelete}>This removes the dress from the store and every homepage collection. Its Cloudinary image is kept safely in your media account.</ConfirmDialog>
     <div className="toast-region" aria-live="polite"><Toast message={toast.message} tone={toast.tone} onClose={() => setToast({ message: '', tone: 'success' })}/></div>
   </div>;
 }

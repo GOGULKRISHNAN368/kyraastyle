@@ -7,7 +7,12 @@
     "dev": "node server.js",
     "start": "node server.js",
     "seed": "node seed.js",
-    "sync:images": "node scripts/syncCloudinaryToProducts.js"
+    "sync:images": "node scripts/syncCloudinaryToProducts.js",
+    "migrate:products": "node scripts/groupProducts.js --dry",
+    "migrate:products:apply": "node scripts/groupProducts.js --apply",
+    "migrate:template-images": "node scripts/migrateTemplateImagesToCloudinary.js",
+    "cleanup:men-template-assets": "node scripts/cleanupUnwantedMenTemplateAssets.js",
+    "migrate:women-lookbook-images": "node scripts/migrateWomenLookbookImagesToCloudinary.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +22,7 @@
     "dotenv": "^18.0.9",
     "express": "^5.3.0",
     "mongoose": "^9.11.4",
-    "multer": "^2.5.0"
+    "multer": "^2.5.0",
+    "socket.io": "^4.8.4"
   }
 }

@@ -35,7 +35,7 @@ function validate(input, existing = {}) {
 export async function listCoupons() {
   const coupons = await Coupon.find().sort({ createdAt: -1, code: 1 }).lean();
   const ids = [...new Set(coupons.flatMap((coupon) => coupon.applicableProductIds.map(String)))];
-  const products = ids.length ? await Product.find({ _id: { $in: ids } }).select('name price').lean() : [];
+  const products = ids.length ? await Product.find({ _id: { $in: ids }, mergedInto: { $exists: false } }).select('name price').lean() : [];
   const productMap = new Map(products.map((product) => [String(product._id), product]));
   return coupons.map((coupon) => ({
     ...coupon,
@@ -46,7 +46,7 @@ export async function listCoupons() {
 export async function createCoupon(input) {
   const values = validate(input);
   if (await Coupon.exists({ code: values.code })) throw new CouponError('That coupon code already exists.', 409);
-  const validCount = await Product.countDocuments({ _id: { $in: values.applicableProductIds } });
+  const validCount = await Product.countDocuments({ _id: { $in: values.applicableProductIds }, mergedInto: { $exists: false } });
   if (validCount !== values.applicableProductIds.length) throw new CouponError('One or more selected products no longer exist.', 400);
   try { return await Coupon.create(values); }
   catch (error) {
@@ -61,7 +61,7 @@ export async function updateCoupon(id, input) {
   if (!coupon) throw new CouponError('Coupon not found.', 404);
   const values = validate(input, coupon.toObject());
   if (await Coupon.exists({ code: values.code, _id: { $ne: coupon._id } })) throw new CouponError('That coupon code already exists.', 409);
-  const validCount = await Product.countDocuments({ _id: { $in: values.applicableProductIds } });
+  const validCount = await Product.countDocuments({ _id: { $in: values.applicableProductIds }, mergedInto: { $exists: false } });
   if (validCount !== values.applicableProductIds.length) throw new CouponError('One or more selected products no longer exist.', 400);
   Object.assign(coupon, values);
   try { return await coupon.save(); }

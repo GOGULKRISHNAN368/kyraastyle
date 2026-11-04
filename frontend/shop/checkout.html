@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#fcf7f2">
+  <title>Checkout | Kryaa Style</title>
+  <link rel="preconnect" href="https://res.cloudinary.com"><link rel="stylesheet" href="shop.css"><link rel="stylesheet" href="shop-flow.css?v=6"><link rel="stylesheet" href="checkout-flow.css?v=5"><link rel="stylesheet" href="mobile-menu.css?v=1"><link rel="stylesheet" href="product-image-fit.css?v=2">
+  <script src="shop-mobile-menu.js?v=1" defer></script><script src="shop-auth.js" defer></script><script src="shop-bag.js" defer></script><script src="shop-runtime.js?v=9" defer></script><script src="product-images.js?v=1" defer></script><script src="upi-qr.js?v=1" defer></script><script src="checkout.js?v=8" defer></script>
+</head>
+<body>
+  <header class="shop-header"><a class="shop-brand" href="index.html" aria-label="Kryaa Style home">KYRAA<span>STYLE</span></a><nav class="shop-primary-nav" aria-label="Main navigation"><a href="cart.html">Bag</a></nav><a class="shop-header__bag" href="cart.html" data-shop-bag-trigger aria-label="Shopping bag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg><span class="shop-header__bag-count" data-shop-bag-count hidden>0</span></a></header>
+  <main class="checkout-page">
+    <nav class="product-breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="cart.html">Bag</a><span>/</span><strong>Checkout</strong></nav>
+    <nav class="payment-topbar" id="payment-topbar" aria-label="Checkout progress" hidden>
+      <button class="payment-back" id="back-to-address" type="button"><span aria-hidden="true">←</span><span>Back to Address</span></button>
+      <ol class="payment-progress"><li class="is-done"><span aria-hidden="true">✓</span><small>SIGN UP</small></li><i></i><li class="is-done"><span aria-hidden="true">✓</span><small>ADDRESS</small></li><i></i><li class="is-current"><span>3</span><small>PAYMENT</small></li></ol>
+    </nav>
+    <p class="checkout-current-label" id="checkout-current-label">Delivery details</p>
+    <div class="checkout-layout">
+      <section class="checkout-form-card" id="checkout-form-card">
+        <section id="details-step" class="checkout-step-panel" aria-labelledby="details-title"><h1 id="details-title">Delivery details</h1><p class="checkout-contact-line" id="checkout-contact-line"></p>
+          <button class="previous-address" id="previous-address" type="button" hidden>Use previous address</button>
+          <form id="details-form" novalidate>
+            <label>Full name<input name="name" autocomplete="name" maxlength="120" required></label>
+            <label>Phone<span class="checkout-phone"><span aria-hidden="true">+91</span><input name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10" required></span></label>
+            <label>Email (optional)<input name="email" type="email" autocomplete="email" maxlength="254"></label>
+            <label>Address line 1<input name="line1" autocomplete="address-line1" maxlength="300" required></label>
+            <label>Address line 2 (optional)<input name="line2" autocomplete="address-line2" maxlength="300"></label>
+            <label>Landmark (optional)<input name="landmark" autocomplete="off" maxlength="150"></label>
+            <div class="checkout-form-row"><label>Pincode<input name="pincode" inputmode="numeric" autocomplete="postal-code" maxlength="6" required></label><label>City<input name="city" autocomplete="address-level2" maxlength="100" required></label></div>
+            <label>State<select name="state" autocomplete="address-level1" required><option value="">Select state or union territory</option></select></label>
+            <label>Order note (optional)<textarea name="note" autocomplete="off" maxlength="200" rows="3"></textarea></label>
+            <div class="checkout-error" id="details-error" role="alert" hidden></div>
+            <button class="checkout-mobile-action" id="continue-payment" type="button">Continue to payment</button>
+          </form>
+        </section>
+        <section id="payment-step" class="checkout-step-panel" aria-labelledby="payment-title" hidden>
+          <h1 id="payment-title">Payment</h1>
+          <section class="checkout-address-card" aria-labelledby="delivery-title">
+            <div class="checkout-address-copy"><h2 id="delivery-title"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>Delivery Address</h2><p id="review-address"></p></div>
+            <button type="button" id="edit-address">Edit</button>
+          </section>
+          <h2 class="checkout-subheading"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>Choose Payment Mode</h2>
+          <div class="payment-methods" id="payment-methods"></div>
+          <div class="checkout-error" id="payment-error" role="alert" hidden></div>
+<section class="upi-payment-panel" id="upi-payment-panel" aria-labelledby="upi-payment-title" hidden>
+  <h2 id="upi-payment-title">Pay with UPI</h2>
+  <p class="upi-payment-amount">Amount <strong id="upi-payment-amount">₹0</strong></p>
+  <p class="upi-payment-payee" id="upi-payment-payee"></p>
+  <div class="upi-payment-vpa"><span id="upi-payment-id"></span><button id="upi-copy-id" type="button">Copy UPI ID</button></div>
+  <div class="upi-payment-code"><svg id="upi-payment-qr" role="img" aria-label="UPI payment QR code"></svg></div>
+  <a class="upi-open-app" id="upi-open-app" href="#" hidden>Open UPI app</a>
+  <p class="upi-payment-hint">After paying, enter the 12 digit transaction reference. You can also add it later from Order Details.</p>
+  <form id="upi-reference-form" class="upi-reference-form" novalidate>
+    <label for="upi-reference">UPI transaction reference (UTR, 12 digits)</label>
+    <input id="upi-reference" name="utr" inputmode="numeric" autocomplete="off" maxlength="12" pattern="[0-9]{12}" required>
+    <button type="submit" id="upi-paid-button">I have paid</button>
+  </form>
+  <button class="upi-skip-button" id="upi-skip-button" type="button">Add reference later</button>
+</section>
+          <div class="payment-inline-totals" id="payment-inline-totals"><p><span>Subtotal</span><strong id="checkout-subtotal-inline">₹0</strong></p><p><span>Shipping</span><strong id="checkout-shipping-inline">FREE</strong></p><p><span>Total Amount</span><strong id="checkout-total-inline">₹0</strong></p></div>
+          <button class="checkout-mobile-action" id="place-order" type="button" disabled><span id="place-order-label">PLACE ORDER • ₹0</span></button>
+        </section>
+      </section>
+      <aside class="checkout-summary-card" id="checkout-summary-card" aria-labelledby="summary-title">
+        <div class="checkout-summary-head"><h2 id="summary-title">Bag <span aria-hidden="true">·</span> <span id="summary-count">0 items</span></h2><strong class="checkout-summary-total-mobile" id="summary-mobile-total">₹0</strong></div>
+        <div class="checkout-summary-content"><div id="desktop-summary-lines"><div class="checkout-summary-skeleton" aria-hidden="true"><i></i><span><i></i><i></i></span></div></div>
+          <div class="checkout-coupon" id="checkout-coupon" hidden><label class="visually-hidden" for="checkout-coupon-code">Coupon code</label><input id="checkout-coupon-code" type="text" autocomplete="off" placeholder="COUPON CODE"><button id="checkout-coupon-apply" type="button">APPLY</button></div>
+          <h2 class="checkout-price-title">Price Details</h2><dl><div><dt>Subtotal</dt><dd id="checkout-subtotal">₹0</dd></div><div><dt>Shipping</dt><dd id="checkout-shipping">FREE</dd></div><div class="checkout-grand-total"><dt>Total Amount</dt><dd id="checkout-total">₹0</dd></div></dl>
+          <p class="buy-now-note" id="buy-now-note" hidden>Buying 1 item</p>
+        </div>
+      </aside>
+    </div>
+    <a class="checkout-back-link" id="checkout-back-link" href="cart.html">Back to cart</a>
+  </main>
+  <div class="checkout-toast" id="checkout-toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

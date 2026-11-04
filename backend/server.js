@@ -1,17 +1,35 @@
 require('dotenv').config({ path: require('node:path').resolve(__dirname, '.env'), override: true });
 
 const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
 const mongoose = require('mongoose');
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const path = require('node:path');
 const fs = require('node:fs');
+const { installCustomerAuthRoutes } = require('./customerAuth');
+const { installShopRoutes } = require('./shopApi');
+const { installOrderRoutes } = require('./shopOrders');
 
 const app = express();
+const httpServer = http.createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: ['http://localhost:5501', 'http://127.0.0.1:5501', 'http://localhost:3000', 'http://127.0.0.1:3000'],
+    methods: ['GET', 'POST'],
+  }
+});
 const PORT = Number.parseInt(process.env.PORT || '3000', 10);
 const DB_NAME = process.env.MONGODB_DB || 'test';
 const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || 'l8xwk9bz';
 const FRONTEND_ROOT = path.resolve(__dirname, '..', 'frontend');
+
+app.set('io', io);
+io.on('connection', (socket) => {
+  console.log(`Storefront connected for live updates: ${socket.id}`);
+  socket.on('disconnect', () => console.log(`Storefront disconnected: ${socket.id}`));
+});
 
 if (!process.env.MONGODB_URI) {
   console.error('MONGODB_URI is missing from backend/.env. Add it before starting the backend.');
@@ -36,8 +54,21 @@ const productSchema = new mongoose.Schema({
   alt: String,
   price: { type: Number, min: 0 },
   link: String,
-  isActive: { type: Boolean, default: true }
-}, { timestamps: true, collection: 'products' });
+  isActive: { type: Boolean, default: true },
+  slug: { type: String }, subtitle: String, description: String,
+  details: { fabric: String, care: String, notes: String },
+  occasion: [String], mrp: { type: Number, min: 0 },
+  sizes: [{ label: String, stock: Number }], hasSizes: Boolean, stock: Number,
+  images: [{ publicId: String, width: Number, height: Number, alt: String, position: Number }],
+  isNewArrival: Boolean, mergedInto: mongoose.Schema.Types.ObjectId, tags: [String],
+  isBestSeller: Boolean, isCuratedLook: Boolean, isEditorsPick: Boolean, isOccasionPick: Boolean, isLuxeCollection: Boolean,
+}, { timestamps: true, collection: 'products', autoIndex: false });
+productSchema.index({ slug: 1 }, { unique: true, sparse: true });
+productSchema.index({ isNewArrival: 1 });
+productSchema.index({ price: 1 });
+productSchema.pre('validate', function recomputeSizedStock() {
+  if (this.hasSizes) this.stock = (this.sizes || []).reduce((total, size) => total + Number(size.stock || 0), 0);
+});
 
 const Product = mongoose.models.Product || mongoose.model('Product', productSchema);
 
@@ -58,31 +89,75 @@ async function connectDB() {
   console.log(`MongoDB connected: ${DB_NAME}`);
 }
 
+// Atlas change streams let the public storefront react to changes made by the
+// separate, protected admin API. Only a generic refresh signal is broadcast;
+// product data remains available through the normal read-only API endpoint.
+function watchStorefrontChanges() {
+  const database = mongoose.connection.db;
+  const collections = ['products', 'admin_dress_details', 'admin_banners', 'admin_category_details', 'settings'];
+  for (const collectionName of collections) {
+    try {
+      const stream = database.collection(collectionName).watch([], { fullDocument: 'updateLookup' });
+      stream.on('change', () => io.emit('storefront:changed', { collection: collectionName }));
+      stream.on('error', (error) => console.error(`Storefront live-update watch failed for ${collectionName}: ${error.message}`));
+    } catch (error) {
+      console.error(`Storefront live updates unavailable for ${collectionName}: ${error.message}`);
+    }
+  }
+}
+
 app.use((req, res, next) => {
-  const origin = process.env.CORS_ORIGIN || 'http://localhost:8000';
-  if (req.headers.origin === origin) {
+  const configuredOrigins = String(process.env.CORS_ORIGIN || '')
+    .split(',').map((origin) => origin.trim()).filter(Boolean);
+  const localOrigins = new Set([
+    'http://localhost:5501', 'http://127.0.0.1:5501',
+    'http://localhost:8000', 'http://127.0.0.1:8000',
+    'http://localhost:3000', 'http://127.0.0.1:3000',
+  ]);
+  const origin = req.headers.origin;
+  let sameHostDevOrigin = false;
+  if (origin) {
+    try {
+      const parsedOrigin = new URL(origin);
+      sameHostDevOrigin = parsedOrigin.port === '8000' && parsedOrigin.hostname === req.hostname;
+    } catch (_) { /* Ignore malformed Origin headers. */ }
+  }
+  if (origin && (localOrigins.has(origin) || configuredOrigins.includes(origin) || sameHostDevOrigin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Vary', 'Origin');
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Idempotency-Key');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
   }
   if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
 app.use(express.json());
+installCustomerAuthRoutes(app, mongoose);
 
 function productWithImage(product) {
   const item = product.toObject ? product.toObject() : product;
   const width = Number.isFinite(item.width) && item.width > 0 ? Math.min(item.width, 1200) : 800;
   return {
     ...item,
-    imageUrl: item.imageUrl || `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto:best,c_limit,w_${width}/${encodeURIComponent(item.cloudinaryId).replace(/%2F/g, '/')}`
+    imageUrl: item.imageUrl || `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto:best,c_limit,w_${width}/${encodeURIComponent(item.cloudinaryId).replace(/%2F/g, '/')}`,
+    images: (item.images || []).map((image) => ({
+      ...image,
+      imageUrl: storefrontImageUrl(image.publicId, image.width || 800),
+    })),
   };
 }
 
+installShopRoutes(app, { mongoose, Product, productWithImage, frontendRoot: FRONTEND_ROOT, cloudName: CLOUD_NAME });
+installOrderRoutes(app, { mongoose, Product, cloudName: CLOUD_NAME });
+
+app.get(['/orders', '/orders/:orderNumber'], (_req, res) => res.sendFile(path.join(FRONTEND_ROOT, 'shop', 'orders.html')));
+app.get('/checkout', (_req, res) => res.redirect(302, '/shop/checkout.html'));
+app.get('/order-confirmed', (_req, res) => res.sendFile(path.join(FRONTEND_ROOT, 'shop', 'order-confirmed.html')));
+
 app.get('/api/products', async (req, res) => {
   try {
-    const filter = { isActive: { $ne: false } };
+    const filter = { isActive: { $ne: false }, mergedInto: { $exists: false } };
     if (req.query.section) filter.section = req.query.section;
     if (req.query.category) filter.category = req.query.category;
     const products = await Product.find(filter).sort({ section: 1, position: 1, name: 1 }).lean();
@@ -95,7 +170,7 @@ app.get('/api/products', async (req, res) => {
 
 app.get('/api/products/:id', async (req, res) => {
   try {
-    const product = await Product.findOne({ cloudinaryId: req.params.id, isActive: { $ne: false } });
+    const product = await Product.findOne({ cloudinaryId: req.params.id, isActive: { $ne: false }, mergedInto: { $exists: false } });
     if (!product) return res.status(404).json({ error: 'Product not found.' });
     res.json(productWithImage(product));
   } catch (error) {
@@ -120,13 +195,14 @@ app.get('/api/storefront/content', async (_req, res) => {
   try {
     const db = mongoose.connection.db;
     const now = new Date();
-    const [products, settings, announcements, coupons, reels, instagramPosts] = await Promise.all([
-      Product.find({ isActive: { $ne: false } }).sort({ section: 1, position: 1, name: 1 }).lean(),
+    const [products, settings, announcements, coupons, reels, instagramPosts, banners] = await Promise.all([
+      Product.find({ isActive: { $ne: false }, mergedInto: { $exists: false } }).sort({ section: 1, position: 1, name: 1 }).lean(),
       db.collection('settings').findOne({ _id: 'productCategories' }),
       db.collection('admin_announcements').find({}).sort({ createdAt: -1 }).toArray(),
       db.collection('admin_coupons').find({ isActive: true, expiryDate: { $gte: now }, $or: [{ usageLimit: null }, { $expr: { $lt: ['$usedCount', '$usageLimit'] } }] }).sort({ createdAt: -1 }).toArray(),
       db.collection('admin_reels').find({ isActive: { $ne: false } }).sort({ createdAt: -1 }).toArray(),
       db.collection('admin_instagram_posts').find({}).sort({ position: 1, createdAt: -1 }).toArray(),
+      db.collection('admin_banners').find({ isActive: { $ne: false } }).sort({ position: 1, createdAt: -1 }).toArray(),
     ]);
     const ids = products.map((product) => product._id);
     const [details, categoryDetails] = await Promise.all([
@@ -139,10 +215,15 @@ app.get('/api/storefront/content', async (_req, res) => {
       return {
         id: String(product._id), name: product.name, category: product.category, section: product.section || '',
         position: product.position || 0, imageUrl: productWithImage(product).imageUrl, alt: product.alt || product.name,
-        price: product.price ?? null, description: product.description || '', link: product.link || '',
-        oldPrice: dress.oldPrice ?? null, sizes: dress.sizes || [],
-        images: (dress.images || []).map((image) => ({ imageUrl: storefrontImageUrl(image.cloudinaryId, image.width), width: image.width, height: image.height })),
-        isNewArrival: Boolean(dress.isNewArrival), isBestSeller: Boolean(dress.isBestSeller), isCuratedLook: Boolean(dress.isCuratedLook),
+        price: product.price ?? null, mrp: product.mrp ?? dress.oldPrice ?? null, stock: product.stock ?? 0,
+        hasSizes: Boolean(product.hasSizes), subtitle: product.subtitle || '', description: product.description || '',
+        details: product.details || {}, occasion: product.occasion || [], tags: product.tags || [], link: product.link || '',
+        sizes: product.hasSizes ? (product.sizes || []) : (dress.sizes || []),
+        images: product.images?.length
+          ? productWithImage(product).images.map(({ imageUrl, width, height, alt }) => ({ imageUrl, width, height, alt }))
+          : (dress.images || []).map((image) => ({ imageUrl: storefrontImageUrl(image.cloudinaryId, image.width), width: image.width, height: image.height })),
+        isNewArrival: Boolean(product.isNewArrival || dress.isNewArrival), isBestSeller: Boolean(product.isBestSeller || dress.isBestSeller), isCuratedLook: Boolean(product.isCuratedLook || dress.isCuratedLook),
+        isEditorsPick: Boolean(product.isEditorsPick || dress.isEditorsPick), isOccasionPick: Boolean(product.isOccasionPick || dress.isOccasionPick), isLuxeCollection: Boolean(product.isLuxeCollection || dress.isLuxeCollection),
       };
     });
     const countByCategory = new Map();
@@ -172,8 +253,13 @@ app.get('/api/storefront/content', async (_req, res) => {
       id: String(post._id), alt: post.originalName || 'Kryaa Style collection',
       imageUrl: `/api/storefront/instagram-posts/${post._id}/image`,
     }));
+    const bannerPayload = banners.map((banner) => ({
+      id: String(banner._id), title: banner.title || 'Kryaa Style', link: banner.link || '',
+      desktopImageUrl: storefrontImageUrl(banner.desktopCloudinaryId, banner.desktopWidth || 1920),
+      mobileImageUrl: storefrontImageUrl(banner.mobileCloudinaryId, banner.mobileWidth || 1080),
+    }));
     res.set('Cache-Control', 'no-store');
-    res.json({ data: { products: productPayload, categories, announcements: announcements.map(({ _id, text, createdAt }) => ({ id: String(_id), text, createdAt })), coupons: couponPayload, reels: reelPayload, instagramPosts: instagramPayload } });
+    res.json({ data: { products: productPayload, categories, announcements: announcements.map(({ _id, text, createdAt }) => ({ id: String(_id), text, createdAt })), coupons: couponPayload, reels: reelPayload, instagramPosts: instagramPayload, banners: bannerPayload } });
   } catch (error) {
     console.error('Storefront content lookup failed:', error.message);
     res.status(500).json({ error: 'Unable to load storefront content.' });
@@ -218,8 +304,9 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
 app.use(express.static(FRONTEND_ROOT));
 
 connectDB()
-  .then(() => app.listen(Number.isInteger(PORT) && PORT > 0 && PORT <= 65535 ? PORT : 3000, () => {
-    console.log(`Kyraa Style API running on port ${PORT}`);
+  .then(() => httpServer.listen(Number.isInteger(PORT) && PORT > 0 && PORT <= 65535 ? PORT : 3000, () => {
+    console.log(`Kyraa Style API and Socket.IO running on port ${PORT}`);
+    watchStorefrontChanges();
   }))
   .catch((error) => {
     console.error(`MongoDB connection failed: ${error.message}`);
