@@ -26,7 +26,6 @@ function LoginRoute() {
 
 export default function AppRoutes() {
   return <Routes>
-    <Route path="/login" element={<LoginRoute />} />
     <Route element={<ProtectedRoute />}>
     <Route element={<AdminLayout />}>
       <Route path="/dashboard" element={<DashboardPage />} />

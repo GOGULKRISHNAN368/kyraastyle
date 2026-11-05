@@ -18,10 +18,9 @@ import { requireAuth } from './middleware/requireAuth.js';
 import errorHandler from './middleware/errorHandler.js';
 
 const app = express();
-const authDisabled = process.env.AUTH_DISABLED === 'true';
-const adminUiOrigins = authDisabled
-  ? ['http://localhost:5174', 'http://127.0.0.1:5174']
-  : 'http://localhost:5174';
+// The admin dashboard is intentionally unauthenticated in this local-only API.
+const authDisabled = true;
+const adminUiOrigins = ['http://localhost:5174', 'http://127.0.0.1:5174'];
 
 app.use(cors({ origin: adminUiOrigins, credentials: true, allowedHeaders: ['Content-Type', 'X-Image-Type', 'X-Asset-Type', 'X-File-Name'] }));
 app.use(express.json());

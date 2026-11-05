@@ -2,18 +2,14 @@ import app from './app.js';
 import { connectDatabase } from './config/database.js';
 import { env } from './config/env.js';
 
-const host = env.nodeEnv === 'production' ? '0.0.0.0' : '127.0.0.1';
-
-if (process.env.AUTH_DISABLED === 'true' && process.env.NODE_ENV === 'production') {
-  console.error('Refusing to start admin API: AUTH_DISABLED cannot be used in production.');
+if (env.nodeEnv === 'production') {
+  console.error('Refusing to start admin API: unauthenticated admin access is local development only.');
   process.exit(1);
 }
 
-if (process.env.AUTH_DISABLED === 'true') {
-  console.warn('\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\nADMIN AUTH IS DISABLED. Local development only.\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n');
-}
+console.warn('\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\nADMIN AUTH IS DISABLED. Local development only.\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n');
 
-app.listen(env.port, process.env.AUTH_DISABLED === 'true' ? '127.0.0.1' : host, () => {
+app.listen(env.port, '127.0.0.1', () => {
   console.log(`Admin API listening on port ${env.port}`);
 });
 

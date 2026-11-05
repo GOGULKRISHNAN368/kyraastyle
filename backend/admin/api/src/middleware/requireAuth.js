@@ -3,7 +3,7 @@ import { authCookieName, verifyAuthToken } from '../utils/auth.js';
 import { env } from '../config/env.js';
 
 export async function requireAuth(request, response, next) {
-  if (process.env.AUTH_DISABLED === 'true') {
+  if (process.env.NODE_ENV !== 'production') {
     const localAdmin = { id: 'local-dev', email: 'local-dev', role: 'admin' };
     request.admin = localAdmin;
     request.adminUser = { ...localAdmin, name: 'Local Admin', isActive: true };

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --configLoader native --host 0.0.0.0 --port 5174",
+    "dev": "vite --configLoader native --host 127.0.0.1 --port 5174",
     "build": "vite build --configLoader native"
   },
   "dependencies": {

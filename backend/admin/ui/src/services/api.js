@@ -1,6 +1,6 @@
 const apiBase = import.meta.env.DEV ? '/admin-api' : (import.meta.env.VITE_ADMIN_API_URL || '/admin-api');
 export const SESSION_EXPIRED_EVENT = 'admin-session-expired';
-let authDisabledMode = false;
+let authDisabledMode = true;
 
 export function setAuthDisabledMode(value) {
   authDisabledMode = value === true;
